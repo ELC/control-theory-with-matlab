@@ -47,6 +47,56 @@ El libro se puede leer de varias maneras diferentes, empezando por la más recom
 - Todos los commits son bienvenidos, incluso si son menores ;)
 - Si no estás familiarizado con Github, puedes enviarme tus contribuciones al correo electrónico que aparece a continuación.
 
+
+---
+## Frequently Asked Questions (FAQ)
+
+### 1. Why use an external tool like Jupyter instead of the native Matlab Live Editor?
+
+Jupyter provides useful advantages over the Live Editor:
+1. It can be easily integrated in source control, because it json.
+1. It is not version dependent, meaning if it can be then migrated to any Matlab Version.
+1. In Live Editor the execution is "per section" whereas in Jupyter is "per cell", providing faster output in Jupyter.
+1. Performance of Live Editor notebooks with a good amount of LaTeX is poor while in Jupyter it is managable.
+
+On the other hand, using Jupyter has drawbacks too:
+1. There is no built-in help, one has to use the Matlab site or the Matlab software.
+1. Interactivity options for plots (panning, zoom, etc.) are limited.
+1. There is currently limited support for Matlab Apps such as Control System Designer.
+1. Symbolic Expressions are not natively print using LaTeX typical fonts.
+1. There are services such as NBviewer that allow the rendering of the notebook online.
+1. Transparent integration with HTML in cells to improve User Experience
+
+All things considered, the advantages of using Jupyter overcome its drawbacks by far and therefore it was chosen as the go-to tool.
+
+### 2. Can I use this material in my class/course?
+
+The material is free to use for public and/or non-commercial uses, however, I would like to get notify if you do so. Knowing other people is using the material motivates to improve it. You can let me know by using the contact information in the bottom section.
+
+For commercial use, please contact first.
+
+### 3. Can I request some changes in the material?
+
+Suggestions and recommendations are welcome, please visit the Contributing section above.
+
+### 4. I found a typo/error, how do I report it?
+
+Same answer as 3.
+
+### 5. I would like to have a translation to X language of this material, how can I get it?
+
+Please send an email to get notify of translations. 
+
+At the moment there is English to Spanish Translation
+
+### 6. How can I use this in Matlab?
+
+Matlab does not provide a built-in Jupyter inport function, however all code cells are copy/paste friendly. You can paste them in any .m file and it should work out of the box.
+
+### 6. I cannot execute the Notebook because of X error?
+
+For execution problems, please refer to the [Matlab Kernel Developers](https://github.com/Calysto/matlab_kernel)
+
 ---
 ## Contact
 Contact the main author, Ezequiel Leonardo Castaño at castanoezequielleonardo *at* gmail.com
