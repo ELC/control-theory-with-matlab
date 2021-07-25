@@ -6,9 +6,9 @@ Este es un libro de código abierto basado en Jupyter sobre cómo iniciarse en l
 
 * [Capítulo 1: Transformada de Laplace](https://elc.github.io/link/control_01)
 * [Capítulo 2: Función de Transferencia](https://elc.github.io/link/control_02)
-* [Capítulo 3: Sistemas de Primer Orden (En construcción)]()
-* [Capítulo 4: Sistemas de Segundo Orden (En construcción)]()
-* [Capítulo 5: Root Locus (En construcción)]()
+* [Capítulo 3: Sistemas de Primer Orden](https://elc.github.io/link/control_03)
+* [Capítulo 4: Sistemas de Segundo Orden](https://elc.github.io/link/control_04)
+* [Capítulo 5: Root Locus](https://elc.github.io/link/control_05)
 * [Capítulo 6: Controladores (En construcción)]()
 * [Capítulo 7: Sintonización (En construcción)]()
 * [Capítulo 8: Bode (En construcción)]()
