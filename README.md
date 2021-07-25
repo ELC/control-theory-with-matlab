@@ -9,11 +9,16 @@ Este es un libro de código abierto basado en Jupyter sobre cómo iniciarse en l
 * [Capítulo 3: Sistemas de Primer Orden](https://elc.github.io/link/control_03)
 * [Capítulo 4: Sistemas de Segundo Orden](https://elc.github.io/link/control_04)
 * [Capítulo 5: Root Locus](https://elc.github.io/link/control_05)
-* [Capítulo 6: Controladores (En construcción)]()
-* [Capítulo 7: Sintonización (En construcción)]()
-* [Capítulo 8: Bode (En construcción)]()
-* [Capítulo 9: Nyquist (En construcción)]()
+* [Capítulo 6: Controladores](https://elc.github.io/link/control_06)
+* [Capítulo 7: Sintonización](https://elc.github.io/link/control_07)
+* [Capítulo 8: Bode](https://elc.github.io/link/control_08)
+* [Capítulo 9: Nyquist](https://elc.github.io/link/control_09)
 
+Los siguientes son temas que no están cubiertos en ninguno de los capítulos:
+
+- Reducción de bloques (Real y Simbólica)
+- Arreglo de Routh
+- Compensadores (Lag, Lead, Notch)
 
 ---
 ## Utilizando el libro
