@@ -1,18 +1,16 @@
 # [Teoría de Control con Matlab](https://elc.github.io/control)
 Este es un libro de código abierto basado en Jupyter sobre cómo iniciarse en la teoría de control con Matlab
-
----
 ## Contenido
 
-* [Capítulo 1: Transformada de Laplace](https://elc.github.io/link/control_01)
-* [Capítulo 2: Función de Transferencia](https://elc.github.io/link/control_02)
-* [Capítulo 3: Sistemas de Primer Orden](https://elc.github.io/link/control_03)
-* [Capítulo 4: Sistemas de Segundo Orden](https://elc.github.io/link/control_04)
-* [Capítulo 5: Root Locus](https://elc.github.io/link/control_05)
-* [Capítulo 6: Controladores](https://elc.github.io/link/control_06)
-* [Capítulo 7: Sintonización](https://elc.github.io/link/control_07)
-* [Capítulo 8: Bode](https://elc.github.io/link/control_08)
-* [Capítulo 9: Nyquist](https://elc.github.io/link/control_09)
+* [Capítulo 1: Transformada de Laplace](https://elc.github.io/control-theory-with-matlab/chapters/ELC01_Transformada_de_Laplace.html)
+* [Capítulo 2: Función de Transferencia](https://elc.github.io/control-theory-with-matlab/chapters/ELC02_Funcion_de_transferencia.html)
+* [Capítulo 3: Sistemas de Primer Orden](https://elc.github.io/control-theory-with-matlab/chapters/ELC03_Sistemas_Primer_Orden.html)
+* [Capítulo 4: Sistemas de Segundo Orden](https://elc.github.io/control-theory-with-matlab/chapters/ELC04_Sistemas_Segundo_Orden.html)
+* [Capítulo 5: Root Locus](https://elc.github.io/control-theory-with-matlab/chapters/ELC05_Root_Locus.html)
+* [Capítulo 6: Controladores](https://elc.github.io/control-theory-with-matlab/chapters/ELC06_Controladores.html)
+* [Capítulo 7: Sintonización](https://elc.github.io/control-theory-with-matlab/chapters/ELC07_Sintonizaci%C3%B3n.html)
+* [Capítulo 8: Bode](https://elc.github.io/control-theory-with-matlab/chapters/ELC08_Bode.html)
+* [Capítulo 9: Nyquist](https://elc.github.io/control-theory-with-matlab/chapters/ELC09_Nyquist.html)
 
 Los siguientes son temas que no están cubiertos en ninguno de los capítulos:
 
@@ -21,16 +19,16 @@ Los siguientes son temas que no están cubiertos en ninguno de los capítulos:
 - Compensadores (Lag, Lead, Notch)
 
 ---
-## Utilizando el libro
+## Como leer el libro
 
 El libro se puede leer de varias maneras diferentes, empezando por la más recomendada a la menos recomendada: 
 
-1. La opción más recomendada es clonar el repositorio para descargar los archivos .ipynb en tu máquina local. Si tienes Jupyter instalado, puedes ver los capítulos en tu navegador *además* de editar y ejecutar el código proporcionado (y probar algunas preguntas de práctica). Esta es la opción preferida para leer este libro, aunque viene con algunas dependencias. 
+1. La mejor manera es leer el libro online en el navegador, teniendo Matlab abierto y copiando y pegando el código de lo que sea relevante. Todo lo referido a Simulink se ilustra paso a paso con capturas de pantalla. Los contenidos se actualizan de forma sincronizada a medida que se suben cambios en este repositorio.
+
+2. Otra posibilidad es clonar el repositorio para descargar los archivos .ipynb en tu máquina local. Si tienes Jupyter instalado, puedes ver los capítulos en tu navegador *además* de editar y ejecutar el código proporcionado (y probar algunas preguntas de práctica). Esta es la opción que más control da al usuario, pero requiere seguir pasos adicionales: 
     - Jupyter es un requisito para ver los archivos ipynb. Se puede descargar [aquí](http://jupyter.org/).
     - Además, necesitarás tener Matlab instalado ya que el código está escrito en ese lenguaje. Alternativamente podría usarse Octave como alternativa gratuita pero no se realizaron pruebas de compatibilidad
     - Es necesario tener instalado el kernel de matbal como se detalla en la [documentación de matlab_kernel](https://github.com/Calysto/matlab_kernel).
-
-2. La segunda opción, es utilizar el sitio nbviewer.jupyter.org, que muestra los cuadernos Jupyter en el navegador ([ejemplo](https://elc.github.io/link/control_01)). Los contenidos se actualizan de forma sincronizada a medida que se realizan commits en el libro. Para avanzar de un capítulo al siguiente puedes volver a la sección de contenidos más arriba o ir al [homepage](https://elc.github.io/control)
  
 3. Los PDF son el último método recomendado para leer el libro, ya que los PDF son estáticos y no interactivos. Si se desean PDFs, se pueden crear dinámicamente utilizando la utilidad [nbconvert](https://github.com/jupyter/nbconvert).
 

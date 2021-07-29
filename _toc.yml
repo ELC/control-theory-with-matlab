@@ -1,0 +1,17 @@
+format: jb-book
+
+root: README
+
+options:
+  numbered: True
+
+chapters:
+  - file: chapters/ELC01_Transformada_de_Laplace
+  - file: chapters/ELC02_Funcion_de_transferencia
+  - file: chapters/ELC03_Sistemas_Primer_Orden
+  - file: chapters/ELC04_Sistemas_Segundo_Orden
+  - file: chapters/ELC05_Root_Locus
+  - file: chapters/ELC06_Controladores
+  - file: chapters/ELC07_Sintonización
+  - file: chapters/ELC08_Bode
+  - file: chapters/ELC09_Nyquist

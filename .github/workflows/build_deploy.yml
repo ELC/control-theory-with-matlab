@@ -1,0 +1,38 @@
+name: Deploy to Github Pages
+
+on:
+  push:
+    branches: source
+
+  workflow_dispatch:
+  repository_dispatch:
+
+jobs:
+  deploy-book:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: pip install jupyter-book
+
+    - name: Install Imagemagick
+      run: sudo apt-get install -y imagemagick
+
+    - name: Build the book
+      run: jupyter-book build .
+
+    - name: Crop Images
+      run: mogrify -trim _build/html/_images/*.png
+
+    - name: Deploy to Github Pages
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        publish_branch: master
+        full_commit_message: ${{ github.event.head_commit.message }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: _build/html

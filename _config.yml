@@ -1,2 +1,26 @@
-theme: jekyll-theme-cayman
-google_analytics: UA-71773079-3
+title: "Teoría de Control con Matlab"
+copyright: "2021, Ezequiel Leonardo Castaño"
+author: "Ezequiel Leonardo Castaño"
+
+execute:
+  execute_notebooks: "off"
+
+parse:
+  myst_enable_extensions:
+    - html_image
+    - dollarmath
+
+html:
+  use_edit_page_button : true
+  use_repository_button: true
+  baseurl              : "https://elc.github.io/control-theory-with-matlab"
+
+repository:
+  url: https://www.github.com/elc/control-theory-with-matlab
+
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    html_theme_options:
+      use_download_button: True
+      toc_title: "Chapter Index"
