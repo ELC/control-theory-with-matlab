@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Sistemas de Primer Orden &#8212; Teoría de Control con Matlab</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/justify.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/analytics.js"></script>
+    <script src="../_static/analytics_gtag.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC03_Sistemas_Primer_Orden.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Sistemas de Segundo Orden" href="ELC04_Sistemas_Segundo_Orden.html" />
+    <link rel="prev" title="2. Función de Transferencia" href="ELC02_Funcion_de_transferencia.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC01_Transformada_de_Laplace.html">
+   1. Introducción a la Teoría de Control Con Matlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC02_Funcion_de_transferencia.html">
+   2. Función de Transferencia
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Sistemas de Primer Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC04_Sistemas_Segundo_Orden.html">
+   4. Sistemas de Segundo Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC05_Root_Locus.html">
+   5. Root Locus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC06_Controladores.html">
+   6. Controladores
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC07_Sintonizaci%C3%B3n.html">
+   7. Sintonización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC08_Bode.html">
+   8. Diagramas de Bode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC09_Nyquist.html">
+   9. Diagrama de Nyquist
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapters/ELC03_Sistemas_Primer_Orden.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Chapter Index
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   3.1. Sistemas de Primer Orden
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polos-y-ceros">
+   3.2. Polos y Ceros
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lazo-abierto-y-lazo-cerrado">
+   3.3. Lazo Abierto y Lazo Cerrado
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funciones-de-transferencia-en-matlab">
+   3.4. Funciones de transferencia en Matlab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ceros-y-polos-de-una-funcion-de-transferencia">
+   3.5. Ceros y polos de una función de transferencia
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convirtiendo-de-un-formato-a-otro">
+   3.6. Convirtiendo de un formato a otro
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#respuesta-del-sistema">
+   3.7. Respuesta del sistema
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definiendo-el-sistema">
+     3.7.1. Definiendo el sistema
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrada-impulso">
+     3.7.2. Entrada Impulso
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrada-escalon">
+     3.7.3. Entrada Escalón
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrada-rampa">
+     3.7.4. Entrada Rampa
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrada-parabola">
+     3.7.5. Entrada Parabola
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="sistemas-de-primer-orden">
+<h1><span class="section-number">3. </span>Sistemas de Primer Orden<a class="headerlink" href="#sistemas-de-primer-orden" title="Permalink to this headline">¶</a></h1>
+<p>Version 0.1</p>
+<p><code class="docutils literal notranslate"><span class="pre">Contenido</span> <span class="pre">Original</span> <span class="pre">creado</span> <span class="pre">por</span> <span class="pre">Ezequiel</span> <span class="pre">Leonardo</span> <span class="pre">Castaño</span></code></p>
+<p><font color='Firebrick'>Este contenido está <b>INCOMPLETO</b> y puede estar incompleto y/o sufrir modificaciones</font></p>
+<p>Material faltante en este capítulo:</p>
+<ul class="simple">
+<li><p>Representación en Simulink</p></li>
+<li><p>Sistema de primer orden en Lazo Cerrado</p></li>
+<li><p>Interpretación como filtro paso bajo de un sistema de primer orden</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 500</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">3.1. </span>Sistemas de Primer Orden<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Al utilizarse sistemas de primer orden, si la función de transferencia es <strong>propia</strong>, entonces su forma está definida por</p>
+<div class="math notranslate nohighlight">
+\[G=\frac{a\cdot s+b}{c\cdot s+d}~,~a,b,c,d\in \mathbb{R}\]</div>
+<p>Esto es así ya que <span class="math notranslate nohighlight">\(Y(s)\)</span>no puede contener términos de grado mayor a <span class="math notranslate nohighlight">\(2\)</span> ya que eso implicaría derivadas de grado <span class="math notranslate nohighlight">\(2\)</span> o superior. Y si el sistema es propio, esto implica que el numerador no puede tener un grado mayor al denominador.</p>
+<p>Se tienen dos casos, cuando <span class="math notranslate nohighlight">\(G\)</span> tiene un cero y cuando no tiene ningún cero</p>
+<div class="math notranslate nohighlight">
+\[G=\frac{b}{s+\frac{d}{c}},~~~~G=\frac{s+\frac{b}{a}}{s+\frac{d}{c}}\]</div>
+<p>La forma con un cero suele representarse como</p>
+<div class="math notranslate nohighlight">
+\[G~~=~~k\frac{\frac{s}{z}+1}{\frac{s}{p}+1}~~=~~\frac{k\cdot p}{z}\cdot \frac{s+z}{s+p}\]</div>
+<p>Y la forma sin cero suele representarse como:</p>
+<p><span class="math notranslate nohighlight">\(G=k\frac{p}{s+p}\)</span> o también <span class="math notranslate nohighlight">\(G=k\frac{1}{\frac{s}{p}+1}\)</span></p>
+<p>En este caso al valor <span class="math notranslate nohighlight">\(\frac{1}{p}\)</span> se le conoce como **constante de tiempo} y se representa con <span class="math notranslate nohighlight">\(\tau\)</span> quedando</p>
+<div class="math notranslate nohighlight">
+\[G=k\frac{1}{\tau \cdot s+1}\]</div>
+</div>
+<div class="section" id="polos-y-ceros">
+<h2><span class="section-number">3.2. </span>Polos y Ceros<a class="headerlink" href="#polos-y-ceros" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="lazo-abierto-y-lazo-cerrado">
+<h2><span class="section-number">3.3. </span>Lazo Abierto y Lazo Cerrado<a class="headerlink" href="#lazo-abierto-y-lazo-cerrado" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="funciones-de-transferencia-en-matlab">
+<h2><span class="section-number">3.4. </span>Funciones de transferencia en Matlab<a class="headerlink" href="#funciones-de-transferencia-en-matlab" title="Permalink to this headline">¶</a></h2>
+<p>En matlab existen diversas formas de declarar funciones de transferencia</p>
+<p><strong>Declarando la variable compleja</strong> <span class="math notranslate nohighlight">\(s\)</span></p>
+<p>Usando la variable compleja <span class="math notranslate nohighlight">\(s\)</span> pueden especificarse las funciones de transferencia como cociente de polinomios, como polos y ceros o una combinación de ambos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">((</span><span class="n">s</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">((</span><span class="n">s</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mf">1.5</span><span class="p">))</span><span class="w">           </span><span class="c">% Polos y Ceros</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sistema =
+ 
+        s^2 + 3 s + 2
+  -------------------------
+  s^3 + 4.5 s^2 + 6.5 s + 3
+ 
+Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">4.5</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">6.5</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">   </span><span class="c">% Cociente de Polinomios</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sistema =
+ 
+        s^2 + 3 s + 2
+  -------------------------
+  s^3 + 4.5 s^2 + 6.5 s + 3
+ 
+Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">((</span><span class="n">s</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mf">1.5</span><span class="p">))</span><span class="w">         </span><span class="c">% Combinación</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sistema =
+ 
+        s^2 + 3 s + 2
+  -------------------------
+  s^3 + 4.5 s^2 + 6.5 s + 3
+ 
+Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Especificando los coeficientes del numerador y denominador</strong></p>
+<p>Para utilizar sólamente los coeficientes del numerador y el denominador, se utiliza la función <strong><code class="docutils literal notranslate"><span class="pre">tf</span></code></strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mf">4.5</span><span class="w"> </span><span class="mf">6.5</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sistema =
+ 
+        s^2 + 3 s + 2
+  -------------------------
+  s^3 + 4.5 s^2 + 6.5 s + 3
+ 
+Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Especificando los polos y ceros</strong></p>
+<p>Para definir la función de transferencia con polos y ceros, se utiliza la función <strong><code class="docutils literal notranslate"><span class="pre">zpk</span></code></strong>, que además toma un tercer parámetro que es la ganancia</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.5</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sistema =
+ 
+      (s+2) (s+1)
+  -------------------
+  (s+2) (s+1.5) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ceros-y-polos-de-una-funcion-de-transferencia">
+<h2><span class="section-number">3.5. </span>Ceros y polos de una función de transferencia<a class="headerlink" href="#ceros-y-polos-de-una-funcion-de-transferencia" title="Permalink to this headline">¶</a></h2>
+<p>Independientemente de la forma en la que la función de transferencia haya sido creada, es posible obtener sus ceros y polos con las funciones <strong><code class="docutils literal notranslate"><span class="pre">zero</span></code></strong> y <strong><code class="docutils literal notranslate"><span class="pre">pole</span></code></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zero</span><span class="p">(</span><span class="n">sistema</span><span class="p">);</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pole</span><span class="p">(</span><span class="n">sistema</span><span class="p">);</span><span class="w"></span>
+<span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ceros =
+    -2
+    -1
+polos =
+   -2.0000
+   -1.0000
+   -1.5000
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="convirtiendo-de-un-formato-a-otro">
+<h2><span class="section-number">3.6. </span>Convirtiendo de un formato a otro<a class="headerlink" href="#convirtiendo-de-un-formato-a-otro" title="Permalink to this headline">¶</a></h2>
+<p>De ceros y polos a coeficientes usando <strong><code class="docutils literal notranslate"><span class="pre">zp2tf</span></code></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.5</span><span class="p">];</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sistema =
+ 
+      (s+2) (s+1)
+  -------------------
+  (s+2) (s+1.5) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">numerador</span><span class="p">,</span><span class="w"> </span><span class="n">denominador</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">numerador</span><span class="p">,</span><span class="w"> </span><span class="n">denominador</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sistema =
+ 
+        s^2 + 3 s + 2
+  -------------------------
+  s^3 + 4.5 s^2 + 6.5 s + 3
+ 
+Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<p>De cociente de polinomios a polos y ceros <strong><code class="docutils literal notranslate"><span class="pre">tf2zp</span></code></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">numerador</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="n">denominador</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mf">4.5</span><span class="w"> </span><span class="mf">6.5</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">numerador</span><span class="p">,</span><span class="w"> </span><span class="n">denominador</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sistema =
+ 
+        s^2 + 3 s + 2
+  -------------------------
+  s^3 + 4.5 s^2 + 6.5 s + 3
+ 
+Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">ganancia</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf2zp</span><span class="p">(</span><span class="n">numerador</span><span class="p">,</span><span class="w"> </span><span class="n">denominador</span><span class="p">);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">(</span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">ganancia</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sistema =
+ 
+      (s+2) (s+1)
+  -------------------
+  (s+2) (s+1.5) (s+1)
+ 
+Continuous-time zero/pole/gain model.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="respuesta-del-sistema">
+<h2><span class="section-number">3.7. </span>Respuesta del sistema<a class="headerlink" href="#respuesta-del-sistema" title="Permalink to this headline">¶</a></h2>
+<p>La respuesta del sistema <span class="math notranslate nohighlight">\(y(t)\)</span>está totalmente definida dada la <strong>función de transferencia</strong> <span class="math notranslate nohighlight">\(G\)</span> y una entrada <span class="math notranslate nohighlight">\(x(t)\)</span></p>
+<p>A continuación se muestra como un sistema de primer orden responde a diferentes tipos de entrada</p>
+<div class="section" id="definiendo-el-sistema">
+<h3><span class="section-number">3.7.1. </span>Definiendo el sistema<a class="headerlink" href="#definiendo-el-sistema" title="Permalink to this headline">¶</a></h3>
+<p>Primero se define la variable compleja <span class="math notranslate nohighlight">\(s\)</span> y un sistema de primer orden sin ceros y con un polo en <span class="math notranslate nohighlight">\(p\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">tiempo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="n">tau</span><span class="w"> </span><span class="p">=</span><span class="mf">0.2</span><span class="p">;</span><span class="w"></span>
+<span class="n">primer_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">tau</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="entrada-impulso">
+<h3><span class="section-number">3.7.2. </span>Entrada Impulso<a class="headerlink" href="#entrada-impulso" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">respuesta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">impulse</span><span class="p">(</span><span class="n">primer_orden</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;on&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="nb">transpose</span><span class="p">(</span><span class="n">respuesta</span><span class="p">))</span><span class="w"></span>
+
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Respuesta&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Respuesta del Sistema&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;on&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">respuesta</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Error&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC03_Sistemas_Primer_Orden_24_1.png" src="../_images/ELC03_Sistemas_Primer_Orden_24_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="entrada-escalon">
+<h3><span class="section-number">3.7.3. </span>Entrada Escalón<a class="headerlink" href="#entrada-escalon" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">valor_esperado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">respuesta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">valor_esperado</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">primer_orden</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;on&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="nb">transpose</span><span class="p">(</span><span class="n">respuesta</span><span class="p">))</span><span class="w"></span>
+
+<span class="nb">yline</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">valor_esperado</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Respuesta&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Valor Esperado&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Respuesta del Sistema&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;on&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">valor_esperado</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">respuesta</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">yline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Error&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC03_Sistemas_Primer_Orden_26_1.png" src="../_images/ELC03_Sistemas_Primer_Orden_26_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="entrada-rampa">
+<h3><span class="section-number">3.7.4. </span>Entrada Rampa<a class="headerlink" href="#entrada-rampa" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">valor_esperado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tiempo</span><span class="p">;</span><span class="w"></span>
+<span class="n">respuesta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">primer_orden</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">);</span><span class="w"></span>
+<span class="n">respuesta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">(</span><span class="n">respuesta</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;on&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">respuesta</span><span class="p">)</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">valor_esperado</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Respuesta&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Valor Esperado&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Respuesta del Sistema&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;on&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">error</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">valor_esperado</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">respuesta</span><span class="p">;</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="nb">error</span><span class="p">)</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="nb">error</span><span class="p">(</span><span class="k">end</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Error&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC03_Sistemas_Primer_Orden_28_1.png" src="../_images/ELC03_Sistemas_Primer_Orden_28_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="entrada-parabola">
+<h3><span class="section-number">3.7.5. </span>Entrada Parabola<a class="headerlink" href="#entrada-parabola" title="Permalink to this headline">¶</a></h3>
+<p>En este caso, si la entrada es una parábola, se puede ver como el error crece a infinito</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">valor_esperado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">tiempo</span><span class="p">;</span><span class="w"></span>
+<span class="n">respuesta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">primer_orden</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span>^<span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">);</span><span class="w"></span>
+<span class="n">respuesta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">(</span><span class="n">respuesta</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;on&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">respuesta</span><span class="p">)</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">valor_esperado</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;Respuesta&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Valor Esperado&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Respuesta del sistema&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;on&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">valor_esperado</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">respuesta</span><span class="p">)</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Error&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC03_Sistemas_Primer_Orden_30_1.png" src="../_images/ELC03_Sistemas_Primer_Orden_30_1.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            kernelName: "matlab",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="ELC02_Funcion_de_transferencia.html" title="previous page"><span class="section-number">2. </span>Función de Transferencia</a>
+    <a class='right-next' id="next-link" href="ELC04_Sistemas_Segundo_Orden.html" title="next page"><span class="section-number">4. </span>Sistemas de Segundo Orden</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ezequiel Leonardo Castaño<br/>
+        
+            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

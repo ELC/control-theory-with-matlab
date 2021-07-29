@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9. Diagrama de Nyquist &#8212; Teoría de Control con Matlab</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/justify.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/analytics.js"></script>
+    <script src="../_static/analytics_gtag.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC09_Nyquist.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="8. Diagramas de Bode" href="ELC08_Bode.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC01_Transformada_de_Laplace.html">
+   1. Introducción a la Teoría de Control Con Matlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC02_Funcion_de_transferencia.html">
+   2. Función de Transferencia
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC03_Sistemas_Primer_Orden.html">
+   3. Sistemas de Primer Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC04_Sistemas_Segundo_Orden.html">
+   4. Sistemas de Segundo Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC05_Root_Locus.html">
+   5. Root Locus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC06_Controladores.html">
+   6. Controladores
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC07_Sintonizaci%C3%B3n.html">
+   7. Sintonización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC08_Bode.html">
+   8. Diagramas de Bode
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   9. Diagrama de Nyquist
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapters/ELC09_Nyquist.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Chapter Index
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   9.1. Diagrama de Nyquist
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fase-minima-vs-fase-no-minima">
+   9.2. Fase Mínima vs Fase no Mínima
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propiedad-de-la-suma-de-un-escalar">
+   9.3. Propiedad de la suma de un escalar
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#criterio-general-de-nyquist">
+   9.4. Criterio General de Nyquist
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretacion">
+     9.4.1. Interpretación
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-con-fase-minima">
+   9.5. Ejemplo con Fase Mínima
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-sistema-fase-no-minima-con-p-0">
+   9.6. Ejemplo Sistema Fase No Mínima con
+   <span class="math notranslate nohighlight">
+    \(P=0\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-sistema-fase-no-minima-con-p-not-0">
+   9.7. Ejemplo Sistema Fase No Mínima con
+   <span class="math notranslate nohighlight">
+    \(P\not= 0\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-sistema-inestable-fase-no-minima-con-p-not-0">
+   9.8. Ejemplo Sistema Inestable Fase No Mínima con
+   <span class="math notranslate nohighlight">
+    \(P\not= 0\)
+   </span>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="diagrama-de-nyquist">
+<h1><span class="section-number">9. </span>Diagrama de Nyquist<a class="headerlink" href="#diagrama-de-nyquist" title="Permalink to this headline">¶</a></h1>
+<p>Version 0.1</p>
+<p><code class="docutils literal notranslate"><span class="pre">Contenido</span> <span class="pre">Original</span> <span class="pre">creado</span> <span class="pre">por</span> <span class="pre">Ezequiel</span> <span class="pre">Leonardo</span> <span class="pre">Castaño</span></code></p>
+<p><font color='Firebrick'>Este contenido está <b>INCOMPLETO</b> y puede estar incompleto y/o sufrir modificaciones</font></p>
+<p>Material faltante en este capítulo:</p>
+<ul class="simple">
+<li><p>Impacto de un controlador en el Diagrama de Nyquist</p></li>
+<li><p>Margen de ganancia y margen de Fase en Diagrama de Nyquist</p></li>
+<li><p>Referencias y Recursos Adicionales</p></li>
+<li><p>Diagrama de Nyquist en Simulink</p></li>
+<li><p>Sintonización basada en diagrama de Nyquist en Simulink</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 800</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">9.1. </span>Diagrama de Nyquist<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>El diagrama de Nyquist representa la salida del sistema para un <span class="math notranslate nohighlight">\(K\)</span> determinado utilizando la salida en frecuencia.</p>
+</div>
+<div class="section" id="fase-minima-vs-fase-no-minima">
+<h2><span class="section-number">9.2. </span>Fase Mínima vs Fase no Mínima<a class="headerlink" href="#fase-minima-vs-fase-no-minima" title="Permalink to this headline">¶</a></h2>
+<p>Los diagramas de Nyquist pueden aplicarse tanto a sistemas de fase mínima como sistemas de fase no mínima</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Fase No Mínima - Un cero en LA en el lado derecho&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">([],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.25</span><span class="w"> </span><span class="mf">1.25</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.75</span><span class="w"> </span><span class="mf">0.75</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Fase Mínima - Ningún polo ni cero en LA en el lado derecho&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">([],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="mf">1.5</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Fase Mínima - Ningún polo ni cero en LA en el lado derecho&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">([</span><span class="o">-</span><span class="mi">8</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="w"> </span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="o">-</span>2<span class="nb">j</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="w"> </span><span class="mf">0.025</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.02</span><span class="w"> </span><span class="mf">0.02</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Fase No Mínima - Un polo en LA en el lado derecho&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="o">-</span>2<span class="nb">j</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="w"> </span><span class="mf">0.15</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="w"> </span><span class="mf">0.1</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Fase No Mínima - Un polo y un cero en LA en el lado derecho&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zpk</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="nb">j</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="nb">j</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">2.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.25</span><span class="w"> </span><span class="mf">1.25</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Fase Mínima - Ningún polo ni cero en LA en el lado derecho&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC09_Nyquist_5_1.png" src="../_images/ELC09_Nyquist_5_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="propiedad-de-la-suma-de-un-escalar">
+<h2><span class="section-number">9.3. </span>Propiedad de la suma de un escalar<a class="headerlink" href="#propiedad-de-la-suma-de-un-escalar" title="Permalink to this headline">¶</a></h2>
+<p>Al sumar un escalar a la función de transferencia del sistema, no es fácil predecir como van a verse afectados los polos y ceros. Sin embargo, al utilizar un diagrama de Nyquist, se produce una traslación y es más sencillo evaluar la estabilidad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=svg -w 1600 -h 500</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">10</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">20</span><span class="p">]);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">sistema</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;Sistema&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Sistema + 1&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">sistema</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;Sistema&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Sistema + 1&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC09_Nyquist_8_1.png" src="../_images/ELC09_Nyquist_8_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="criterio-general-de-nyquist">
+<h2><span class="section-number">9.4. </span>Criterio General de Nyquist<a class="headerlink" href="#criterio-general-de-nyquist" title="Permalink to this headline">¶</a></h2>
+<p>El criterio general de estabilidad de Nyquist puede representarse con la siguiente ecuación</p>
+<div class="math notranslate nohighlight">
+\[Z=N+P\]</div>
+<p><span class="math notranslate nohighlight">\(Z\)</span>: Cantidad de **polos del sistema }a la derecha del eje imaginario</p>
+<p><span class="math notranslate nohighlight">\(N\)</span>: Cantidad de rodeos al punto <span class="math notranslate nohighlight">\((-1,0)\)</span>, si es en sentido horario es positivo y si es antihorario negativo</p>
+<p><span class="math notranslate nohighlight">\(P\)</span>: Cantidad de **polos en lazo abierto} a la derecha del eje imaginario</p>
+<div class="section" id="interpretacion">
+<h3><span class="section-number">9.4.1. </span>Interpretación<a class="headerlink" href="#interpretacion" title="Permalink to this headline">¶</a></h3>
+<p>Si el sistema es **estable}, entonces <span class="math notranslate nohighlight">\(Z=0\)</span></p>
+<p>Si los rodeos al punto <span class="math notranslate nohighlight">\((-1,0)\)</span> ocurren en sentido **horario}, el sistema es inestable, ya que <span class="math notranslate nohighlight">\(P\)</span> no puede ser negativo.</p>
+<p>Si el sistema es de **fase mínima}, entonces <span class="math notranslate nohighlight">\(P=0\)</span>. Por lo tanto, para que el sistema sea estable, **no tiene que haber rodeos} al punto <span class="math notranslate nohighlight">\((-1,0)\)</span>, es decir <span class="math notranslate nohighlight">\(N=0\)</span></p>
+<p>Si el sistema es de **fase no mínima}, pero no tiene polos en lazo abierto a la derecha del eje imaginario, entonces <span class="math notranslate nohighlight">\(P=0\)</span>. Por lo tanto, para que el sistema sea estable, **no tiene que haber rodeos} al punto <span class="math notranslate nohighlight">\((-1,0)\)</span>, es decir <span class="math notranslate nohighlight">\(N=0\)</span></p>
+<p>Si el sistema es de **fase no mínima }con polos a la derecha del eje imaginario, entonces <span class="math notranslate nohighlight">\(P\not= 0\)</span>. Por lo tanto, para que el sistema sea estable se tienen que dar exactamente <span class="math notranslate nohighlight">\(P\)</span> rodeos al punto <span class="math notranslate nohighlight">\((-1,0)\)</span> en sentido **antihorario}.</p>
+</div>
+</div>
+<div class="section" id="ejemplo-con-fase-minima">
+<h2><span class="section-number">9.5. </span>Ejemplo con Fase Mínima<a class="headerlink" href="#ejemplo-con-fase-minima" title="Permalink to this headline">¶</a></h2>
+<p>Al ser de fase mínima, <span class="math notranslate nohighlight">\(P=0\)</span> y para que el sistema sea estable se requiere que no haya encierros las punto <span class="math notranslate nohighlight">\((-1,0)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 2000 -h 1000</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mf">3.9375</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">*</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;K = 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 3.9375&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 5&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"></span>
+<span class="n">lazo_cerrado_1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mf">3.9375</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">tiempo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.02</span><span class="p">:</span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_1</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_2</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_3</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mf">2.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">20</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;K = 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 3.9375&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 5&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC09_Nyquist_13_1.png" src="../_images/ELC09_Nyquist_13_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ejemplo-sistema-fase-no-minima-con-p-0">
+<h2><span class="section-number">9.6. </span>Ejemplo Sistema Fase No Mínima con <span class="math notranslate nohighlight">\(P=0\)</span><a class="headerlink" href="#ejemplo-sistema-fase-no-minima-con-p-0" title="Permalink to this headline">¶</a></h2>
+<p>Al tener un cero a la derecha del eje imaginario, este sistema es de fase no mínima, pero al no tener polos en lazo abierto a la derecha del eje imaginario, <span class="math notranslate nohighlight">\(P=0\)</span>. Por lo tanto para que el sistema sea estable es necesario que <span class="math notranslate nohighlight">\(N=0\)</span>, esto quiere decir que no debe haber encierros al punto <span class="math notranslate nohighlight">\((-1,0)\)</span>, ni en sentido horario ni antihorario.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="o">-</span>2<span class="nb">j</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"></span>
+<span class="n">frequency</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">frequency</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;K = 4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 8&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 12&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"></span>
+<span class="n">lazo_cerrado_1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">tiempo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.02</span><span class="p">:</span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_1</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_2</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_3</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="mf">0.25</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">20</span><span class="p">])</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;K = 4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 8&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 12&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC09_Nyquist_15_1.png" src="../_images/ELC09_Nyquist_15_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ejemplo-sistema-fase-no-minima-con-p-not-0">
+<h2><span class="section-number">9.7. </span>Ejemplo Sistema Fase No Mínima con <span class="math notranslate nohighlight">\(P\not= 0\)</span><a class="headerlink" href="#ejemplo-sistema-fase-no-minima-con-p-not-0" title="Permalink to this headline">¶</a></h2>
+<p>En este caso <span class="math notranslate nohighlight">\(P=1\)</span>, por lo tanto, para que el sistema sea estable es necesario que <span class="math notranslate nohighlight">\(N=-1\)</span>, es decir, que el punto <span class="math notranslate nohighlight">\((-1,0)\)</span> tenga un encierro en sentido antihorario. En el Root Locus puede verse como hay dos potenciales valores críticos de <span class="math notranslate nohighlight">\(K\)</span>, uno de ellos se encuentra en <span class="math notranslate nohighlight">\(\frac{123}{8}\)</span> y el otro en <span class="math notranslate nohighlight">\(\approx 52.5134\)</span>. Se puede ver como al probar con valores de <span class="math notranslate nohighlight">\(K\)</span> menores y mayores, como el diagrama de Nyquist refleja la estabilidad, inestabilidad y estabilidad crítica del sistema.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">-</span>2<span class="nb">j</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"></span>
+<span class="n">frequency</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">);</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">124</span><span class="o">/</span><span class="mi">8</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mf">52.5134</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">frequency</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;K = 5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 123/8&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 20&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 52.5134&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 60&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.5</span><span class="w"> </span><span class="mf">1.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"></span>
+<span class="n">lazo_cerrado_1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">124</span><span class="o">/</span><span class="mi">8</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mf">52.5134</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_5</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">tiempo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.02</span><span class="p">:</span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_1</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_2</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_3</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_4</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_5</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">8</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;K = 5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 123/8&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 20&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 52.5134&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 60&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC09_Nyquist_17_1.png" src="../_images/ELC09_Nyquist_17_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ejemplo-sistema-inestable-fase-no-minima-con-p-not-0">
+<h2><span class="section-number">9.8. </span>Ejemplo Sistema Inestable Fase No Mínima con <span class="math notranslate nohighlight">\(P\not= 0\)</span><a class="headerlink" href="#ejemplo-sistema-inestable-fase-no-minima-con-p-not-0" title="Permalink to this headline">¶</a></h2>
+<p>En este caso <span class="math notranslate nohighlight">\(P=1\)</span> por lo tanto para que el sistema sea estable <span class="math notranslate nohighlight">\(N\)</span> tiene que ser -1, es decir, debe dar exactamente un encierro en sentido antihorario al punto <span class="math notranslate nohighlight">\((-1,0)\)</span>. Sin embargo, como se puede ver en las gráficas, para distintos valores de <span class="math notranslate nohighlight">\(K\)</span> el diagrama de Nyquist tiene o 0 encierros o una cantidad positiva de encierros, ya que las curvas van siempre en sentido horario.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="mf">0.2</span><span class="o">+</span>3<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mf">0.2</span><span class="o">-</span>3<span class="nb">j</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"></span>
+<span class="n">nyquist</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="o">*</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.5</span><span class="w"> </span><span class="mf">3.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;K = 4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 8&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 12&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.5</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"></span>
+<span class="n">lazo_cerrado_1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado_3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">tiempo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.02</span><span class="p">:</span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_1</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_2</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_3</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">10</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="p">])</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;K = 4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 8&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;K = 12&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC09_Nyquist_19_1.png" src="../_images/ELC09_Nyquist_19_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            kernelName: "matlab",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="ELC08_Bode.html" title="previous page"><span class="section-number">8. </span>Diagramas de Bode</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ezequiel Leonardo Castaño<br/>
+        
+            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

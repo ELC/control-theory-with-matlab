@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teoría de Control con Matlab &#8212; Teoría de Control con Matlab</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/justify.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/analytics.js"></script>
+    <script src="_static/analytics_gtag.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/README.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Introducción a la Teoría de Control Con Matlab" href="chapters/ELC01_Transformada_de_Laplace.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="chapters/ELC01_Transformada_de_Laplace.html">
+   1. Introducción a la Teoría de Control Con Matlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chapters/ELC02_Funcion_de_transferencia.html">
+   2. Función de Transferencia
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chapters/ELC03_Sistemas_Primer_Orden.html">
+   3. Sistemas de Primer Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chapters/ELC04_Sistemas_Segundo_Orden.html">
+   4. Sistemas de Segundo Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chapters/ELC05_Root_Locus.html">
+   5. Root Locus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chapters/ELC06_Controladores.html">
+   6. Controladores
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chapters/ELC07_Sintonizaci%C3%B3n.html">
+   7. Sintonización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chapters/ELC08_Bode.html">
+   8. Diagramas de Bode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chapters/ELC09_Nyquist.html">
+   9. Diagrama de Nyquist
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/README.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Chapter Index
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contenido">
+   Contenido
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#como-leer-el-libro">
+   Como leer el libro
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#como-contribuir">
+   Cómo contribuir
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#con-que-se-puede-contribuir">
+     ¿Con qué se puede contribuir?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commits">
+     Commits
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frequently-asked-questions-faq">
+   Frequently Asked Questions (FAQ)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-use-an-external-tool-like-jupyter-instead-of-the-native-matlab-live-editor">
+     1. Why use an external tool like Jupyter instead of the native Matlab Live Editor?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-i-use-this-material-in-my-class-course">
+     2. Can I use this material in my class/course?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-i-request-some-changes-in-the-material">
+     3. Can I request some changes in the material?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-found-a-typo-error-how-do-i-report-it">
+     4. I found a typo/error, how do I report it?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-would-like-to-have-a-translation-to-x-language-of-this-material-how-can-i-get-it">
+     5. I would like to have a translation to X language of this material, how can I get it?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-can-i-use-this-in-matlab">
+     6. How can I use this in Matlab?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-cannot-execute-the-notebook-because-of-x-error">
+     6. I cannot execute the Notebook because of X error?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contact">
+   Contact
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reconocimientos">
+   Reconocimientos
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="teoria-de-control-con-matlab">
+<h1><a class="reference external" href="https://elc.github.io/control">Teoría de Control con Matlab</a><a class="headerlink" href="#teoria-de-control-con-matlab" title="Permalink to this headline">¶</a></h1>
+<p>Este es un libro de código abierto basado en Jupyter sobre cómo iniciarse en la teoría de control con Matlab</p>
+<div class="section" id="contenido">
+<h2>Contenido<a class="headerlink" href="#contenido" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC01_Transformada_de_Laplace.html">Capítulo 1: Transformada de Laplace</a></p></li>
+<li><p><a class="reference external" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC02_Funcion_de_transferencia.html">Capítulo 2: Función de Transferencia</a></p></li>
+<li><p><a class="reference external" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC03_Sistemas_Primer_Orden.html">Capítulo 3: Sistemas de Primer Orden</a></p></li>
+<li><p><a class="reference external" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC04_Sistemas_Segundo_Orden.html">Capítulo 4: Sistemas de Segundo Orden</a></p></li>
+<li><p><a class="reference external" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC05_Root_Locus.html">Capítulo 5: Root Locus</a></p></li>
+<li><p><a class="reference external" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC06_Controladores.html">Capítulo 6: Controladores</a></p></li>
+<li><p><a class="reference external" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC07_Sintonizaci%C3%B3n.html">Capítulo 7: Sintonización</a></p></li>
+<li><p><a class="reference external" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC08_Bode.html">Capítulo 8: Bode</a></p></li>
+<li><p><a class="reference external" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC09_Nyquist.html">Capítulo 9: Nyquist</a></p></li>
+</ul>
+<p>Los siguientes son temas que no están cubiertos en ninguno de los capítulos:</p>
+<ul class="simple">
+<li><p>Reducción de bloques (Real y Simbólica)</p></li>
+<li><p>Arreglo de Routh</p></li>
+<li><p>Compensadores (Lag, Lead, Notch)</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="como-leer-el-libro">
+<h2>Como leer el libro<a class="headerlink" href="#como-leer-el-libro" title="Permalink to this headline">¶</a></h2>
+<p>El libro se puede leer de varias maneras diferentes, empezando por la más recomendada a la menos recomendada:</p>
+<ol class="simple">
+<li><p>La mejor manera es leer el libro online en el navegador, teniendo Matlab abierto y copiando y pegando el código de lo que sea relevante. Todo lo referido a Simulink se ilustra paso a paso con capturas de pantalla. Los contenidos se actualizan de forma sincronizada a medida que se suben cambios en este repositorio.</p></li>
+<li><p>Otra posibilidad es clonar el repositorio para descargar los archivos .ipynb en tu máquina local. Si tienes Jupyter instalado, puedes ver los capítulos en tu navegador <em>además</em> de editar y ejecutar el código proporcionado (y probar algunas preguntas de práctica). Esta es la opción que más control da al usuario, pero requiere seguir pasos adicionales:</p>
+<ul class="simple">
+<li><p>Jupyter es un requisito para ver los archivos ipynb. Se puede descargar <a class="reference external" href="http://jupyter.org/">aquí</a>.</p></li>
+<li><p>Además, necesitarás tener Matlab instalado ya que el código está escrito en ese lenguaje. Alternativamente podría usarse Octave como alternativa gratuita pero no se realizaron pruebas de compatibilidad</p></li>
+<li><p>Es necesario tener instalado el kernel de matbal como se detalla en la <a class="reference external" href="https://github.com/Calysto/matlab_kernel">documentación de matlab_kernel</a>.</p></li>
+</ul>
+</li>
+<li><p>Los PDF son el último método recomendado para leer el libro, ya que los PDF son estáticos y no interactivos. Si se desean PDFs, se pueden crear dinámicamente utilizando la utilidad <a class="reference external" href="https://github.com/jupyter/nbconvert">nbconvert</a>.</p></li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="como-contribuir">
+<h2>Cómo contribuir<a class="headerlink" href="#como-contribuir" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="con-que-se-puede-contribuir">
+<h3>¿Con qué se puede contribuir?<a class="headerlink" href="#con-que-se-puede-contribuir" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>La lista actual de capítulos no está finalizada. Si ves algo que falta, no dudes en empezar por ahí.</p></li>
+<li><p>Limpiar el código de Matlab según buenas prácticas</p></li>
+<li><p>Dar mejores explicaciones</p></li>
+<li><p>Errores de ortografía/gramática</p></li>
+<li><p>Sugerencias</p></li>
+<li><p>Contribuir a los estilos de Jupyter notebook</p></li>
+<li><p>Traducciones</p></li>
+</ul>
+</div>
+<div class="section" id="commits">
+<h3>Commits<a class="headerlink" href="#commits" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Todos los commits son bienvenidos, incluso si son menores ;)</p></li>
+<li><p>Si no estás familiarizado con Github, puedes enviarme tus contribuciones al correo electrónico que aparece a continuación.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="frequently-asked-questions-faq">
+<h2>Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="why-use-an-external-tool-like-jupyter-instead-of-the-native-matlab-live-editor">
+<h3>1. Why use an external tool like Jupyter instead of the native Matlab Live Editor?<a class="headerlink" href="#why-use-an-external-tool-like-jupyter-instead-of-the-native-matlab-live-editor" title="Permalink to this headline">¶</a></h3>
+<p>Jupyter provides useful advantages over the Live Editor:</p>
+<ol class="simple">
+<li><p>It can be easily integrated in source control, because it json.</p></li>
+<li><p>It is not version dependent, meaning if it can be then migrated to any Matlab Version.</p></li>
+<li><p>In Live Editor the execution is “per section” whereas in Jupyter is “per cell”, providing faster output in Jupyter.</p></li>
+<li><p>Performance of Live Editor notebooks with a good amount of LaTeX is poor while in Jupyter it is managable.</p></li>
+</ol>
+<p>On the other hand, using Jupyter has drawbacks too:</p>
+<ol class="simple">
+<li><p>There is no built-in help, one has to use the Matlab site or the Matlab software.</p></li>
+<li><p>Interactivity options for plots (panning, zoom, etc.) are limited.</p></li>
+<li><p>There is currently limited support for Matlab Apps such as Control System Designer.</p></li>
+<li><p>Symbolic Expressions are not natively print using LaTeX typical fonts.</p></li>
+<li><p>There are services such as NBviewer that allow the rendering of the notebook online.</p></li>
+<li><p>Transparent integration with HTML in cells to improve User Experience</p></li>
+</ol>
+<p>All things considered, the advantages of using Jupyter overcome its drawbacks by far and therefore it was chosen as the go-to tool.</p>
+</div>
+<div class="section" id="can-i-use-this-material-in-my-class-course">
+<h3>2. Can I use this material in my class/course?<a class="headerlink" href="#can-i-use-this-material-in-my-class-course" title="Permalink to this headline">¶</a></h3>
+<p>The material is free to use for public and/or non-commercial uses, however, I would like to get notify if you do so. Knowing other people is using the material motivates to improve it. You can let me know by using the contact information in the bottom section.</p>
+<p>For commercial use, please contact first.</p>
+</div>
+<div class="section" id="can-i-request-some-changes-in-the-material">
+<h3>3. Can I request some changes in the material?<a class="headerlink" href="#can-i-request-some-changes-in-the-material" title="Permalink to this headline">¶</a></h3>
+<p>Suggestions and recommendations are welcome, please visit the Contributing section above.</p>
+</div>
+<div class="section" id="i-found-a-typo-error-how-do-i-report-it">
+<h3>4. I found a typo/error, how do I report it?<a class="headerlink" href="#i-found-a-typo-error-how-do-i-report-it" title="Permalink to this headline">¶</a></h3>
+<p>Same answer as 3.</p>
+</div>
+<div class="section" id="i-would-like-to-have-a-translation-to-x-language-of-this-material-how-can-i-get-it">
+<h3>5. I would like to have a translation to X language of this material, how can I get it?<a class="headerlink" href="#i-would-like-to-have-a-translation-to-x-language-of-this-material-how-can-i-get-it" title="Permalink to this headline">¶</a></h3>
+<p>Please send an email to get notify of translations.</p>
+<p>At the moment there is English to Spanish Translation</p>
+</div>
+<div class="section" id="how-can-i-use-this-in-matlab">
+<h3>6. How can I use this in Matlab?<a class="headerlink" href="#how-can-i-use-this-in-matlab" title="Permalink to this headline">¶</a></h3>
+<p>Matlab does not provide a built-in Jupyter inport function, however all code cells are copy/paste friendly. You can paste them in any .m file and it should work out of the box.</p>
+</div>
+<div class="section" id="i-cannot-execute-the-notebook-because-of-x-error">
+<h3>6. I cannot execute the Notebook because of X error?<a class="headerlink" href="#i-cannot-execute-the-notebook-because-of-x-error" title="Permalink to this headline">¶</a></h3>
+<p>For execution problems, please refer to the <a class="reference external" href="https://github.com/Calysto/matlab_kernel">Matlab Kernel Developers</a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
+<p>Contact the main author, Ezequiel Leonardo Castaño at castanoezequielleonardo <em>at</em> gmail.com</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="reconocimientos">
+<h2>Reconocimientos<a class="headerlink" href="#reconocimientos" title="Permalink to this headline">¶</a></h2>
+<p>This format was heavily inspired by the <a class="reference external" href="http://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/">Bayesian Methods for Hackers by Cam Davidson-Pilon</a></p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='right-next' id="next-link" href="chapters/ELC01_Transformada_de_Laplace.html" title="next page"><span class="section-number">1. </span>Introducción a la Teoría de Control Con Matlab</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ezequiel Leonardo Castaño<br/>
+        
+            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,1082 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5. Root Locus &#8212; Teoría de Control con Matlab</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/justify.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/analytics.js"></script>
+    <script src="../_static/analytics_gtag.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC05_Root_Locus.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Controladores" href="ELC06_Controladores.html" />
+    <link rel="prev" title="4. Sistemas de Segundo Orden" href="ELC04_Sistemas_Segundo_Orden.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC01_Transformada_de_Laplace.html">
+   1. Introducción a la Teoría de Control Con Matlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC02_Funcion_de_transferencia.html">
+   2. Función de Transferencia
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC03_Sistemas_Primer_Orden.html">
+   3. Sistemas de Primer Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC04_Sistemas_Segundo_Orden.html">
+   4. Sistemas de Segundo Orden
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Root Locus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC06_Controladores.html">
+   6. Controladores
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC07_Sintonizaci%C3%B3n.html">
+   7. Sintonización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC08_Bode.html">
+   8. Diagramas de Bode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC09_Nyquist.html">
+   9. Diagrama de Nyquist
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapters/ELC05_Root_Locus.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Chapter Index
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistemas-de-primer-orden-sin-cero">
+   5.1. Sistemas de Primer Orden sin cero
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistemas-de-primer-orden-con-un-cero">
+   5.2. Sistemas de Primer Orden con un cero
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#casos">
+   5.3. Casos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistemas-de-segundo-orden-sin-cero">
+   5.4. Sistemas de Segundo Orden sin cero
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistemas-de-segundo-orden-con-un-cero">
+   5.5. Sistemas de Segundo Orden con un cero
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caso-1-polos-reales">
+     5.5.1. Caso 1: Polos Reales
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caso-2-polos-complejos">
+     5.5.2. Caso 2: Polos Complejos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grafica-de-polos-y-ceros-con-simulink">
+   5.6. Gráfica de Polos y Ceros con Simulink
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#en-lazo-abierto">
+   5.7. En Lazo Abierto
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#en-lazo-cerrado">
+   5.8. En Lazo Cerrado
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diseno-interactivo-de-root-locus-con-matlab">
+   5.9. Diseño interactivo de Root Locus con Matlab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-system-designer">
+   5.10. Control System Designer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seleccionar-la-arquitectura-de-control">
+   5.11. Seleccionar la arquitectura de control
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agregar-root-locus">
+   5.12. Agregar Root Locus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agregar-respuesta-en-el-tiempo-y-error">
+   5.13. Agregar Respuesta en el tiempo y error
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#respuesta-en-el-tiempo">
+     5.13.1. Respuesta en el tiempo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-en-funcion-del-tiempo">
+     5.13.2. Error en función del tiempo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#editando-el-root-locus-dinamicamente-con-la-interfaz-grafica">
+   5.14. Editando el Root Locus Dinámicamente con la interfaz gráfica
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#editando-el-root-locus-dinamicamente-con-el-editor-de-compensador">
+   5.15. Editando el Root Locus Dinámicamente con el editor de compensador
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias-y-recursos-utiles">
+   5.16. Referencias y Recursos Útiles
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="root-locus">
+<h1><span class="section-number">5. </span>Root Locus<a class="headerlink" href="#root-locus" title="Permalink to this headline">¶</a></h1>
+<p>Version 0.1</p>
+<p><code class="docutils literal notranslate"><span class="pre">Contenido</span> <span class="pre">Original</span> <span class="pre">creado</span> <span class="pre">por</span> <span class="pre">Ezequiel</span> <span class="pre">Leonardo</span> <span class="pre">Castaño</span></code></p>
+<p><font color='Firebrick'>Este contenido está <b>INCOMPLETO</b> y puede estar incompleto y/o sufrir modificaciones</font></p>
+<p>Material faltante en este capítulo:</p>
+<ul class="simple">
+<li><p>Cálculo del punto de ruptura</p></li>
+<li><p>Cálculo del ángulo de partida</p></li>
+<li><p>Cálculo del punto de interseccion de las asíntotas</p></li>
+<li><p>Cálculo del punto de interseccion con el eje imaginario (ganancia crítica)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 800</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sistemas-de-primer-orden-sin-cero">
+<h2><span class="section-number">5.1. </span>Sistemas de Primer Orden sin cero<a class="headerlink" href="#sistemas-de-primer-orden-sin-cero" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">;</span><span class="w"></span>
+<span class="n">ganancia_valores</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">primer_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">p</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">primer_orden</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">ganancia_valores</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ganancia_valores</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">primer_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pzmap</span><span class="p">(</span><span class="n">lazo_cerrado</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">legendInfo</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;k = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">k</span><span class="p">)];</span><span class="w"> </span>
+<span class="k">end</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">legendInfo</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">ganancia_valores</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ganancia_valores</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nb">step</span><span class="p">(</span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">primer_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="n">legendInfo</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;k = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">k</span><span class="p">)];</span><span class="w"> </span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="nb">legend</span><span class="p">(</span><span class="n">legendInfo</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Respuesta para entrada escalon para distintas ganancias&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">9</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_4_1.png" src="../_images/ELC05_Root_Locus_4_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="sistemas-de-primer-orden-con-un-cero">
+<h2><span class="section-number">5.2. </span>Sistemas de Primer Orden con un cero<a class="headerlink" href="#sistemas-de-primer-orden-con-un-cero" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span><span class="w"></span>
+<span class="n">ganancia_valores</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">primer_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">p</span><span class="o">/</span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">primer_orden</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">ganancia_valores</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ganancia_valores</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">primer_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pzmap</span><span class="p">(</span><span class="n">lazo_cerrado</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">legendInfo</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;k = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">k</span><span class="p">)];</span><span class="w"> </span>
+<span class="k">end</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">legendInfo</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+
+
+<span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">ganancia_valores</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ganancia_valores</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nb">step</span><span class="p">(</span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">primer_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="n">legendInfo</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;k = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">k</span><span class="p">)];</span><span class="w"> </span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="nb">legend</span><span class="p">(</span><span class="n">legendInfo</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Respuesta para entrada escalon para distintas ganancias&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">9</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_6_1.png" src="../_images/ELC05_Root_Locus_6_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="casos">
+<h2><span class="section-number">5.3. </span>Casos<a class="headerlink" href="#casos" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">valores_ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="mf">1.1</span><span class="w"> </span><span class="mf">1.5</span><span class="p">];</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">valores_ceros</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">valores_ceros</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">primer_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">p</span><span class="o">/</span><span class="n">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">primer_orden_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">primer_orden</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">primer_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">legend_info</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;z = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">z</span><span class="p">)];</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="n">ax1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">primer_orden_</span><span class="p">{:})</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mf">0.5</span><span class="p">]);</span><span class="w"></span>
+
+
+<span class="n">ax2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">lazo_cerrado_</span><span class="p">{:})</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mf">0.5</span><span class="p">]);</span><span class="w"></span>
+
+
+<span class="n">ax3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_</span><span class="p">{:})</span><span class="w"></span>
+
+<span class="n">primer_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">p</span><span class="o">/</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="p">[</span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">primer_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">yline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="w"> </span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="w"> </span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">legend_info</span><span class="p">{</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Sin Cero&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span><span class="w"> </span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_8_1.png" src="../_images/ELC05_Root_Locus_8_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="sistemas-de-segundo-orden-sin-cero">
+<h2><span class="section-number">5.4. </span>Sistemas de Segundo Orden sin cero<a class="headerlink" href="#sistemas-de-segundo-orden-sin-cero" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 500</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">omega</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">zeta</span><span class="w"> </span><span class="p">=</span><span class="mf">0.5</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">segundo_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">segundo_orden</span><span class="p">)</span><span class="w"></span>
+<span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tan</span><span class="p">(</span><span class="nb">acos</span><span class="p">(</span><span class="n">zeta</span><span class="p">));</span><span class="w"> </span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;--&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Color&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;--&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Color&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
+
+<span class="n">th</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">:</span><span class="nb">pi</span><span class="o">/</span><span class="mi">50</span><span class="p">:</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span><span class="w"></span>
+<span class="n">xunit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">th</span><span class="p">);</span><span class="w"></span>
+<span class="n">yunit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">th</span><span class="p">);</span><span class="w"></span>
+<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">xunit</span><span class="p">,</span><span class="w"> </span><span class="n">yunit</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="w"> </span><span class="mf">0.2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_11_1.png" src="../_images/ELC05_Root_Locus_11_1.png" />
+</div>
+</div>
+<p>Lugar geométrico de las raices para distintos valores de omega</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 800</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">omega_values</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.10</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.50</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75</span><span class="p">,</span><span class="w"> </span><span class="mf">1.00</span><span class="p">];</span><span class="w"></span>
+<span class="n">legendInfo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">omega_values</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">omega_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega_values</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">segundo_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">omega_</span>^<span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">omega_</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega_</span>^<span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">segundo_orden_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">segundo_orden</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">segundo_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">legendInfo</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;\omega = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">omega_</span><span class="p">)];</span><span class="w"> </span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">ax1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">segundo_orden_</span><span class="p">{:})</span><span class="w"></span>
+<span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tan</span><span class="p">(</span><span class="nb">acos</span><span class="p">(</span><span class="n">zeta</span><span class="p">));</span><span class="w"> </span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;--&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Color&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;--&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Color&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mf">0.2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="w"> </span><span class="n">legendInfo</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;AutoUpdate&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;off&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Lugar Geométrico de las Raices variando \omega&quot;</span><span class="p">)</span><span class="w"></span>
+
+
+<span class="n">ax2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_</span><span class="p">{:})</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="w"> </span><span class="n">legendInfo</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;AutoUpdate&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;off&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Respuesta a entrada escalón variando \omega&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+
+<span class="n">zeta_values</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.50</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75</span><span class="p">,</span><span class="w"> </span><span class="mf">1.00</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">];</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">zeta_values</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">zeta_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zeta_values</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">segundo_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">omega</span>^<span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">zeta_</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">segundo_orden_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">segundo_orden</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">segundo_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">legendInfo</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;\zeta = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">zeta_</span><span class="p">)];</span><span class="w"> </span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="n">ax2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">segundo_orden_</span><span class="p">{:})</span><span class="w"></span>
+
+<span class="n">th</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">:</span><span class="nb">pi</span><span class="o">/</span><span class="mi">50</span><span class="p">:</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span><span class="w"></span>
+<span class="n">xunit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">th</span><span class="p">);</span><span class="w"></span>
+<span class="n">yunit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">th</span><span class="p">);</span><span class="w"></span>
+<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">xunit</span><span class="p">,</span><span class="w"> </span><span class="n">yunit</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="mf">0.8</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="w"> </span><span class="n">legendInfo</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;AutoUpdate&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;off&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Lugar Geométrico de las Raices variando \zeta&quot;</span><span class="p">)</span><span class="w"></span>
+
+
+<span class="n">ax4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_</span><span class="p">{:})</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span><span class="w"> </span><span class="n">legendInfo</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;AutoUpdate&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;off&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Respuesta a entrada escalón variando \zeta&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_14_1.png" src="../_images/ELC05_Root_Locus_14_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="sistemas-de-segundo-orden-con-un-cero">
+<h2><span class="section-number">5.5. </span>Sistemas de Segundo Orden con un cero<a class="headerlink" href="#sistemas-de-segundo-orden-con-un-cero" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 500</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">omega</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">zeta</span><span class="w"> </span><span class="p">=</span><span class="mf">0.1</span><span class="p">;</span><span class="w"></span>
+<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.9</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">segundo_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">omega</span>^<span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">/</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">segundo_orden</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">m</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tan</span><span class="p">(</span><span class="nb">acos</span><span class="p">(</span><span class="n">zeta</span><span class="p">));</span><span class="w"> </span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;--&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Color&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;--&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Color&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
+
+<span class="n">th</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">:</span><span class="nb">pi</span><span class="o">/</span><span class="mi">50</span><span class="p">:</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">;</span><span class="w"></span>
+<span class="n">xunit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">th</span><span class="p">);</span><span class="w"></span>
+<span class="n">yunit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">th</span><span class="p">);</span><span class="w"></span>
+<span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">xunit</span><span class="p">,</span><span class="w"> </span><span class="n">yunit</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_17_1.png" src="../_images/ELC05_Root_Locus_17_1.png" />
+</div>
+</div>
+<div class="section" id="caso-1-polos-reales">
+<h3><span class="section-number">5.5.1. </span>Caso 1: Polos Reales<a class="headerlink" href="#caso-1-polos-reales" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 800</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">omega</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">zeta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">;</span><span class="w"></span>
+<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">valores_ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.25</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mf">1.5</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">valores_ceros</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">valores_ceros</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">segundo_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">omega</span>^<span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">/</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">segundo_orden_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">segundo_orden</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">segundo_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">legend_info</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;z = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">z</span><span class="p">)];</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="n">ax1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">segundo_orden_</span><span class="p">{:})</span><span class="w"></span>
+<span class="c">%xlim([-3 0.5]);</span><span class="w"></span>
+
+<span class="n">ax2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">segundo_orden_</span><span class="p">{:})</span><span class="w"></span>
+<span class="c">%xlim([-3 0.5]);</span><span class="w"></span>
+
+<span class="n">ax3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_</span><span class="p">{:})</span><span class="w"></span>
+
+<span class="n">segundo_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="p">[</span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">feedback</span><span class="p">(</span><span class="n">segundo_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">yline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="w"> </span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="w"> </span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+<span class="n">legend_info</span><span class="p">{</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Sin Cero&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span><span class="w"> </span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_20_1.png" src="../_images/ELC05_Root_Locus_20_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="caso-2-polos-complejos">
+<h3><span class="section-number">5.5.2. </span>Caso 2: Polos Complejos<a class="headerlink" href="#caso-2-polos-complejos" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">omega</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">zeta</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w"></span>
+<span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">valores_ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.25</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mf">1.5</span><span class="w"> </span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">valores_ceros</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">valores_ceros</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">segundo_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">omega</span>^<span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">/</span><span class="n">z</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">segundo_orden_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">segundo_orden</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">segundo_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">legend_info</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;z = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">z</span><span class="p">)];</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="n">ax1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">segundo_orden_</span><span class="p">{:})</span><span class="w"></span>
+<span class="c">%xlim([-3 0.5]);</span><span class="w"></span>
+
+<span class="n">ax2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">segundo_orden_</span><span class="p">{:})</span><span class="w"></span>
+<span class="c">%xlim([-3 0.5]);</span><span class="w"></span>
+
+<span class="n">ax3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
+<span class="nb">hold</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_</span><span class="p">{:})</span><span class="w"></span>
+
+<span class="n">segundo_orden</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">zeta</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">omega</span>^<span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="p">[</span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">feedback</span><span class="p">(</span><span class="n">segundo_orden</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">yline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="w"> </span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="w"> </span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+<span class="n">legend_info</span><span class="p">{</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Sin Cero&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span><span class="w"> </span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_22_1.png" src="../_images/ELC05_Root_Locus_22_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="grafica-de-polos-y-ceros-con-simulink">
+<h2><span class="section-number">5.6. </span>Gráfica de Polos y Ceros con Simulink<a class="headerlink" href="#grafica-de-polos-y-ceros-con-simulink" title="Permalink to this headline">¶</a></h2>
+<p>El gráfico de Root Locus es sólo posible dentro del ambiente de Matlab como se mostró hasta ahora, sin embargo, si se posee un modelo de simulación construido con Simulink, es posible ver los polos y ceros del sistema para <strong>un valor de ganancia particular</strong>.</p>
+<p>Para ello se comienza con un modelo genérico de Simulink como el siguiente</p>
+<center><img src="../_static/root_locus/image_00.png"></center></div>
+<div class="section" id="en-lazo-abierto">
+<h2><span class="section-number">5.7. </span>En Lazo Abierto<a class="headerlink" href="#en-lazo-abierto" title="Permalink to this headline">¶</a></h2>
+<p>Este sistema contiene una función de transferencia <strong>propia</strong> y sus polos y ceros pueden hallarse con las funciones <strong><code class="docutils literal notranslate"><span class="pre">zero</span></code></strong> y <strong><code class="docutils literal notranslate"><span class="pre">pole</span></code></strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zero</span><span class="p">(</span><span class="n">sistema</span><span class="p">);</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pole</span><span class="p">(</span><span class="n">sistema</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ceros =
+  -1.0000 + 1.0000i
+  -1.0000 - 1.0000i
+polos =
+     0
+    -3
+    -1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Al usar Matlab, graficar estos ceros y polos es sencillo utilizando la función <strong><code class="docutils literal notranslate"><span class="pre">pzmap</span></code></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 500</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">pzmap</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_29_1.png" src="../_images/ELC05_Root_Locus_29_1.png" />
+</div>
+</div>
+<p>Para lograr el mismo gráfico en un modelo de Simulink, es necesario utilizar un bloque especial llamado <strong><code class="docutils literal notranslate"><span class="pre">Pole-Zero</span> <span class="pre">Plot</span></code></strong></p>
+<center><img src="../_static/root_locus/image_01.png"></center>
+<p>Este bloque puede ubicarse en cualquier parte del modelo ya que no es necesario conectarlo con las señales de manera directa</p>
+<center><img src="../_static/root_locus/image_02.png"></center>
+<p>Luego, al abrirlo hay que explicitar cuál señal es la señal de entrada y cuál la de salida, esto se hace utilizando el botón <strong><code class="docutils literal notranslate"><span class="pre">+</span></code></strong></p>
+<center><img src="../_static/root_locus/image_03.png"></center>
+<p>Al inicio el segundo panel estará vacio</p>
+<center><img src="../_static/root_locus/image_04.png"></center>
+<p>Para seleccionar una señal, basta con hacer click sobre ella en el modelo</p>
+<center><img src="../_static/root_locus/image_05.png"></center>
+<p>Y luego se presiona el botón <strong><code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code></strong> para agregar la señal al análisis</p>
+<center><img src="../_static/root_locus/image_06.png"></center>
+<p>A continuación se debe configurar a la señal <strong><code class="docutils literal notranslate"><span class="pre">R</span></code></strong> como la entrada en lazo abierto y a la señal <strong><code class="docutils literal notranslate"><span class="pre">Y</span></code></strong> como la salida en lazo abierto</p>
+<center><img src="../_static/root_locus/image_07.png"></center>
+<p>Finalmente se presiona <strong><code class="docutils literal notranslate"><span class="pre">Apply</span></code></strong> y se tilda la opción de <strong><code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">plot</span> <span class="pre">on</span> <span class="pre">block</span> <span class="pre">open</span></code></strong> y se presiona <strong><code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Plot</span></code></strong></p>
+<center><img src="../_static/root_locus/image_08.png"></center>
+<p>Al principio el gráfico estará vacio pero, luego de correr la simulación con el <strong>botón de play</strong>, se generará el gráfico adecuadamente.</p>
+<center><img src="../_static/root_locus/image_09.png"></center>
+<p>Se comprueba visualmente como los polos y ceros están en el mismo lugar que los obtenidos en el entorno de Matlab.</p>
+<center><img src="../_static/root_locus/image_10.png"></center></div>
+<div class="section" id="en-lazo-cerrado">
+<h2><span class="section-number">5.8. </span>En Lazo Cerrado<a class="headerlink" href="#en-lazo-cerrado" title="Permalink to this headline">¶</a></h2>
+<p>Al cerrar el lazo de retroalimentación, los polos y ceros cambian de posición</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">lazo_cerrado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lazo_cerrado =
+ 
+      s^2 + 2 s + 2
+  ---------------------
+  s^3 + 5 s^2 + 5 s + 2
+ 
+Continuous-time transfer function.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 500</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.2</span><span class="w"> </span><span class="mf">1.2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Polos y Ceros en lazo abierto&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="n">pzmap</span><span class="p">(</span><span class="n">lazo_cerrado</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.2</span><span class="w"> </span><span class="mf">1.2</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Polos y Ceros en lazo cerrado&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC05_Root_Locus_35_1.png" src="../_images/ELC05_Root_Locus_35_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="diseno-interactivo-de-root-locus-con-matlab">
+<h2><span class="section-number">5.9. </span>Diseño interactivo de Root Locus con Matlab<a class="headerlink" href="#diseno-interactivo-de-root-locus-con-matlab" title="Permalink to this headline">¶</a></h2>
+<p>Entender como leer un root locus es importante, pero también lo es saber que efectos tiene la adición / remoción de polos y ceros en un root locus determinado. Si bien las plantas no suelen ser modificables para agregar polos y ceros, los controladores sirven justamente para esto, permiten la incorporación de polos y ceros en lugares específicos. Para lograr esto se usa una aplicación especial dentro de Matlab llamada <strong><code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">System</span> <span class="pre">Designer</span></code></strong> que requiere tener el <strong>Control System Toolbox</strong> instalado.</p>
+</div>
+<div class="section" id="control-system-designer">
+<h2><span class="section-number">5.10. </span>Control System Designer<a class="headerlink" href="#control-system-designer" title="Permalink to this headline">¶</a></h2>
+<p>Para abrirla se debe ir a <strong><code class="docutils literal notranslate"><span class="pre">Apps</span> <span class="pre">&gt;</span> <span class="pre">Control</span> <span class="pre">System</span> <span class="pre">Designer</span></code></strong></p>
+<center><img src="../_static/root_locus/image_11.png"></center>
+<p>Una vez abierta se deplegará una ventana similar a la siguiente</p>
+<center><img src="../_static/root_locus/image_12.png"></center>
+<p>Se deben cerrar todos los gráficos para empezar la configuración de cero</p>
+<center><img src="../_static/root_locus/image_13.png"></center></div>
+<div class="section" id="seleccionar-la-arquitectura-de-control">
+<h2><span class="section-number">5.11. </span>Seleccionar la arquitectura de control<a class="headerlink" href="#seleccionar-la-arquitectura-de-control" title="Permalink to this headline">¶</a></h2>
+<p>El primer paso es entender la <strong>arquitectura de control</strong> que se va a utilizar, para ello se debe presionar <strong><code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">Architecture</span></code></strong></p>
+<center><img src="../_static/root_locus/image_14.png"></center>
+<p>La arquitectura por defecto es la siguiente</p>
+<center><img src="../_static/root_locus/image_15.png"></center>
+<p>Donde <strong><code class="docutils literal notranslate"><span class="pre">G</span></code></strong> es la planta, <strong><code class="docutils literal notranslate"><span class="pre">H</span></code></strong> es el sensor, <strong><code class="docutils literal notranslate"><span class="pre">C</span></code></strong> es el controlador y <strong><code class="docutils literal notranslate"><span class="pre">F</span></code></strong> es la ganancia inicial. También se explicitan tres tipos de perturbaciones <strong><code class="docutils literal notranslate"><span class="pre">du</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">dy</span></code></strong> y <strong><code class="docutils literal notranslate"><span class="pre">n</span></code></strong> así como el error <strong><code class="docutils literal notranslate"><span class="pre">e</span></code></strong>, la entrada <strong><code class="docutils literal notranslate"><span class="pre">r</span></code></strong> y la salida <strong><code class="docutils literal notranslate"><span class="pre">y</span></code></strong>. Es posible darle valores a los bloques, aunque se asume que el único bloque modificable es C. En este notebook sólo se verán los temas referidos al root locus y no al diseño de controladores por lo que todos los valores se pueden dejar por defecto. Se debe presionar <strong><code class="docutils literal notranslate"><span class="pre">OK</span></code></strong> para cerrar la ventana.</p>
+</div>
+<div class="section" id="agregar-root-locus">
+<h2><span class="section-number">5.12. </span>Agregar Root Locus<a class="headerlink" href="#agregar-root-locus" title="Permalink to this headline">¶</a></h2>
+<p>Para agregar el root locus, se debe seleccionar el <strong><code class="docutils literal notranslate"><span class="pre">Root</span> <span class="pre">Locus</span> <span class="pre">Editor</span></code></strong> dentro del menú <strong><code class="docutils literal notranslate"><span class="pre">Tuning</span> <span class="pre">Methods</span></code></strong> se abrirá una ventana donde no hacen falta cambios, se debe precionar <strong><code class="docutils literal notranslate"><span class="pre">Plot</span></code></strong> para continuar</p>
+<center><img src="../_static/root_locus/image_16.png"></center>
+<center><img src="../_static/root_locus/image_17.png"></center>
+<p>Luego el Root Locus debería aparecer en la ventana principal</p>
+<center><img src="../_static/root_locus/image_18.png"></center></div>
+<div class="section" id="agregar-respuesta-en-el-tiempo-y-error">
+<h2><span class="section-number">5.13. </span>Agregar Respuesta en el tiempo y error<a class="headerlink" href="#agregar-respuesta-en-el-tiempo-y-error" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="respuesta-en-el-tiempo">
+<h3><span class="section-number">5.13.1. </span>Respuesta en el tiempo<a class="headerlink" href="#respuesta-en-el-tiempo" title="Permalink to this headline">¶</a></h3>
+<p>Otros dos gráficos relevantes son la salida en el tiempo ante una entrada escalón y el error en el tiempo ante una entrada del mismo tipo.</p>
+<p>Para agregar estos gráfico se debe ir a <strong><code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Plot</span></code></strong> y luego a <strong><code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Step</span></code></strong></p>
+<center><img src="../_static/root_locus/image_19.png"></center>
+<p>Para la gráfica de la <strong>salida</strong> en función de la <strong>entrada</strong> es necesario aclarar que se quiere desde la señal <strong>R</strong> a la señal <strong>Y</strong>, luego se presiona Plot para agregar el gráfico. El gráfico debería aparecer en la ventana principal.</p>
+<center><img src="../_static/root_locus/image_20.png"></center>
+<center><img src="../_static/root_locus/image_21.png"></center>
+<p>Como el sistema aún no tiene definido ni polos ni ceros, la entrada es un escalón unitario y la salida es un escalón unitario atenuado con amplitud de 0.5</p>
+</div>
+<div class="section" id="error-en-funcion-del-tiempo">
+<h3><span class="section-number">5.13.2. </span>Error en función del tiempo<a class="headerlink" href="#error-en-funcion-del-tiempo" title="Permalink to this headline">¶</a></h3>
+<p>Para el caso del error los pasos son similares, pero no existe en el menú de <strong><code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Step</span></code></strong> un gráfico asociado a <strong><code class="docutils literal notranslate"><span class="pre">r2e</span></code></strong>, que sería el error en función de la entrada. No obstante esta combinación puede agregarse seleccionando <strong><code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Input-Output</span> <span class="pre">Transfer</span> <span class="pre">Response</span></code></strong>. Al seleccionarlo la pantalla cambiará, permitiéndo especificar señales de entrada y de salida.</p>
+<center><img src="../_static/root_locus/image_22.png"></center>
+<center><img src="../_static/root_locus/image_23.png"></center>
+<p>Se debe seleccionar <strong><code class="docutils literal notranslate"><span class="pre">r</span></code></strong> como entrada y <strong><code class="docutils literal notranslate"><span class="pre">e</span></code></strong> como salida y luego presionar <strong><code class="docutils literal notranslate"><span class="pre">Plot</span></code></strong></p>
+<center><img src="../_static/root_locus/image_24.png"></center>
+<p>Se agregará otro gráfico a la ventana principal, que en este caso será igual al anterior ya que el error se mantiene constante en 0.5.</p>
+<p>A continuación se acomodan las pestañas de los gráficos para poder mostrar tanto el root locus como ambas salidas al mismo tiempo. Para acomodar las vistas, basta con arrastrar y soltar.</p>
+<center><img src="../_static/root_locus/image_25.png"></center></div>
+</div>
+<div class="section" id="editando-el-root-locus-dinamicamente-con-la-interfaz-grafica">
+<h2><span class="section-number">5.14. </span>Editando el Root Locus Dinámicamente con la interfaz gráfica<a class="headerlink" href="#editando-el-root-locus-dinamicamente-con-la-interfaz-grafica" title="Permalink to this headline">¶</a></h2>
+<p>Ahora es posible modificar el root locus y ver como las salidas cambian. para ello basta con hacer click en el gráfico de root locus y luego ir a la pestaña de <strong><code class="docutils literal notranslate"><span class="pre">Root</span> <span class="pre">Locus</span> <span class="pre">Editor</span></code></strong></p>
+<center><img src="../_static/root_locus/image_26.png"></center>
+<p>Utilizando los botones se pueden agregar polos y ceros reales, polos y ceros complejos y borrar los ya agregados.</p>
+<p>También es posible hacerlo al ver el menú contextual que se despliega al hacer click derecho sobre el gráfico del root locus. En este caso se suman las opciones de agregar un controlador integral (<strong><code class="docutils literal notranslate"><span class="pre">Integrator</span></code></strong>), un controlador derivativo (<strong><code class="docutils literal notranslate"><span class="pre">Differentiator</span></code></strong>) y tres tipos de compensadores <strong><code class="docutils literal notranslate"><span class="pre">Lead</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">Lag</span></code></strong> y <strong><code class="docutils literal notranslate"><span class="pre">Notch</span></code></strong>.</p>
+<ul class="simple">
+<li><p>El Integrador agrega un <strong>polo</strong> en el <strong>origen</strong></p></li>
+<li><p>El derivativo agrega un <strong>cero</strong> en el <strong>origen</strong></p></li>
+<li><p>El Lead agrega un <strong>polo</strong> y un <strong>cero</strong>, con el <strong>cero</strong> más cerca del <strong>origen</strong> que el <strong>polo</strong></p></li>
+<li><p>El Lag agrega un <strong>polo</strong> y un <strong>cero</strong>, con el <strong>polo</strong> más cerca del <strong>origen</strong> que el <strong>cero</strong></p></li>
+<li><p>El Notch agrega <strong>dos polos complejos</strong> y <strong>dos ceros complejos</strong>, con los <strong>ceros</strong> más cerca del <strong>origen</strong> que los <strong>polos</strong></p></li>
+</ul>
+<center><img src="../_static/root_locus/image_27.png"></center>
+<p>Un ejemplo de sistema podría ser</p>
+<center><img src="../_static/root_locus/image_28.png"></center>
+<p>Que emula a una planta de segundo orden con dos polos complejos con un controlador PID.</p>
+<p><strong>La parte más importante de esta herramienta es que todos los polos y ceros agregados (cruces y cículos) así como las ganancias (cuadrados púrpuras) pueden arrastrarse y soltarse en los diferentes puntos del root locus, y es posible ver como la forma del root locus y las salidas en el tiempo cambian al hacerlo. Además, pueden verse las características de las gráficas con forme se modifica el root locus</strong></p>
+</div>
+<div class="section" id="editando-el-root-locus-dinamicamente-con-el-editor-de-compensador">
+<h2><span class="section-number">5.15. </span>Editando el Root Locus Dinámicamente con el editor de compensador<a class="headerlink" href="#editando-el-root-locus-dinamicamente-con-el-editor-de-compensador" title="Permalink to this headline">¶</a></h2>
+<p>Otra manera de editar el root locus es ingresar los valores exactos directamente, para ello, se debe hacer click derecho en el <strong>Root Locus</strong> y luego en “<strong><code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">Compensator...</span></code></strong>”</p>
+<center><img src="../_static/root_locus/image_29.png"></center>
+<p>Esta opción abre una nueva ventana donde uno puede editar los valores de cada polo y cero y también agregar nuevos o borrar los actuales haciendo click derecho. Las opciones para agregar polos y ceros son las mismas que en la gráfica del Root Locus</p>
+<center><img src="../_static/root_locus/image_30.png"></center>
+<center><img src="../_static/root_locus/image_31.png"></center>
+<p>Algunas características interesantes de esta vista de editor son:</p>
+<ul>
+<li><p>Se puede ver el valor de la ganancia y la forma de la función de transferencia asociada al root locus mostrado:</p>
+  <center><img src="../_static/root_locus/image_32.png"></center>
+</li>
+<li><p>En el caso de los polos y ceros <strong>complejos</strong> se pueden especificar de manera rectangular (con parte real e imaginaria) o de manera polar (con frecuencia natural y coeficiente de amortiguamiento)</p>
+  <center><img src="../_static/root_locus/image_33.png"></center></li>
+</ul>
+</div>
+<div class="section" id="referencias-y-recursos-utiles">
+<h2><span class="section-number">5.16. </span>Referencias y Recursos Útiles<a class="headerlink" href="#referencias-y-recursos-utiles" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=CRvVDoQJjYI&amp;list=PLUMWjy5jgHK3-ca6GP6PL0AgcNGHqn33f">Serie de videos sobre Root Locus by Brian Douglas</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            kernelName: "matlab",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="ELC04_Sistemas_Segundo_Orden.html" title="previous page"><span class="section-number">4. </span>Sistemas de Segundo Orden</a>
+    <a class='right-next' id="next-link" href="ELC06_Controladores.html" title="next page"><span class="section-number">6. </span>Controladores</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ezequiel Leonardo Castaño<br/>
+        
+            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

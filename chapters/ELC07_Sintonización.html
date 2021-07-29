@@ -1,0 +1,1301 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7. Sintonización &#8212; Teoría de Control con Matlab</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/justify.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/analytics.js"></script>
+    <script src="../_static/analytics_gtag.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC07_Sintonización.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Diagramas de Bode" href="ELC08_Bode.html" />
+    <link rel="prev" title="6. Controladores" href="ELC06_Controladores.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC01_Transformada_de_Laplace.html">
+   1. Introducción a la Teoría de Control Con Matlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC02_Funcion_de_transferencia.html">
+   2. Función de Transferencia
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC03_Sistemas_Primer_Orden.html">
+   3. Sistemas de Primer Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC04_Sistemas_Segundo_Orden.html">
+   4. Sistemas de Segundo Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC05_Root_Locus.html">
+   5. Root Locus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC06_Controladores.html">
+   6. Controladores
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Sintonización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC08_Bode.html">
+   8. Diagramas de Bode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC09_Nyquist.html">
+   9. Diagrama de Nyquist
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapters/ELC07_Sintonización.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Chapter Index
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   7.1. Sintonización
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sintonizacion-por-curva-de-reaccion-del-proceso-cpr">
+   7.2. Sintonización por Curva de Reacción del Proceso (CPR)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definiendo-controlador-proporcional-p">
+   7.3. Definiendo controlador Proporcional (P)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definiendo-controlador-proporcional-integral-pi">
+   7.4. Definiendo controlador Proporcional Integral (PI)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definiendo-controlador-proporcional-integral-derivativo-pid">
+   7.5. Definiendo controlador Proporcional Integral Derivativo (PID)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparacion-de-controladores">
+   7.6. Comparación de Controladores
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparacion-de-respuesta">
+     7.6.1. Comparación de Respuesta
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparacion-de-ceros-y-polos">
+     7.6.2. Comparación de ceros y polos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sintonizacion-por-ultima-ganancia-o-ganancia-critica-gc">
+   7.7. Sintonización por última ganancia o ganancia crítica (GC)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#verificar-cruce-con-el-eje-imaginario">
+   7.8. Verificar Cruce con el eje imaginario
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hallar-valor-de-ganancia-critica-k">
+   7.9. Hallar valor de ganancia crítica
+   <span class="math notranslate nohighlight">
+    \(K\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hallar-el-periodo-critico">
+   7.10. Hallar el periodo crítico
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definiendo-controladores">
+   7.11. Definiendo Controladores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   7.12. Definiendo controlador Proporcional (P)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   7.13. Definiendo controlador Proporcional Integral (PI)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   7.14. Definiendo controlador Proporcional Integral Derivativo (PID)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   7.15. Comparación de Controladores
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     7.15.1. Comparación de Respuesta
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     7.15.2. Comparación de ceros y polos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sintonizacion-por-fuerza-bruta">
+   7.16. Sintonización por fuerza Bruta
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hallando-ganancia-proporcional-k-p">
+   7.17. 1. Hallando Ganancia Proporcional
+   <span class="math notranslate nohighlight">
+    \(K_p\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hallando-ganancia-integral-k-i">
+   7.18. 2. Hallando Ganancia Integral
+   <span class="math notranslate nohighlight">
+    \(K_i\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hallando-ganancia-derivativa-k-d">
+   7.19. 3. Hallando Ganancia Derivativa
+   <span class="math notranslate nohighlight">
+    \(K_d\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistema-sintonizado">
+   7.20. Sistema Sintonizado
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sintonizacion-automatica-con-simulink">
+   7.21. Sintonización Automática con Simulink
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#declarar-las-ganancias-en-el-workspace-de-matlab">
+   7.22. 1. Declarar las ganancias en el Workspace de Matlab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construir-un-modelo-en-simulink-utilizando-un-controlador-pid-con-los-bloques-basicos">
+   7.23. 2. Construir un modelo en Simulink utilizando un controlador PID con los bloques básicos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agregar-verificacion-de-caracteristicas">
+   7.24. 3. Agregar Verificación de Características
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abrir-el-bloque-y-configurar-los-requisitos-del-sistema-y-presionar-apply">
+   7.25. 4. Abrir el bloque y configurar los requisitos del sistema y presionar
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Apply
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presionar-el-boton-response-optimization-y-agregar-nuevas-variables-de-diseno">
+   7.26. 5. Presionar el botón
+   <strong>
+    <code class="docutils literal notranslate">
+     <span class="pre">
+      Response
+     </span>
+     <span class="pre">
+      Optimization
+     </span>
+    </code>
+   </strong>
+   y agregar nuevas variables de diseño
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elegir-el-conjunto-de-variables-de-diseno-y-agregar-el-grafico-de-evolucion-historica">
+   7.27. 6. Elegir el conjunto de variables de diseño y agregar el gráfico de evolución histórica
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejecutar-la-simulacion-y-validar-que-no-se-cumplen-los-requisitos-de-diseno">
+   7.28. 7. Ejecutar la simulación y validar que no se cumplen los requisitos de diseño
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acomodar-las-ventanas-de-los-graficos-y-presionar-optimize">
+   7.29. 8. Acomodar las ventanas de los gráficos y presionar
+   <strong>
+    <code class="docutils literal notranslate">
+     <span class="pre">
+      Optimize
+     </span>
+    </code>
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#esperar-a-que-la-optimizacion-converga">
+   7.30. 9. Esperar a que la optimización converga
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guardar-los-valores-obtenidos">
+   7.31. 10. Guardar los valores obtenidos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   7.32. Sistema Sintonizado
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="sintonizacion">
+<h1><span class="section-number">7. </span>Sintonización<a class="headerlink" href="#sintonizacion" title="Permalink to this headline">¶</a></h1>
+<p>Version 0.1</p>
+<p><code class="docutils literal notranslate"><span class="pre">Contenido</span> <span class="pre">Original</span> <span class="pre">creado</span> <span class="pre">por</span> <span class="pre">Ezequiel</span> <span class="pre">Leonardo</span> <span class="pre">Castaño</span></code></p>
+<p><font color='Firebrick'>Este contenido está en <b>BORRADOR</b> y puede estar incompleto y/o sufrir modificaciones</font></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 500</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">7.1. </span>Sintonización<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>El proceso de sintonización consiste en modificar las ganancias de un controlador para lograr un comportamiento que se ajuste a los requerimientos de diseño. Existen varias técnicas para la sintonización, el proceso puede verse en la siguiente animación. <a class="reference external" href="https://en.wikipedia.org/wiki/PID_controller#Manual_tuning">Fuente</a></p>
+<center><img src="../_static/sintonization/image_00.png"></center></div>
+<div class="section" id="sintonizacion-por-curva-de-reaccion-del-proceso-cpr">
+<h2><span class="section-number">7.2. </span>Sintonización por Curva de Reacción del Proceso (CPR)<a class="headerlink" href="#sintonizacion-por-curva-de-reaccion-del-proceso-cpr" title="Permalink to this headline">¶</a></h2>
+<p>Se remueve el controlador y se evalua la salida en lazo abierto ante una entrada escalón</p>
+<p>Sólo se puede aplicar si la salida tiene forma de S</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">num</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="n">den</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">[</span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">sistema</span><span class="p">);</span><span class="w"></span>
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">respuesta</span><span class="p">)</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">respuesta</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;:k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.1</span><span class="p">])</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_5_1.png" src="../_images/ELC07_Sintonización_5_1.png" />
+</div>
+</div>
+<p>Se calcula en punto de inflexión numéricamente</p>
+<center><img src="../_static/sintonization/image_01.png"></center><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="n">pendiente_en_tiempo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">gradient</span><span class="p">(</span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="n">tiempo</span><span class="p">);</span><span class="w"></span>
+<span class="p">[</span><span class="n">pendiente</span><span class="p">,</span><span class="w"> </span><span class="n">indice_critico</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">pendiente_en_tiempo</span><span class="p">);</span><span class="w"></span>
+<span class="n">tiempo_inflexion</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tiempo</span><span class="p">(</span><span class="n">indice_critico</span><span class="p">);</span><span class="w"></span>
+<span class="n">respuesta_critica</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">respuesta</span><span class="p">(</span><span class="n">indice_critico</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">recta_tangente</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pendiente</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">tiempo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tiempo_inflexion</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">respuesta_critica</span><span class="p">;</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">respuesta</span><span class="p">)</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">tiempo</span><span class="p">,</span><span class="w"> </span><span class="n">recta_tangente</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="w"></span>
+
+<span class="nb">yline</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">respuesta</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;:k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.1</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_7_1.png" src="../_images/ELC07_Sintonización_7_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tiempo_inflexion</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">respuesta_critica</span><span class="o">/</span><span class="n">pendiente</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L =
+    0.2236
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Tau</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">respuesta</span><span class="p">(</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">pendiente</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tau =
+    1.9375
+</pre></div>
+</div>
+</div>
+</div>
+<center><img src="../_static/sintonization/image_02.png"></center>
+<center><img src="../_static/sintonization/image_03.png"></center></div>
+<div class="section" id="definiendo-controlador-proporcional-p">
+<h2><span class="section-number">7.3. </span>Definiendo controlador Proporcional (P)<a class="headerlink" href="#definiendo-controlador-proporcional-p" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Tau</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
+<span class="n">controlador_p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="n">Kp</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="n">lazo_cerrado_p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">controlador_p</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="definiendo-controlador-proporcional-integral-pi">
+<h2><span class="section-number">7.4. </span>Definiendo controlador Proporcional Integral (PI)<a class="headerlink" href="#definiendo-controlador-proporcional-integral-pi" title="Permalink to this headline">¶</a></h2>
+<p>Forma estandar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Tau</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
+<span class="n">tau_i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.3</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Forma basada en ganacias</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tau_i</span><span class="p">;</span><span class="w"></span>
+<span class="n">controlador_pi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="n">Kp</span><span class="w"> </span><span class="n">Ki</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="n">lazo_cerrado_pi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">controlador_pi</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="definiendo-controlador-proporcional-integral-derivativo-pid">
+<h2><span class="section-number">7.5. </span>Definiendo controlador Proporcional Integral Derivativo (PID)<a class="headerlink" href="#definiendo-controlador-proporcional-integral-derivativo-pid" title="Permalink to this headline">¶</a></h2>
+<p>Usando la forma estandar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1.2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Tau</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
+<span class="n">tau_i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
+<span class="n">tau_d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Usando la forma de ganancia</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="p">;</span><span class="w"></span>
+<span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tau_i</span><span class="p">;</span><span class="w"></span>
+<span class="n">Kd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tau_d</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definimos controlador PID</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">controlador_pid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="n">Kd</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="n">Ki</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="n">lazo_cerrado_pid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">controlador_pid</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comparacion-de-controladores">
+<h2><span class="section-number">7.6. </span>Comparación de Controladores<a class="headerlink" href="#comparacion-de-controladores" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comparacion-de-respuesta">
+<h3><span class="section-number">7.6.1. </span>Comparación de Respuesta<a class="headerlink" href="#comparacion-de-respuesta" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_p</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_pi</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_pid</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">7</span><span class="p">])</span><span class="w"></span>
+
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;Sin Sintonizar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P Sintonizado con CRP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PI Sintonizado con CRP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PID Sintonizado con CRP&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_24_1.png" src="../_images/ELC07_Sintonización_24_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="comparacion-de-ceros-y-polos">
+<h3><span class="section-number">7.6.2. </span>Comparación de ceros y polos<a class="headerlink" href="#comparacion-de-ceros-y-polos" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">controlador_p</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">controlador_pi</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">controlador_pid</span><span class="o">*</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;Sin Sintonizar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P Sintonizado con CRP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PI Sintonizado con CRP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PID Sintonizado con CRP&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">13</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="mi">8</span><span class="p">])</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_26_1.png" src="../_images/ELC07_Sintonización_26_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sintonizacion-por-ultima-ganancia-o-ganancia-critica-gc">
+<h2><span class="section-number">7.7. </span>Sintonización por última ganancia o ganancia crítica (GC)<a class="headerlink" href="#sintonizacion-por-ultima-ganancia-o-ganancia-critica-gc" title="Permalink to this headline">¶</a></h2>
+<p>Es necesario que el lugar geométrico de las raices cruce al eje imaginario para poder aplicar este método</p>
+</div>
+<div class="section" id="verificar-cruce-con-el-eje-imaginario">
+<h2><span class="section-number">7.8. </span>Verificar Cruce con el eje imaginario<a class="headerlink" href="#verificar-cruce-con-el-eje-imaginario" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="w"> </span><span class="mf">0.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_28_1.png" src="../_images/ELC07_Sintonización_28_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="hallar-valor-de-ganancia-critica-k">
+<h2><span class="section-number">7.9. </span>Hallar valor de ganancia crítica <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#hallar-valor-de-ganancia-critica-k" title="Permalink to this headline">¶</a></h2>
+<p>Como las ramas cruzan el eje imaginario, se puede hallar el valor crítico de K. Este valor crítico se puede encontrar con Routh o utilizando el reemplazo de <span class="math notranslate nohighlight">\(s\)</span> con <span class="math notranslate nohighlight">\(j\omega\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">K</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&quot;k&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;real&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&quot;omega&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;real&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="o">*</span><span class="n">s</span>^<span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">17.25</span><span class="o">*</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5.5</span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">30.75</span><span class="p">);</span><span class="w"></span>
+<span class="n">lazo_cerrado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sistema</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sistema</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">ecuacion_caracteristica</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">numden</span><span class="p">(</span><span class="n">lazo_cerrado</span><span class="p">);</span><span class="w"></span>
+<span class="n">remplazar_s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">subs</span><span class="p">(</span><span class="n">ecuacion_caracteristica</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="nb">j</span><span class="o">*</span><span class="n">w</span><span class="p">);</span><span class="w"></span>
+<span class="n">omega</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="nb">imag</span><span class="p">(</span><span class="n">remplazar_s</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Solutions are only valid under certain conditions. To include parameters and conditions in the solution, specify the &#39;ReturnConditions&#39; value as &#39;true&#39;.
+&gt; In sym/solve&gt;warnIfParams (line 478)
+  In sym/solve (line 357)
+omega =
+                        0
+ -0.2673*(2*k + 11)^(1/2)
+  0.2673*(2*k + 11)^(1/2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">K_critico</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">6</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K_critico =
+     6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se puede ver como el valor crítico de <span class="math notranslate nohighlight">\(K\)</span> en este sistema es <span class="math notranslate nohighlight">\(6\)</span></p>
+</div>
+<div class="section" id="hallar-el-periodo-critico">
+<h2><span class="section-number">7.10. </span>Hallar el periodo crítico<a class="headerlink" href="#hallar-el-periodo-critico" title="Permalink to this headline">¶</a></h2>
+<p>El periodo crítico puede hallarse con la expresión <span class="math notranslate nohighlight">\(\frac{2\pi }{\omega }\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">periodo_critico</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">pi</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c">% Obtenido de la variable omega</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="definiendo-controladores">
+<h2><span class="section-number">7.11. </span>Definiendo Controladores<a class="headerlink" href="#definiendo-controladores" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="n">lazo_cerrado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<center><img src="../_static/sintonization/image_04.png"></center></div>
+<div class="section" id="id2">
+<h2><span class="section-number">7.12. </span>Definiendo controlador Proporcional (P)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">K_critico</span><span class="p">;</span><span class="w"></span>
+<span class="n">controlador_p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="n">Kp</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="n">lazo_cerrado_p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">controlador_p</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">7.13. </span>Definiendo controlador Proporcional Integral (PI)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Forma estandar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.45</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">K_critico</span><span class="p">;</span><span class="w"></span>
+<span class="n">tau_i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mf">1.2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">periodo_critico</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Forma basada en ganacias</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tau_i</span><span class="p">;</span><span class="w"></span>
+<span class="n">controlador_pi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="n">Kp</span><span class="w"> </span><span class="n">Ki</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="n">lazo_cerrado_pi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">controlador_pi</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">7.14. </span>Definiendo controlador Proporcional Integral Derivativo (PID)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Usando la forma estandar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">K_critico</span><span class="p">;</span><span class="w"></span>
+<span class="n">tau_i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">periodo_critico</span><span class="p">;</span><span class="w"></span>
+<span class="n">tau_d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.125</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">periodo_critico</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Usando la forma de ganancia</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="p">;</span><span class="w"></span>
+<span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tau_i</span><span class="p">;</span><span class="w"></span>
+<span class="n">Kd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tau_d</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definimos controlador PID</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">controlador_pid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">([</span><span class="n">Kd</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="n">Ki</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="n">lazo_cerrado_pid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">controlador_pid</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">7.15. </span>Comparación de Controladores<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3><span class="section-number">7.15.1. </span>Comparación de Respuesta<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_p</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_pi</span><span class="p">,</span><span class="w"> </span><span class="n">lazo_cerrado_pid</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;Sin Sintonizar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P Sintonizado con GC&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PI Sintonizado con GC&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PID Sintonizado con GC&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">40</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_51_1.png" src="../_images/ELC07_Sintonización_51_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">7.15.2. </span>Comparación de ceros y polos<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">rlocus</span><span class="p">(</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">controlador_p</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">controlador_pi</span><span class="o">*</span><span class="n">sistema</span><span class="p">,</span><span class="w"> </span><span class="n">controlador_pid</span><span class="o">*</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;Sin Sintonizar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P Sintonizado con CRP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PI Sintonizado con CRP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PID Sintonizado con CRP&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_53_1.png" src="../_images/ELC07_Sintonización_53_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sintonizacion-por-fuerza-bruta">
+<h2><span class="section-number">7.16. </span>Sintonización por fuerza Bruta<a class="headerlink" href="#sintonizacion-por-fuerza-bruta" title="Permalink to this headline">¶</a></h2>
+<p>Sintonizar el sistema para que cumpla con los siguientes requisitos <strong>ante una entrada escalón</strong></p>
+<ul class="simple">
+<li><p>Tiempo de Asentamiento al 2% a los 10s</p></li>
+<li><p>Error de estado estacionario nulo</p></li>
+<li><p>Overshoot de menos del 20%</p></li>
+</ul>
+<p>La función de transferencia de la planta es</p>
+<div class="math notranslate nohighlight">
+\[G(s)=\frac{s^2 +2.1s+0.2}{s^5 +8.5s^4 +29.25s^3 +43.38s^2 +15.38s}\]</div>
+<p>Tener en cuenta las siguientes consideraciones</p>
+<ul class="simple">
+<li><p>Se asume sensor ideal (retroalimentación unitaria)</p></li>
+<li><p>El valor máximo de la ganancia proporcional es de 5</p></li>
+<li><p>El valor máximo de la ganancia integral es de 5</p></li>
+<li><p>El valor máximo de la ganancia derivativa es de 2</p></li>
+</ul>
+</div>
+<div class="section" id="hallando-ganancia-proporcional-k-p">
+<h2><span class="section-number">7.17. </span>1. Hallando Ganancia Proporcional <span class="math notranslate nohighlight">\(K_p\)</span><a class="headerlink" href="#hallando-ganancia-proporcional-k-p" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Kd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">kps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
+
+<span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">-</span>2<span class="nb">j</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">kps</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kps</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">controlador</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Ki</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Kd</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">sistema</span><span class="o">*</span><span class="n">controlador</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">legend_info</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;Kp = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">Kp</span><span class="p">)];</span><span class="w"> </span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_</span><span class="p">{:})</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Salida en lazo cerrado&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">40</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.15</span><span class="p">])</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_56_1.png" src="../_images/ELC07_Sintonización_56_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="hallando-ganancia-integral-k-i">
+<h2><span class="section-number">7.18. </span>2. Hallando Ganancia Integral <span class="math notranslate nohighlight">\(K_i\)</span><a class="headerlink" href="#hallando-ganancia-integral-k-i" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="n">Kd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">kis</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.05</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">-</span>2<span class="nb">j</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">kis</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kis</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">controlador</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Ki</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Kd</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">sistema</span><span class="o">*</span><span class="n">controlador</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">legend_info</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;Ki = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">Ki</span><span class="p">)];</span><span class="w"> </span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_</span><span class="p">{:})</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">40</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Salida en lazo cerrado&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_58_1.png" src="../_images/ELC07_Sintonización_58_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="hallando-ganancia-derivativa-k-d">
+<h2><span class="section-number">7.19. </span>3. Hallando Ganancia Derivativa <span class="math notranslate nohighlight">\(K_d\)</span><a class="headerlink" href="#hallando-ganancia-derivativa-k-d" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w"></span>
+<span class="n">kds</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mf">0.5</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">-</span>2<span class="nb">j</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">kds</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">Kd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kds</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">controlador</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Ki</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Kd</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">lazo_cerrado_</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">sistema</span><span class="o">*</span><span class="n">controlador</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">legend_info</span><span class="p">{</span><span class="n">index</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;Kd = &#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">Kd</span><span class="p">)];</span><span class="w"> </span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado_</span><span class="p">{:})</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">40</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Salida en lazo cerrado&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="n">legend_info</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_60_1.png" src="../_images/ELC07_Sintonización_60_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="sistema-sintonizado">
+<h2><span class="section-number">7.20. </span>Sistema Sintonizado<a class="headerlink" href="#sistema-sintonizado" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.55</span><span class="p">;</span><span class="w"></span>
+<span class="n">Kd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">-</span>2<span class="nb">j</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">controlador</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Ki</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Kd</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="n">lazo_cerrado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">sistema</span><span class="o">*</span><span class="n">controlador</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado</span><span class="p">)</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Salida en lazo cerrado&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_62_1.png" src="../_images/ELC07_Sintonización_62_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="sintonizacion-automatica-con-simulink">
+<h2><span class="section-number">7.21. </span>Sintonización Automática con Simulink<a class="headerlink" href="#sintonizacion-automatica-con-simulink" title="Permalink to this headline">¶</a></h2>
+<p>Para poder utilizar la sintonización automática con Simulink hace falta seguir los siguientes pasos:</p>
+</div>
+<div class="section" id="declarar-las-ganancias-en-el-workspace-de-matlab">
+<h2><span class="section-number">7.22. </span>1. Declarar las ganancias en el Workspace de Matlab<a class="headerlink" href="#declarar-las-ganancias-en-el-workspace-de-matlab" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">Kd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="construir-un-modelo-en-simulink-utilizando-un-controlador-pid-con-los-bloques-basicos">
+<h2><span class="section-number">7.23. </span>2. Construir un modelo en Simulink utilizando un controlador PID con los bloques básicos<a class="headerlink" href="#construir-un-modelo-en-simulink-utilizando-un-controlador-pid-con-los-bloques-basicos" title="Permalink to this headline">¶</a></h2>
+<p>Aclaraciónes importantes:</p>
+<ol class="simple">
+<li><p>No utilizar el bloque PID que viene por defecto con Simulink porque no es compatible con la herramienta que se utilizará después</p></li>
+<li><p>Los valores de las ganancias tienen que ser los mismos nombres de las variables definidos previamente en matlab</p></li>
+<li><p>La función de transferencia tiene que definirse utilizando numerador y denominador. Si sólo se tienen los ceros y polos, usar la función <strong><code class="docutils literal notranslate"><span class="pre">zp2tf</span></code></strong> como se muestra acontinuación</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">-</span>2<span class="nb">j</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<center><img src="../_static/sintonization/image_05.png"></center></div>
+<div class="section" id="agregar-verificacion-de-caracteristicas">
+<h2><span class="section-number">7.24. </span>3. Agregar Verificación de Características<a class="headerlink" href="#agregar-verificacion-de-caracteristicas" title="Permalink to this headline">¶</a></h2>
+<p>Conectar el bloque <strong>Check Step Response Characteristics</strong> que está dentro de <strong>Simulink Design Optimization -&gt; Model Verification</strong> y agregarlo a la salida del sistema</p>
+<center><img src="../_static/sintonization/image_06.png"></center>
+<center><img src="../_static/sintonization/image_07.png"></center></div>
+<div class="section" id="abrir-el-bloque-y-configurar-los-requisitos-del-sistema-y-presionar-apply">
+<h2><span class="section-number">7.25. </span>4. Abrir el bloque y configurar los requisitos del sistema y presionar <code class="docutils literal notranslate"><span class="pre">Apply</span></code><a class="headerlink" href="#abrir-el-bloque-y-configurar-los-requisitos-del-sistema-y-presionar-apply" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/sintonization/image_08.png"></center></div>
+<div class="section" id="presionar-el-boton-response-optimization-y-agregar-nuevas-variables-de-diseno">
+<h2><span class="section-number">7.26. </span>5. Presionar el botón <strong><code class="docutils literal notranslate"><span class="pre">Response</span> <span class="pre">Optimization</span></code></strong> y agregar nuevas variables de diseño<a class="headerlink" href="#presionar-el-boton-response-optimization-y-agregar-nuevas-variables-de-diseno" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/sintonization/image_09.png"></center>
+<p><strong>Seleccionar las tres ganancias en la lista de la derecha y pasarlas a la de la izquiera con el botón de la flecha y presionar <code class="docutils literal notranslate"><span class="pre">OK</span></code></strong></p>
+<center><img src="../_static/sintonization/image_10.png"></center>
+<p><strong>Asegurarse que los límites de las ganancias sean correctos, en este caso el enunciado especificaba límites máximos, pero las ganancias no deberían ser nunca negativas, así que el valor minimo debería ser 0.</strong></p>
+<center><img src="../_static/sintonization/image_11.png"></center></div>
+<div class="section" id="elegir-el-conjunto-de-variables-de-diseno-y-agregar-el-grafico-de-evolucion-historica">
+<h2><span class="section-number">7.27. </span>6. Elegir el conjunto de variables de diseño y agregar el gráfico de evolución histórica<a class="headerlink" href="#elegir-el-conjunto-de-variables-de-diseno-y-agregar-el-grafico-de-evolucion-historica" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/sintonization/image_12.png"></center>
+<center><img src="../_static/sintonization/image_13.png"></center></div>
+<div class="section" id="ejecutar-la-simulacion-y-validar-que-no-se-cumplen-los-requisitos-de-diseno">
+<h2><span class="section-number">7.28. </span>7. Ejecutar la simulación y validar que no se cumplen los requisitos de diseño<a class="headerlink" href="#ejecutar-la-simulacion-y-validar-que-no-se-cumplen-los-requisitos-de-diseno" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/sintonization/image_14.png"></center>
+<p><strong>Los requisitos se cumplen si toda la gráfica azul está dentro de la zona blanca</strong></p>
+<center><img src="../_static/sintonization/image_15.png"></center></div>
+<div class="section" id="acomodar-las-ventanas-de-los-graficos-y-presionar-optimize">
+<h2><span class="section-number">7.29. </span>8. Acomodar las ventanas de los gráficos y presionar <strong><code class="docutils literal notranslate"><span class="pre">Optimize</span></code></strong><a class="headerlink" href="#acomodar-las-ventanas-de-los-graficos-y-presionar-optimize" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/sintonization/image_16.png"></center>
+<center><img src="../_static/sintonization/image_17.png"></center></div>
+<div class="section" id="esperar-a-que-la-optimizacion-converga">
+<h2><span class="section-number">7.30. </span>9. Esperar a que la optimización converga<a class="headerlink" href="#esperar-a-que-la-optimizacion-converga" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/sintonization/image_18.png"></center></div>
+<div class="section" id="guardar-los-valores-obtenidos">
+<h2><span class="section-number">7.31. </span>10. Guardar los valores obtenidos<a class="headerlink" href="#guardar-los-valores-obtenidos" title="Permalink to this headline">¶</a></h2>
+<p>Una vez finalizada la optimización los valores de las variables optimizadas se podrán ver en la sección de <code class="docutils literal notranslate"><span class="pre">MATLAB</span> <span class="pre">Workspace</span></code>, las variables fueron automáticamente guardadas pero es recomendable agregar los valores en el código que estemos usando para tener un respaldo.</p>
+<center><img src="../_static/sintonization/image_19.png"></center></div>
+<div class="section" id="id8">
+<h2><span class="section-number">7.32. </span>Sistema Sintonizado<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>En este caso puede comprobarse que los valores obtenidos automáticamente son muy similares a los hallados con el enfoque de fuerza bruta.</p>
+<p>A diferencia de otros métodos, en este caso uno no necesita explicitar si el controlador a utilizar será P, PD, PI o PID. Si el coeficiente es nulo, ese componente de control no se utiliza.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Kd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">Ki</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5637</span><span class="p">;</span><span class="w"></span>
+<span class="n">Kp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+<span class="n">polos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">+</span>2<span class="nb">j</span><span class="w"> </span><span class="o">-</span><span class="mf">2.5</span><span class="o">-</span>2<span class="nb">j</span><span class="p">];</span><span class="w"></span>
+<span class="p">[</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">zp2tf</span><span class="p">(</span><span class="n">ceros</span><span class="p">,</span><span class="w"> </span><span class="n">polos</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="n">sistema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">tf</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">den</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">controlador</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Kp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Ki</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Kd</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<span class="n">lazo_cerrado</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">feedback</span><span class="p">(</span><span class="n">sistema</span><span class="o">*</span><span class="n">controlador</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="w"></span>
+<span class="p">[</span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">step</span><span class="p">(</span><span class="n">lazo_cerrado</span><span class="p">);</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">respuesta</span><span class="p">)</span><span class="w"></span>
+<span class="nb">yline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--k&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">12</span><span class="p">])</span><span class="w"></span>
+<span class="nb">title</span><span class="p">(</span><span class="s">&quot;Salida en lazo cerrado&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC07_Sintonización_77_1.png" src="../_images/ELC07_Sintonización_77_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">stepResults</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">stepinfo</span><span class="p">(</span><span class="n">respuesta</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stepResults = 
+  struct with fields:
+
+        RiseTime: 5.6476
+    SettlingTime: 9.8380
+     SettlingMin: 0.9089
+     SettlingMax: 1.0086
+       Overshoot: 0
+      Undershoot: 0
+            Peak: 1.0086
+        PeakTime: 14.2181
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            kernelName: "matlab",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="ELC06_Controladores.html" title="previous page"><span class="section-number">6. </span>Controladores</a>
+    <a class='right-next' id="next-link" href="ELC08_Bode.html" title="next page"><span class="section-number">8. </span>Diagramas de Bode</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ezequiel Leonardo Castaño<br/>
+        
+            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

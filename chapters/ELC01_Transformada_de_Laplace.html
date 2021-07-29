@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Introducción a la Teoría de Control Con Matlab &#8212; Teoría de Control con Matlab</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/justify.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/analytics.js"></script>
+    <script src="../_static/analytics_gtag.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC01_Transformada_de_Laplace.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Función de Transferencia" href="ELC02_Funcion_de_transferencia.html" />
+    <link rel="prev" title="Teoría de Control con Matlab" href="../README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Introducción a la Teoría de Control Con Matlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC02_Funcion_de_transferencia.html">
+   2. Función de Transferencia
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC03_Sistemas_Primer_Orden.html">
+   3. Sistemas de Primer Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC04_Sistemas_Segundo_Orden.html">
+   4. Sistemas de Segundo Orden
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC05_Root_Locus.html">
+   5. Root Locus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC06_Controladores.html">
+   6. Controladores
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC07_Sintonizaci%C3%B3n.html">
+   7. Sintonización
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC08_Bode.html">
+   8. Diagramas de Bode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ELC09_Nyquist.html">
+   9. Diagrama de Nyquist
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapters/ELC01_Transformada_de_Laplace.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Chapter Index
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transformada-de-laplace">
+   1.1. Transformada de Laplace
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion">
+     1.1.1. Definición
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#desarrollo">
+     1.1.2. Desarrollo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propiedades">
+   1.2. Propiedades
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linearidad">
+     1.2.1. Linearidad
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retraso-o-delay">
+     1.2.2. Retraso o Delay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#derivada">
+     1.2.3. Derivada
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integral">
+     1.2.4. Integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#teorema-del-valor-inicial">
+     1.2.5. Teorema del valor inicial
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#teorema-del-valor-final">
+     1.2.6. Teorema del valor final}
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convolucion">
+     1.2.7. Convolución
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transformaciones-comunes">
+   1.3. Transformaciones comunes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-impulso">
+     1.3.1. Función impulso
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-escalon">
+     1.3.2. Función escalón
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-rampa">
+     1.3.3. Función rampa
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-exponencial">
+     1.3.4. Función exponencial
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#laplace-en-matlab">
+   1.4. Laplace en Matlab
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#escalon">
+     1.4.1. Escalón
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-grafico">
+       1.4.1.1. Ejemplo Gráfico
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rampa">
+     1.4.2. Rampa
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       1.4.2.1. Ejemplo Gráfico
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponencial">
+     1.4.3. Exponencial
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       1.4.3.1. Ejemplo Gráfico
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     1.4.4. Derivada
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios">
+   1.5. Ejercicios
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-general-de-un-ejercicio">
+     1.5.1. Estructura General de un ejercicio
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicios-adicionales">
+     1.5.2. Ejercicios Adicionales
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduccion-a-la-teoria-de-control-con-matlab">
+<h1><span class="section-number">1. </span>Introducción a la Teoría de Control Con Matlab<a class="headerlink" href="#introduccion-a-la-teoria-de-control-con-matlab" title="Permalink to this headline">¶</a></h1>
+<p>Version 0.1</p>
+<p><code class="docutils literal notranslate"><span class="pre">Contenido</span> <span class="pre">Original</span> <span class="pre">creado</span> <span class="pre">por</span> <span class="pre">Ezequiel</span> <span class="pre">Leonardo</span> <span class="pre">Castaño</span></code></p>
+<p><font color='Firebrick'>Este contenido está en <b>BORRADOR</b> y puede estar incompleto y/o sufrir modificaciones</font></p>
+<hr class="docutils" />
+<p>Enlaces Útiles:</p>
+<ul class="simple">
+<li><p>Los demás capítulos pueden encontrarse en el <a class="reference external" href="https://elc.github.io/control">homepage</a>.</p></li>
+<li><p>El repositorio completo está disponible en Github como <a class="reference external" href="https://github.com/ELC/control-theory-with-matlab">Control Theory With Matlab</a></p></li>
+<li><p>Ante dudas y sugerencias, no dudes en utilizar los <a class="reference external" href="https://github.com/ELC/control-theory-with-matlab/issues">Github Issues</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="w"> </span><span class="n">compact</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="transformada-de-laplace">
+<h2><span class="section-number">1.1. </span>Transformada de Laplace<a class="headerlink" href="#transformada-de-laplace" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definicion">
+<h3><span class="section-number">1.1.1. </span>Definición<a class="headerlink" href="#definicion" title="Permalink to this headline">¶</a></h3>
+<p>La transformada de Laplace es una <strong>generalización</strong> de la transformada de Fourier</p>
+<p>La transformada de Fourier convierte una función del <strong>dominio del tiempo</strong> al <strong>dominio de la frecuencia</strong></p>
+<div class="math notranslate nohighlight">
+\[X(\omega )=\int_{-\infty }^{\infty } x(t)e^{-j\omega t} dt\]</div>
+<p>El término <span class="math notranslate nohighlight">\(e^{-j\omega t}\)</span> es la forma exponencial de una función senoidal, donde <span class="math notranslate nohighlight">\(j\)</span> representa a la unidad imaginaria. Sin embargo, esta transformación resulta bastante restrictiva ya que no hay componentes exponenciales puras.</p>
+<p>Para añadir un componente exponencial, se agrega un factor exponencial a la función <span class="math notranslate nohighlight">\(x(t)\)</span>quedando:</p>
+<div class="math notranslate nohighlight">
+\[X(\sigma ,\omega )=\int_{-\infty }^{\infty } [x(t)\cdot e^{-\sigma t} ]e^{-j\omega t} dt\]</div>
+</div>
+<div class="section" id="desarrollo">
+<h3><span class="section-number">1.1.2. </span>Desarrollo<a class="headerlink" href="#desarrollo" title="Permalink to this headline">¶</a></h3>
+<p>Al trabajar algebraicamente se tiene</p>
+<div class="math notranslate nohighlight">
+\[X(\sigma ,\omega )=\int_{-\infty }^{\infty } x(t)\cdot [e^{-\sigma t} \cdot e^{-j\omega t} ]dt\]</div>
+<div class="math notranslate nohighlight">
+\[X(\sigma ,\omega )=\int_{-\infty }^{\infty } x(t)\cdot e^{-\sigma t-j\omega t} dt\]</div>
+<div class="math notranslate nohighlight">
+\[X(\sigma ,\omega )=\int_{-\infty }^{\infty } x(t)\cdot e^{-(\sigma -j\omega )t} dt\]</div>
+<p>Y luego se reemplaza a la expresión <span class="math notranslate nohighlight">\(\sigma -j\omega\)</span> por una nueva variable compleja llamada <span class="math notranslate nohighlight">\(s\)</span>, donde <span class="math notranslate nohighlight">\(\sigma\)</span> es la parte real y <span class="math notranslate nohighlight">\(\omega\)</span> la parte imaginaria, este nuevo dominio diferente del tiempo se conoce como <strong>plano</strong> <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[X(s)=\int_{-\infty }^{\infty } x(t)e^{-st} dt\]</div>
+<p>Esta forma de expresar a la función <span class="math notranslate nohighlight">\(x(t)\)</span> como <span class="math notranslate nohighlight">\(X(s)\)</span>es lo que se conoce como transformada de Laplace, símbolicamente se representa</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace x(t)\rbrace =X(s)\]</div>
+<p>Análogamente para la transformación inversa</p>
+<div class="math notranslate nohighlight">
+\[{\mathcal{L}}^{-1} \lbrace X(s)\rbrace =x(t)\]</div>
+</div>
+</div>
+<div class="section" id="propiedades">
+<h2><span class="section-number">1.2. </span>Propiedades<a class="headerlink" href="#propiedades" title="Permalink to this headline">¶</a></h2>
+<p>Algunas de las propiedades de la transformada de Laplace son</p>
+<div class="section" id="linearidad">
+<h3><span class="section-number">1.2.1. </span>Linearidad<a class="headerlink" href="#linearidad" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace a\cdot f(t)+b\cdot g(t)\rbrace =a\cdot F(s)+b\cdot G(s)\]</div>
+</div>
+<div class="section" id="retraso-o-delay">
+<h3><span class="section-number">1.2.2. </span>Retraso o Delay<a class="headerlink" href="#retraso-o-delay" title="Permalink to this headline">¶</a></h3>
+<p>Dada una función escalón definida por <span class="math notranslate nohighlight">\(\gamma (t-a)=\left\lbrace \begin{array}{lcc}
+0 &amp; si &amp; x\le a\\
+1 &amp; si &amp; x\ge a
+\end{array}\right.\)</span></p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace f(t-a)\cdot \gamma (t-a)\rbrace =e^{-as} \cdot F(s)\]</div>
+</div>
+<div class="section" id="derivada">
+<h3><span class="section-number">1.2.3. </span>Derivada<a class="headerlink" href="#derivada" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace f^{^{\prime } } (t)\rbrace =s\cdot F(s)-f(0)\]</div>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace f^{^{\prime \prime } } (t)\rbrace =s^2 \cdot F(s)-s\cdot f(0)-f^{^{\prime } } (0)\]</div>
+</div>
+<div class="section" id="integral">
+<h3><span class="section-number">1.2.4. </span>Integral<a class="headerlink" href="#integral" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace \int_0^t f(t)dt\rbrace =\frac{1}{s}\mathcal{L}\lbrace f(t)\rbrace\]</div>
+</div>
+<div class="section" id="teorema-del-valor-inicial">
+<h3><span class="section-number">1.2.5. </span>Teorema del valor inicial<a class="headerlink" href="#teorema-del-valor-inicial" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\lim_{s\to \infty } (s\cdot F(s))=\lim_{t\to 0} f(t)\]</div>
+</div>
+<div class="section" id="teorema-del-valor-final">
+<h3><span class="section-number">1.2.6. </span>Teorema del valor final}<a class="headerlink" href="#teorema-del-valor-final" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\lim_{s\to 0} (s\cdot F(s))=\lim_{t\to \infty } f(t)\]</div>
+</div>
+<div class="section" id="convolucion">
+<h3><span class="section-number">1.2.7. </span>Convolución<a class="headerlink" href="#convolucion" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace f(t)*g(t)\rbrace =F(s)\cdot G(s)\]</div>
+<p>La operación convolución puede verse gráficamente en esta animación (<a class="reference external" href="https://en.wikipedia.org/wiki/Convolution">Fuente</a>)</p>
+<center>
+<img src="../_static/convolution.png">
+</center></div>
+</div>
+<div class="section" id="transformaciones-comunes">
+<h2><span class="section-number">1.3. </span>Transformaciones comunes<a class="headerlink" href="#transformaciones-comunes" title="Permalink to this headline">¶</a></h2>
+<p>Normalemente en lugar de hacer la integral, que puede llevar mucho tiempo, se recurre a tablas que tienen las transformadas pre-calculadas. Algunas de las transformadas más comunes son:</p>
+<div class="section" id="funcion-impulso">
+<h3><span class="section-number">1.3.1. </span>Función impulso<a class="headerlink" href="#funcion-impulso" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace \delta (c)\rbrace =c\]</div>
+</div>
+<div class="section" id="funcion-escalon">
+<h3><span class="section-number">1.3.2. </span>Función escalón<a class="headerlink" href="#funcion-escalon" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace c\rbrace =\frac{c}{s}\]</div>
+</div>
+<div class="section" id="funcion-rampa">
+<h3><span class="section-number">1.3.3. </span>Función rampa<a class="headerlink" href="#funcion-rampa" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace c\cdot t\rbrace =\frac{c}{s^2 }\]</div>
+</div>
+<div class="section" id="funcion-exponencial">
+<h3><span class="section-number">1.3.4. </span>Función exponencial<a class="headerlink" href="#funcion-exponencial" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}\lbrace e^{a\cdot t} \rbrace =\frac{1}{s-a}\]</div>
+</div>
+</div>
+<div class="section" id="laplace-en-matlab">
+<h2><span class="section-number">1.4. </span>Laplace en Matlab<a class="headerlink" href="#laplace-en-matlab" title="Permalink to this headline">¶</a></h2>
+<p>Definimos los símbolos a utilizar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&quot;t&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;positive&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A continuación se muestran algunos ejemplos con sus transformadas y antitransformadas</p>
+<div class="section" id="escalon">
+<h3><span class="section-number">1.4.1. </span>Escalón<a class="headerlink" href="#escalon" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="n">transformada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">funcion</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada =
+a/s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">transformada_inversa</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada_inversa =
+a
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ejemplo-grafico">
+<h4><span class="section-number">1.4.1.1. </span>Ejemplo Gráfico<a class="headerlink" href="#ejemplo-grafico" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f(t)</span><span class="w"> </span><span class="s">g(t)</span><span class="w"> </span><span class="s">h(t)</span><span class="p">;</span><span class="w"></span>
+<span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">g</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w"></span>
+<span class="n">h</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"></span>
+<span class="nb">fplot</span><span class="p">([</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">2.5</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;a=1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a=0.5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a=2&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC01_Transformada_de_Laplace_18_1.png" src="../_images/ELC01_Transformada_de_Laplace_18_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="rampa">
+<h3><span class="section-number">1.4.2. </span>Rampa<a class="headerlink" href="#rampa" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="n">transformada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">funcion</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada =
+a/s^2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">transformada_inversa</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada_inversa =
+a*t
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4><span class="section-number">1.4.2.1. </span>Ejemplo Gráfico<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f(t)</span><span class="w"> </span><span class="s">g(t)</span><span class="w"> </span><span class="s">h(t)</span><span class="p">;</span><span class="w"></span>
+<span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="n">g</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="n">h</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"></span>
+<span class="nb">fplot</span><span class="p">([</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;a=1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a=0.5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a=2&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC01_Transformada_de_Laplace_23_1.png" src="../_images/ELC01_Transformada_de_Laplace_23_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exponencial">
+<h3><span class="section-number">1.4.3. </span>Exponencial<a class="headerlink" href="#exponencial" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="n">transformada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">funcion</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada =
+1/(a + s)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">transformada_inversa</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada_inversa =
+exp(-a*t)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4><span class="section-number">1.4.3.1. </span>Ejemplo Gráfico<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f(t)</span><span class="w"> </span><span class="s">g(t)</span><span class="w"> </span><span class="s">h(t)</span><span class="p">;</span><span class="w"></span>
+<span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="n">g</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="n">h</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="p">;</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"></span>
+<span class="nb">fplot</span><span class="p">([</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="p">])</span><span class="w"></span>
+<span class="nb">ylim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mf">1.25</span><span class="p">])</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="nb">legend</span><span class="p">(</span><span class="s">&quot;a=1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a=0.5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a=2&quot;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../_images/ELC01_Transformada_de_Laplace_28_1.png" src="../_images/ELC01_Transformada_de_Laplace_28_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">1.4.4. </span>Derivada<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f(t)</span><span class="p">;</span><span class="w"></span>
+<span class="n">derivada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diff</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="n">transformada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="n">derivada</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada =
+s*laplace(f(t), t, s) - 1*f(0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">transformada_inversa</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada_inversa =
+diff(f(t), t)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">integral</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">int</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="n">transformada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">laplace</span><span class="p">(</span><span class="nb">integral</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada =
+laplace(int(f(t), t, 0, t), t, s)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">transformada_inversa</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ilaplace</span><span class="p">(</span><span class="n">transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transformada_inversa =
+int(f(t), t, 0, t)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicios">
+<h2><span class="section-number">1.5. </span>Ejercicios<a class="headerlink" href="#ejercicios" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="estructura-general-de-un-ejercicio">
+<h3><span class="section-number">1.5.1. </span>Estructura General de un ejercicio<a class="headerlink" href="#estructura-general-de-un-ejercicio" title="Permalink to this headline">¶</a></h3>
+<p>Se define una función cuya antitransformada se desea calcular</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion_transformada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">((</span><span class="n">s</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>funcion_transformada =
+12/((s + 1)*(s - 3))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se utiliza la función partfrac para separar en fracciones parciales</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fracciones_parciales</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">partfrac</span><span class="p">(</span><span class="n">funcion_transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fracciones_parciales =
+3/(s - 3) - 3/(s + 1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se calcula la antitransformada a las fracciones parciales</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ilaplace</span><span class="p">(</span><span class="n">fracciones_parciales</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+3*exp(3*t) - 3*exp(-t)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se verifica haciendo la antitransformada de la función original</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ilaplace</span><span class="p">(</span><span class="n">funcion_transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+3*exp(3*t) - 3*exp(-t)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicios-adicionales">
+<h3><span class="section-number">1.5.2. </span>Ejercicios Adicionales<a class="headerlink" href="#ejercicios-adicionales" title="Permalink to this headline">¶</a></h3>
+<p>Ejercicio 1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion_transformada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>funcion_transformada =
+4/(s^2 - 9)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fracciones_parciales</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">partfrac</span><span class="p">(</span><span class="n">funcion_transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fracciones_parciales =
+0.6667/(s - 3) - 0.6667/(s + 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ilaplace</span><span class="p">(</span><span class="n">fracciones_parciales</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+0.6667*exp(3*t) - 0.6667*exp(-3*t)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ejercicio 2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion_transformada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">s</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>^<span class="mi">2</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>funcion_transformada =
+(s^2 + 2*s + 3)/(s + 1)^2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fracciones_parciales</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">partfrac</span><span class="p">(</span><span class="n">funcion_transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fracciones_parciales =
+2/(s + 1)^2 + 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ilaplace</span><span class="p">(</span><span class="n">fracciones_parciales</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+2*t*exp(-t)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ejercicio 3</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion_transformada</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">s</span>^<span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="mi">3</span><span class="p">))</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>funcion_transformada =
+(5*s + 10)/(s^2*(s + 1)*(s + 3))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fracciones_parciales</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">partfrac</span><span class="p">(</span><span class="n">funcion_transformada</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fracciones_parciales =
+2.5000/(s + 1) + 0.2778/(s + 3) - 2.7778/s + 3.3333/s^2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ilaplace</span><span class="p">(</span><span class="n">fracciones_parciales</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+3.3333*t + 2.5000*exp(-t) + 0.2778*exp(-3*t) - 2.7778
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            kernelName: "matlab",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../README.html" title="previous page">Teoría de Control con Matlab</a>
+    <a class='right-next' id="next-link" href="ELC02_Funcion_de_transferencia.html" title="next page"><span class="section-number">2. </span>Función de Transferencia</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ezequiel Leonardo Castaño<br/>
+        
+            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
