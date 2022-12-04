@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1. Introducción a la Teoría de Control Con Matlab &#8212; Teoría de Control con Matlab</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,52 +20,68 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/justify.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/analytics.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/analytics_gtag.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/analytics.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC01_Transformada_de_Laplace.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. Función de Transferencia" href="ELC02_Funcion_de_transferencia.html" />
     <link rel="prev" title="Teoría de Control con Matlab" href="../README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,10 +90,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
@@ -84,7 +104,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
@@ -135,12 +155,17 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -148,61 +173,117 @@
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapters/ELC01_Transformada_de_Laplace.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chapters/ELC01_Transformada_de_Laplace.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Chapter Index
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Chapter Index
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#transformada-de-laplace">
    1.1. Transformada de Laplace
@@ -356,17 +437,186 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introducción a la Teoría de Control Con Matlab</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Chapter Index </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transformada-de-laplace">
+   1.1. Transformada de Laplace
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion">
+     1.1.1. Definición
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#desarrollo">
+     1.1.2. Desarrollo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propiedades">
+   1.2. Propiedades
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linearidad">
+     1.2.1. Linearidad
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retraso-o-delay">
+     1.2.2. Retraso o Delay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#derivada">
+     1.2.3. Derivada
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integral">
+     1.2.4. Integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#teorema-del-valor-inicial">
+     1.2.5. Teorema del valor inicial
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#teorema-del-valor-final">
+     1.2.6. Teorema del valor final}
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convolucion">
+     1.2.7. Convolución
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transformaciones-comunes">
+   1.3. Transformaciones comunes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-impulso">
+     1.3.1. Función impulso
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-escalon">
+     1.3.2. Función escalón
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-rampa">
+     1.3.3. Función rampa
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-exponencial">
+     1.3.4. Función exponencial
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#laplace-en-matlab">
+   1.4. Laplace en Matlab
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#escalon">
+     1.4.1. Escalón
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-grafico">
+       1.4.1.1. Ejemplo Gráfico
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rampa">
+     1.4.2. Rampa
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       1.4.2.1. Ejemplo Gráfico
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponencial">
+     1.4.3. Exponencial
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       1.4.3.1. Ejemplo Gráfico
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     1.4.4. Derivada
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios">
+   1.5. Ejercicios
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-general-de-un-ejercicio">
+     1.5.1. Estructura General de un ejercicio
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicios-adicionales">
+     1.5.2. Ejercicios Adicionales
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="introduccion-a-la-teoria-de-control-con-matlab">
-<h1><span class="section-number">1. </span>Introducción a la Teoría de Control Con Matlab<a class="headerlink" href="#introduccion-a-la-teoria-de-control-con-matlab" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-la-teoria-de-control-con-matlab">
+<h1><span class="section-number">1. </span>Introducción a la Teoría de Control Con Matlab<a class="headerlink" href="#introduccion-a-la-teoria-de-control-con-matlab" title="Permalink to this headline">#</a></h1>
 <p>Version 0.1</p>
 <p><code class="docutils literal notranslate"><span class="pre">Contenido</span> <span class="pre">Original</span> <span class="pre">creado</span> <span class="pre">por</span> <span class="pre">Ezequiel</span> <span class="pre">Leonardo</span> <span class="pre">Castaño</span></code></p>
 <p><font color='Firebrick'>Este contenido está en <b>BORRADOR</b> y puede estar incompleto y/o sufrir modificaciones</font></p>
@@ -396,10 +646,10 @@
 </div>
 </div>
 </div>
-<div class="section" id="transformada-de-laplace">
-<h2><span class="section-number">1.1. </span>Transformada de Laplace<a class="headerlink" href="#transformada-de-laplace" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="definicion">
-<h3><span class="section-number">1.1.1. </span>Definición<a class="headerlink" href="#definicion" title="Permalink to this headline">¶</a></h3>
+<section id="transformada-de-laplace">
+<h2><span class="section-number">1.1. </span>Transformada de Laplace<a class="headerlink" href="#transformada-de-laplace" title="Permalink to this headline">#</a></h2>
+<section id="definicion">
+<h3><span class="section-number">1.1.1. </span>Definición<a class="headerlink" href="#definicion" title="Permalink to this headline">#</a></h3>
 <p>La transformada de Laplace es una <strong>generalización</strong> de la transformada de Fourier</p>
 <p>La transformada de Fourier convierte una función del <strong>dominio del tiempo</strong> al <strong>dominio de la frecuencia</strong></p>
 <div class="math notranslate nohighlight">
@@ -408,9 +658,9 @@
 <p>Para añadir un componente exponencial, se agrega un factor exponencial a la función <span class="math notranslate nohighlight">\(x(t)\)</span>quedando:</p>
 <div class="math notranslate nohighlight">
 \[X(\sigma ,\omega )=\int_{-\infty }^{\infty } [x(t)\cdot e^{-\sigma t} ]e^{-j\omega t} dt\]</div>
-</div>
-<div class="section" id="desarrollo">
-<h3><span class="section-number">1.1.2. </span>Desarrollo<a class="headerlink" href="#desarrollo" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="desarrollo">
+<h3><span class="section-number">1.1.2. </span>Desarrollo<a class="headerlink" href="#desarrollo" title="Permalink to this headline">#</a></h3>
 <p>Al trabajar algebraicamente se tiene</p>
 <div class="math notranslate nohighlight">
 \[X(\sigma ,\omega )=\int_{-\infty }^{\infty } x(t)\cdot [e^{-\sigma t} \cdot e^{-j\omega t} ]dt\]</div>
@@ -427,82 +677,82 @@
 <p>Análogamente para la transformación inversa</p>
 <div class="math notranslate nohighlight">
 \[{\mathcal{L}}^{-1} \lbrace X(s)\rbrace =x(t)\]</div>
-</div>
-</div>
-<div class="section" id="propiedades">
-<h2><span class="section-number">1.2. </span>Propiedades<a class="headerlink" href="#propiedades" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="propiedades">
+<h2><span class="section-number">1.2. </span>Propiedades<a class="headerlink" href="#propiedades" title="Permalink to this headline">#</a></h2>
 <p>Algunas de las propiedades de la transformada de Laplace son</p>
-<div class="section" id="linearidad">
-<h3><span class="section-number">1.2.1. </span>Linearidad<a class="headerlink" href="#linearidad" title="Permalink to this headline">¶</a></h3>
+<section id="linearidad">
+<h3><span class="section-number">1.2.1. </span>Linearidad<a class="headerlink" href="#linearidad" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace a\cdot f(t)+b\cdot g(t)\rbrace =a\cdot F(s)+b\cdot G(s)\]</div>
-</div>
-<div class="section" id="retraso-o-delay">
-<h3><span class="section-number">1.2.2. </span>Retraso o Delay<a class="headerlink" href="#retraso-o-delay" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="retraso-o-delay">
+<h3><span class="section-number">1.2.2. </span>Retraso o Delay<a class="headerlink" href="#retraso-o-delay" title="Permalink to this headline">#</a></h3>
 <p>Dada una función escalón definida por <span class="math notranslate nohighlight">\(\gamma (t-a)=\left\lbrace \begin{array}{lcc}
 0 &amp; si &amp; x\le a\\
 1 &amp; si &amp; x\ge a
 \end{array}\right.\)</span></p>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace f(t-a)\cdot \gamma (t-a)\rbrace =e^{-as} \cdot F(s)\]</div>
-</div>
-<div class="section" id="derivada">
-<h3><span class="section-number">1.2.3. </span>Derivada<a class="headerlink" href="#derivada" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="derivada">
+<h3><span class="section-number">1.2.3. </span>Derivada<a class="headerlink" href="#derivada" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace f^{^{\prime } } (t)\rbrace =s\cdot F(s)-f(0)\]</div>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace f^{^{\prime \prime } } (t)\rbrace =s^2 \cdot F(s)-s\cdot f(0)-f^{^{\prime } } (0)\]</div>
-</div>
-<div class="section" id="integral">
-<h3><span class="section-number">1.2.4. </span>Integral<a class="headerlink" href="#integral" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="integral">
+<h3><span class="section-number">1.2.4. </span>Integral<a class="headerlink" href="#integral" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace \int_0^t f(t)dt\rbrace =\frac{1}{s}\mathcal{L}\lbrace f(t)\rbrace\]</div>
-</div>
-<div class="section" id="teorema-del-valor-inicial">
-<h3><span class="section-number">1.2.5. </span>Teorema del valor inicial<a class="headerlink" href="#teorema-del-valor-inicial" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="teorema-del-valor-inicial">
+<h3><span class="section-number">1.2.5. </span>Teorema del valor inicial<a class="headerlink" href="#teorema-del-valor-inicial" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\lim_{s\to \infty } (s\cdot F(s))=\lim_{t\to 0} f(t)\]</div>
-</div>
-<div class="section" id="teorema-del-valor-final">
-<h3><span class="section-number">1.2.6. </span>Teorema del valor final}<a class="headerlink" href="#teorema-del-valor-final" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="teorema-del-valor-final">
+<h3><span class="section-number">1.2.6. </span>Teorema del valor final}<a class="headerlink" href="#teorema-del-valor-final" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\lim_{s\to 0} (s\cdot F(s))=\lim_{t\to \infty } f(t)\]</div>
-</div>
-<div class="section" id="convolucion">
-<h3><span class="section-number">1.2.7. </span>Convolución<a class="headerlink" href="#convolucion" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="convolucion">
+<h3><span class="section-number">1.2.7. </span>Convolución<a class="headerlink" href="#convolucion" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace f(t)*g(t)\rbrace =F(s)\cdot G(s)\]</div>
 <p>La operación convolución puede verse gráficamente en esta animación (<a class="reference external" href="https://en.wikipedia.org/wiki/Convolution">Fuente</a>)</p>
 <center>
 <img src="../_static/convolution.png">
-</center></div>
-</div>
-<div class="section" id="transformaciones-comunes">
-<h2><span class="section-number">1.3. </span>Transformaciones comunes<a class="headerlink" href="#transformaciones-comunes" title="Permalink to this headline">¶</a></h2>
+</center></section>
+</section>
+<section id="transformaciones-comunes">
+<h2><span class="section-number">1.3. </span>Transformaciones comunes<a class="headerlink" href="#transformaciones-comunes" title="Permalink to this headline">#</a></h2>
 <p>Normalemente en lugar de hacer la integral, que puede llevar mucho tiempo, se recurre a tablas que tienen las transformadas pre-calculadas. Algunas de las transformadas más comunes son:</p>
-<div class="section" id="funcion-impulso">
-<h3><span class="section-number">1.3.1. </span>Función impulso<a class="headerlink" href="#funcion-impulso" title="Permalink to this headline">¶</a></h3>
+<section id="funcion-impulso">
+<h3><span class="section-number">1.3.1. </span>Función impulso<a class="headerlink" href="#funcion-impulso" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace \delta (c)\rbrace =c\]</div>
-</div>
-<div class="section" id="funcion-escalon">
-<h3><span class="section-number">1.3.2. </span>Función escalón<a class="headerlink" href="#funcion-escalon" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="funcion-escalon">
+<h3><span class="section-number">1.3.2. </span>Función escalón<a class="headerlink" href="#funcion-escalon" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace c\rbrace =\frac{c}{s}\]</div>
-</div>
-<div class="section" id="funcion-rampa">
-<h3><span class="section-number">1.3.3. </span>Función rampa<a class="headerlink" href="#funcion-rampa" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="funcion-rampa">
+<h3><span class="section-number">1.3.3. </span>Función rampa<a class="headerlink" href="#funcion-rampa" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace c\cdot t\rbrace =\frac{c}{s^2 }\]</div>
-</div>
-<div class="section" id="funcion-exponencial">
-<h3><span class="section-number">1.3.4. </span>Función exponencial<a class="headerlink" href="#funcion-exponencial" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="funcion-exponencial">
+<h3><span class="section-number">1.3.4. </span>Función exponencial<a class="headerlink" href="#funcion-exponencial" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}\lbrace e^{a\cdot t} \rbrace =\frac{1}{s-a}\]</div>
-</div>
-</div>
-<div class="section" id="laplace-en-matlab">
-<h2><span class="section-number">1.4. </span>Laplace en Matlab<a class="headerlink" href="#laplace-en-matlab" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="laplace-en-matlab">
+<h2><span class="section-number">1.4. </span>Laplace en Matlab<a class="headerlink" href="#laplace-en-matlab" title="Permalink to this headline">#</a></h2>
 <p>Definimos los símbolos a utilizar</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -519,8 +769,8 @@
 </div>
 </div>
 <p>A continuación se muestran algunos ejemplos con sus transformadas y antitransformadas</p>
-<div class="section" id="escalon">
-<h3><span class="section-number">1.4.1. </span>Escalón<a class="headerlink" href="#escalon" title="Permalink to this headline">¶</a></h3>
+<section id="escalon">
+<h3><span class="section-number">1.4.1. </span>Escalón<a class="headerlink" href="#escalon" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
@@ -548,8 +798,8 @@ a
 </div>
 </div>
 </div>
-<div class="section" id="ejemplo-grafico">
-<h4><span class="section-number">1.4.1.1. </span>Ejemplo Gráfico<a class="headerlink" href="#ejemplo-grafico" title="Permalink to this headline">¶</a></h4>
+<section id="ejemplo-grafico">
+<h4><span class="section-number">1.4.1.1. </span>Ejemplo Gráfico<a class="headerlink" href="#ejemplo-grafico" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f(t)</span><span class="w"> </span><span class="s">g(t)</span><span class="w"> </span><span class="s">h(t)</span><span class="p">;</span><span class="w"></span>
@@ -573,10 +823,10 @@ a
 <img alt="../_images/ELC01_Transformada_de_Laplace_18_1.png" src="../_images/ELC01_Transformada_de_Laplace_18_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="rampa">
-<h3><span class="section-number">1.4.2. </span>Rampa<a class="headerlink" href="#rampa" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="rampa">
+<h3><span class="section-number">1.4.2. </span>Rampa<a class="headerlink" href="#rampa" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
@@ -604,8 +854,8 @@ a*t
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h4><span class="section-number">1.4.2.1. </span>Ejemplo Gráfico<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<section id="id1">
+<h4><span class="section-number">1.4.2.1. </span>Ejemplo Gráfico<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f(t)</span><span class="w"> </span><span class="s">g(t)</span><span class="w"> </span><span class="s">h(t)</span><span class="p">;</span><span class="w"></span>
@@ -629,10 +879,10 @@ a*t
 <img alt="../_images/ELC01_Transformada_de_Laplace_23_1.png" src="../_images/ELC01_Transformada_de_Laplace_23_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="exponencial">
-<h3><span class="section-number">1.4.3. </span>Exponencial<a class="headerlink" href="#exponencial" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="exponencial">
+<h3><span class="section-number">1.4.3. </span>Exponencial<a class="headerlink" href="#exponencial" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">funcion</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
@@ -660,8 +910,8 @@ exp(-a*t)
 </div>
 </div>
 </div>
-<div class="section" id="id2">
-<h4><span class="section-number">1.4.3.1. </span>Ejemplo Gráfico<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<section id="id2">
+<h4><span class="section-number">1.4.3.1. </span>Ejemplo Gráfico<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f(t)</span><span class="w"> </span><span class="s">g(t)</span><span class="w"> </span><span class="s">h(t)</span><span class="p">;</span><span class="w"></span>
@@ -685,10 +935,10 @@ exp(-a*t)
 <img alt="../_images/ELC01_Transformada_de_Laplace_28_1.png" src="../_images/ELC01_Transformada_de_Laplace_28_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id3">
-<h3><span class="section-number">1.4.4. </span>Derivada<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="id3">
+<h3><span class="section-number">1.4.4. </span>Derivada<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">f(t)</span><span class="p">;</span><span class="w"></span>
@@ -744,10 +994,10 @@ int(f(t), t, 0, t)
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="ejercicios">
-<h2><span class="section-number">1.5. </span>Ejercicios<a class="headerlink" href="#ejercicios" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="ejercicios">
+<h2><span class="section-number">1.5. </span>Ejercicios<a class="headerlink" href="#ejercicios" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">);</span><span class="w"></span>
@@ -760,8 +1010,8 @@ int(f(t), t, 0, t)
 </div>
 </div>
 </div>
-<div class="section" id="estructura-general-de-un-ejercicio">
-<h3><span class="section-number">1.5.1. </span>Estructura General de un ejercicio<a class="headerlink" href="#estructura-general-de-un-ejercicio" title="Permalink to this headline">¶</a></h3>
+<section id="estructura-general-de-un-ejercicio">
+<h3><span class="section-number">1.5.1. </span>Estructura General de un ejercicio<a class="headerlink" href="#estructura-general-de-un-ejercicio" title="Permalink to this headline">#</a></h3>
 <p>Se define una función cuya antitransformada se desea calcular</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -818,9 +1068,9 @@ int(f(t), t, 0, t)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="ejercicios-adicionales">
-<h3><span class="section-number">1.5.2. </span>Ejercicios Adicionales<a class="headerlink" href="#ejercicios-adicionales" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="ejercicios-adicionales">
+<h3><span class="section-number">1.5.2. </span>Ejercicios Adicionales<a class="headerlink" href="#ejercicios-adicionales" title="Permalink to this headline">#</a></h3>
 <p>Ejercicio 1</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -941,9 +1191,9 @@ int(f(t), t, 0, t)
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -967,34 +1217,48 @@ int(f(t), t, 0, t)
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="../README.html" title="previous page">Teoría de Control con Matlab</a>
-    <a class='right-next' id="next-link" href="ELC02_Funcion_de_transferencia.html" title="next page"><span class="section-number">2. </span>Función de Transferencia</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Teoría de Control con Matlab</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="ELC02_Funcion_de_transferencia.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Función de Transferencia</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Ezequiel Leonardo Castaño<br/>
-        
-            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ezequiel Leonardo Castaño<br/>
+  
+      &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

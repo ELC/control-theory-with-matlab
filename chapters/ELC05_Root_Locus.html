@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5. Root Locus &#8212; Teoría de Control con Matlab</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,38 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/justify.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/analytics.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/analytics_gtag.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/analytics.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC05_Root_Locus.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -58,10 +59,27 @@
     <link rel="next" title="6. Controladores" href="ELC06_Controladores.html" />
     <link rel="prev" title="4. Sistemas de Segundo Orden" href="ELC04_Sistemas_Segundo_Orden.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -70,10 +88,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
@@ -82,7 +102,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
@@ -133,12 +153,17 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -146,61 +171,117 @@
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapters/ELC05_Root_Locus.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chapters/ELC05_Root_Locus.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Chapter Index
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Chapter Index
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sistemas-de-primer-orden-sin-cero">
    5.1. Sistemas de Primer Orden sin cero
@@ -307,17 +388,139 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Root Locus</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Chapter Index </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistemas-de-primer-orden-sin-cero">
+   5.1. Sistemas de Primer Orden sin cero
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistemas-de-primer-orden-con-un-cero">
+   5.2. Sistemas de Primer Orden con un cero
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#casos">
+   5.3. Casos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistemas-de-segundo-orden-sin-cero">
+   5.4. Sistemas de Segundo Orden sin cero
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistemas-de-segundo-orden-con-un-cero">
+   5.5. Sistemas de Segundo Orden con un cero
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caso-1-polos-reales">
+     5.5.1. Caso 1: Polos Reales
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caso-2-polos-complejos">
+     5.5.2. Caso 2: Polos Complejos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grafica-de-polos-y-ceros-con-simulink">
+   5.6. Gráfica de Polos y Ceros con Simulink
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#en-lazo-abierto">
+   5.7. En Lazo Abierto
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#en-lazo-cerrado">
+   5.8. En Lazo Cerrado
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diseno-interactivo-de-root-locus-con-matlab">
+   5.9. Diseño interactivo de Root Locus con Matlab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-system-designer">
+   5.10. Control System Designer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seleccionar-la-arquitectura-de-control">
+   5.11. Seleccionar la arquitectura de control
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agregar-root-locus">
+   5.12. Agregar Root Locus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agregar-respuesta-en-el-tiempo-y-error">
+   5.13. Agregar Respuesta en el tiempo y error
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#respuesta-en-el-tiempo">
+     5.13.1. Respuesta en el tiempo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-en-funcion-del-tiempo">
+     5.13.2. Error en función del tiempo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#editando-el-root-locus-dinamicamente-con-la-interfaz-grafica">
+   5.14. Editando el Root Locus Dinámicamente con la interfaz gráfica
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#editando-el-root-locus-dinamicamente-con-el-editor-de-compensador">
+   5.15. Editando el Root Locus Dinámicamente con el editor de compensador
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias-y-recursos-utiles">
+   5.16. Referencias y Recursos Útiles
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="root-locus">
-<h1><span class="section-number">5. </span>Root Locus<a class="headerlink" href="#root-locus" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="root-locus">
+<h1><span class="section-number">5. </span>Root Locus<a class="headerlink" href="#root-locus" title="Permalink to this headline">#</a></h1>
 <p>Version 0.1</p>
 <p><code class="docutils literal notranslate"><span class="pre">Contenido</span> <span class="pre">Original</span> <span class="pre">creado</span> <span class="pre">por</span> <span class="pre">Ezequiel</span> <span class="pre">Leonardo</span> <span class="pre">Castaño</span></code></p>
 <p><font color='Firebrick'>Este contenido está <b>INCOMPLETO</b> y puede estar incompleto y/o sufrir modificaciones</font></p>
@@ -347,8 +550,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="sistemas-de-primer-orden-sin-cero">
-<h2><span class="section-number">5.1. </span>Sistemas de Primer Orden sin cero<a class="headerlink" href="#sistemas-de-primer-orden-sin-cero" title="Permalink to this headline">¶</a></h2>
+<section id="sistemas-de-primer-orden-sin-cero">
+<h2><span class="section-number">5.1. </span>Sistemas de Primer Orden sin cero<a class="headerlink" href="#sistemas-de-primer-orden-sin-cero" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">;</span><span class="w"></span>
@@ -400,9 +603,9 @@
 <img alt="../_images/ELC05_Root_Locus_4_1.png" src="../_images/ELC05_Root_Locus_4_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="sistemas-de-primer-orden-con-un-cero">
-<h2><span class="section-number">5.2. </span>Sistemas de Primer Orden con un cero<a class="headerlink" href="#sistemas-de-primer-orden-con-un-cero" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sistemas-de-primer-orden-con-un-cero">
+<h2><span class="section-number">5.2. </span>Sistemas de Primer Orden con un cero<a class="headerlink" href="#sistemas-de-primer-orden-con-un-cero" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
@@ -455,9 +658,9 @@
 <img alt="../_images/ELC05_Root_Locus_6_1.png" src="../_images/ELC05_Root_Locus_6_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="casos">
-<h2><span class="section-number">5.3. </span>Casos<a class="headerlink" href="#casos" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="casos">
+<h2><span class="section-number">5.3. </span>Casos<a class="headerlink" href="#casos" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
@@ -513,9 +716,9 @@
 <img alt="../_images/ELC05_Root_Locus_8_1.png" src="../_images/ELC05_Root_Locus_8_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="sistemas-de-segundo-orden-sin-cero">
-<h2><span class="section-number">5.4. </span>Sistemas de Segundo Orden sin cero<a class="headerlink" href="#sistemas-de-segundo-orden-sin-cero" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sistemas-de-segundo-orden-sin-cero">
+<h2><span class="section-number">5.4. </span>Sistemas de Segundo Orden sin cero<a class="headerlink" href="#sistemas-de-segundo-orden-sin-cero" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 500</span><span class="w"></span>
@@ -640,9 +843,9 @@
 <img alt="../_images/ELC05_Root_Locus_14_1.png" src="../_images/ELC05_Root_Locus_14_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="sistemas-de-segundo-orden-con-un-cero">
-<h2><span class="section-number">5.5. </span>Sistemas de Segundo Orden con un cero<a class="headerlink" href="#sistemas-de-segundo-orden-con-un-cero" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sistemas-de-segundo-orden-con-un-cero">
+<h2><span class="section-number">5.5. </span>Sistemas de Segundo Orden con un cero<a class="headerlink" href="#sistemas-de-segundo-orden-con-un-cero" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 500</span><span class="w"></span>
@@ -685,8 +888,8 @@
 <img alt="../_images/ELC05_Root_Locus_17_1.png" src="../_images/ELC05_Root_Locus_17_1.png" />
 </div>
 </div>
-<div class="section" id="caso-1-polos-reales">
-<h3><span class="section-number">5.5.1. </span>Caso 1: Polos Reales<a class="headerlink" href="#caso-1-polos-reales" title="Permalink to this headline">¶</a></h3>
+<section id="caso-1-polos-reales">
+<h3><span class="section-number">5.5.1. </span>Caso 1: Polos Reales<a class="headerlink" href="#caso-1-polos-reales" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 800</span><span class="w"></span>
@@ -747,9 +950,9 @@
 <img alt="../_images/ELC05_Root_Locus_20_1.png" src="../_images/ELC05_Root_Locus_20_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="caso-2-polos-complejos">
-<h3><span class="section-number">5.5.2. </span>Caso 2: Polos Complejos<a class="headerlink" href="#caso-2-polos-complejos" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="caso-2-polos-complejos">
+<h3><span class="section-number">5.5.2. </span>Caso 2: Polos Complejos<a class="headerlink" href="#caso-2-polos-complejos" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">omega</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
@@ -803,15 +1006,15 @@
 <img alt="../_images/ELC05_Root_Locus_22_1.png" src="../_images/ELC05_Root_Locus_22_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="grafica-de-polos-y-ceros-con-simulink">
-<h2><span class="section-number">5.6. </span>Gráfica de Polos y Ceros con Simulink<a class="headerlink" href="#grafica-de-polos-y-ceros-con-simulink" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="grafica-de-polos-y-ceros-con-simulink">
+<h2><span class="section-number">5.6. </span>Gráfica de Polos y Ceros con Simulink<a class="headerlink" href="#grafica-de-polos-y-ceros-con-simulink" title="Permalink to this headline">#</a></h2>
 <p>El gráfico de Root Locus es sólo posible dentro del ambiente de Matlab como se mostró hasta ahora, sin embargo, si se posee un modelo de simulación construido con Simulink, es posible ver los polos y ceros del sistema para <strong>un valor de ganancia particular</strong>.</p>
 <p>Para ello se comienza con un modelo genérico de Simulink como el siguiente</p>
-<center><img src="../_static/root_locus/image_00.png"></center></div>
-<div class="section" id="en-lazo-abierto">
-<h2><span class="section-number">5.7. </span>En Lazo Abierto<a class="headerlink" href="#en-lazo-abierto" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/root_locus/image_00.png"></center></section>
+<section id="en-lazo-abierto">
+<h2><span class="section-number">5.7. </span>En Lazo Abierto<a class="headerlink" href="#en-lazo-abierto" title="Permalink to this headline">#</a></h2>
 <p>Este sistema contiene una función de transferencia <strong>propia</strong> y sus polos y ceros pueden hallarse con las funciones <strong><code class="docutils literal notranslate"><span class="pre">zero</span></code></strong> y <strong><code class="docutils literal notranslate"><span class="pre">pole</span></code></strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -877,9 +1080,9 @@ polos =
 <p>Al principio el gráfico estará vacio pero, luego de correr la simulación con el <strong>botón de play</strong>, se generará el gráfico adecuadamente.</p>
 <center><img src="../_static/root_locus/image_09.png"></center>
 <p>Se comprueba visualmente como los polos y ceros están en el mismo lugar que los obtenidos en el entorno de Matlab.</p>
-<center><img src="../_static/root_locus/image_10.png"></center></div>
-<div class="section" id="en-lazo-cerrado">
-<h2><span class="section-number">5.8. </span>En Lazo Cerrado<a class="headerlink" href="#en-lazo-cerrado" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/root_locus/image_10.png"></center></section>
+<section id="en-lazo-cerrado">
+<h2><span class="section-number">5.8. </span>En Lazo Cerrado<a class="headerlink" href="#en-lazo-cerrado" title="Permalink to this headline">#</a></h2>
 <p>Al cerrar el lazo de retroalimentación, los polos y ceros cambian de posición</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -933,38 +1136,38 @@ Continuous-time transfer function.
 <img alt="../_images/ELC05_Root_Locus_35_1.png" src="../_images/ELC05_Root_Locus_35_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="diseno-interactivo-de-root-locus-con-matlab">
-<h2><span class="section-number">5.9. </span>Diseño interactivo de Root Locus con Matlab<a class="headerlink" href="#diseno-interactivo-de-root-locus-con-matlab" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="diseno-interactivo-de-root-locus-con-matlab">
+<h2><span class="section-number">5.9. </span>Diseño interactivo de Root Locus con Matlab<a class="headerlink" href="#diseno-interactivo-de-root-locus-con-matlab" title="Permalink to this headline">#</a></h2>
 <p>Entender como leer un root locus es importante, pero también lo es saber que efectos tiene la adición / remoción de polos y ceros en un root locus determinado. Si bien las plantas no suelen ser modificables para agregar polos y ceros, los controladores sirven justamente para esto, permiten la incorporación de polos y ceros en lugares específicos. Para lograr esto se usa una aplicación especial dentro de Matlab llamada <strong><code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">System</span> <span class="pre">Designer</span></code></strong> que requiere tener el <strong>Control System Toolbox</strong> instalado.</p>
-</div>
-<div class="section" id="control-system-designer">
-<h2><span class="section-number">5.10. </span>Control System Designer<a class="headerlink" href="#control-system-designer" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="control-system-designer">
+<h2><span class="section-number">5.10. </span>Control System Designer<a class="headerlink" href="#control-system-designer" title="Permalink to this headline">#</a></h2>
 <p>Para abrirla se debe ir a <strong><code class="docutils literal notranslate"><span class="pre">Apps</span> <span class="pre">&gt;</span> <span class="pre">Control</span> <span class="pre">System</span> <span class="pre">Designer</span></code></strong></p>
 <center><img src="../_static/root_locus/image_11.png"></center>
 <p>Una vez abierta se deplegará una ventana similar a la siguiente</p>
 <center><img src="../_static/root_locus/image_12.png"></center>
 <p>Se deben cerrar todos los gráficos para empezar la configuración de cero</p>
-<center><img src="../_static/root_locus/image_13.png"></center></div>
-<div class="section" id="seleccionar-la-arquitectura-de-control">
-<h2><span class="section-number">5.11. </span>Seleccionar la arquitectura de control<a class="headerlink" href="#seleccionar-la-arquitectura-de-control" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/root_locus/image_13.png"></center></section>
+<section id="seleccionar-la-arquitectura-de-control">
+<h2><span class="section-number">5.11. </span>Seleccionar la arquitectura de control<a class="headerlink" href="#seleccionar-la-arquitectura-de-control" title="Permalink to this headline">#</a></h2>
 <p>El primer paso es entender la <strong>arquitectura de control</strong> que se va a utilizar, para ello se debe presionar <strong><code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">Architecture</span></code></strong></p>
 <center><img src="../_static/root_locus/image_14.png"></center>
 <p>La arquitectura por defecto es la siguiente</p>
 <center><img src="../_static/root_locus/image_15.png"></center>
 <p>Donde <strong><code class="docutils literal notranslate"><span class="pre">G</span></code></strong> es la planta, <strong><code class="docutils literal notranslate"><span class="pre">H</span></code></strong> es el sensor, <strong><code class="docutils literal notranslate"><span class="pre">C</span></code></strong> es el controlador y <strong><code class="docutils literal notranslate"><span class="pre">F</span></code></strong> es la ganancia inicial. También se explicitan tres tipos de perturbaciones <strong><code class="docutils literal notranslate"><span class="pre">du</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">dy</span></code></strong> y <strong><code class="docutils literal notranslate"><span class="pre">n</span></code></strong> así como el error <strong><code class="docutils literal notranslate"><span class="pre">e</span></code></strong>, la entrada <strong><code class="docutils literal notranslate"><span class="pre">r</span></code></strong> y la salida <strong><code class="docutils literal notranslate"><span class="pre">y</span></code></strong>. Es posible darle valores a los bloques, aunque se asume que el único bloque modificable es C. En este notebook sólo se verán los temas referidos al root locus y no al diseño de controladores por lo que todos los valores se pueden dejar por defecto. Se debe presionar <strong><code class="docutils literal notranslate"><span class="pre">OK</span></code></strong> para cerrar la ventana.</p>
-</div>
-<div class="section" id="agregar-root-locus">
-<h2><span class="section-number">5.12. </span>Agregar Root Locus<a class="headerlink" href="#agregar-root-locus" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="agregar-root-locus">
+<h2><span class="section-number">5.12. </span>Agregar Root Locus<a class="headerlink" href="#agregar-root-locus" title="Permalink to this headline">#</a></h2>
 <p>Para agregar el root locus, se debe seleccionar el <strong><code class="docutils literal notranslate"><span class="pre">Root</span> <span class="pre">Locus</span> <span class="pre">Editor</span></code></strong> dentro del menú <strong><code class="docutils literal notranslate"><span class="pre">Tuning</span> <span class="pre">Methods</span></code></strong> se abrirá una ventana donde no hacen falta cambios, se debe precionar <strong><code class="docutils literal notranslate"><span class="pre">Plot</span></code></strong> para continuar</p>
 <center><img src="../_static/root_locus/image_16.png"></center>
 <center><img src="../_static/root_locus/image_17.png"></center>
 <p>Luego el Root Locus debería aparecer en la ventana principal</p>
-<center><img src="../_static/root_locus/image_18.png"></center></div>
-<div class="section" id="agregar-respuesta-en-el-tiempo-y-error">
-<h2><span class="section-number">5.13. </span>Agregar Respuesta en el tiempo y error<a class="headerlink" href="#agregar-respuesta-en-el-tiempo-y-error" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="respuesta-en-el-tiempo">
-<h3><span class="section-number">5.13.1. </span>Respuesta en el tiempo<a class="headerlink" href="#respuesta-en-el-tiempo" title="Permalink to this headline">¶</a></h3>
+<center><img src="../_static/root_locus/image_18.png"></center></section>
+<section id="agregar-respuesta-en-el-tiempo-y-error">
+<h2><span class="section-number">5.13. </span>Agregar Respuesta en el tiempo y error<a class="headerlink" href="#agregar-respuesta-en-el-tiempo-y-error" title="Permalink to this headline">#</a></h2>
+<section id="respuesta-en-el-tiempo">
+<h3><span class="section-number">5.13.1. </span>Respuesta en el tiempo<a class="headerlink" href="#respuesta-en-el-tiempo" title="Permalink to this headline">#</a></h3>
 <p>Otros dos gráficos relevantes son la salida en el tiempo ante una entrada escalón y el error en el tiempo ante una entrada del mismo tipo.</p>
 <p>Para agregar estos gráfico se debe ir a <strong><code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Plot</span></code></strong> y luego a <strong><code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Step</span></code></strong></p>
 <center><img src="../_static/root_locus/image_19.png"></center>
@@ -972,9 +1175,9 @@ Continuous-time transfer function.
 <center><img src="../_static/root_locus/image_20.png"></center>
 <center><img src="../_static/root_locus/image_21.png"></center>
 <p>Como el sistema aún no tiene definido ni polos ni ceros, la entrada es un escalón unitario y la salida es un escalón unitario atenuado con amplitud de 0.5</p>
-</div>
-<div class="section" id="error-en-funcion-del-tiempo">
-<h3><span class="section-number">5.13.2. </span>Error en función del tiempo<a class="headerlink" href="#error-en-funcion-del-tiempo" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="error-en-funcion-del-tiempo">
+<h3><span class="section-number">5.13.2. </span>Error en función del tiempo<a class="headerlink" href="#error-en-funcion-del-tiempo" title="Permalink to this headline">#</a></h3>
 <p>Para el caso del error los pasos son similares, pero no existe en el menú de <strong><code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Step</span></code></strong> un gráfico asociado a <strong><code class="docutils literal notranslate"><span class="pre">r2e</span></code></strong>, que sería el error en función de la entrada. No obstante esta combinación puede agregarse seleccionando <strong><code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Input-Output</span> <span class="pre">Transfer</span> <span class="pre">Response</span></code></strong>. Al seleccionarlo la pantalla cambiará, permitiéndo especificar señales de entrada y de salida.</p>
 <center><img src="../_static/root_locus/image_22.png"></center>
 <center><img src="../_static/root_locus/image_23.png"></center>
@@ -982,10 +1185,10 @@ Continuous-time transfer function.
 <center><img src="../_static/root_locus/image_24.png"></center>
 <p>Se agregará otro gráfico a la ventana principal, que en este caso será igual al anterior ya que el error se mantiene constante en 0.5.</p>
 <p>A continuación se acomodan las pestañas de los gráficos para poder mostrar tanto el root locus como ambas salidas al mismo tiempo. Para acomodar las vistas, basta con arrastrar y soltar.</p>
-<center><img src="../_static/root_locus/image_25.png"></center></div>
-</div>
-<div class="section" id="editando-el-root-locus-dinamicamente-con-la-interfaz-grafica">
-<h2><span class="section-number">5.14. </span>Editando el Root Locus Dinámicamente con la interfaz gráfica<a class="headerlink" href="#editando-el-root-locus-dinamicamente-con-la-interfaz-grafica" title="Permalink to this headline">¶</a></h2>
+<center><img src="../_static/root_locus/image_25.png"></center></section>
+</section>
+<section id="editando-el-root-locus-dinamicamente-con-la-interfaz-grafica">
+<h2><span class="section-number">5.14. </span>Editando el Root Locus Dinámicamente con la interfaz gráfica<a class="headerlink" href="#editando-el-root-locus-dinamicamente-con-la-interfaz-grafica" title="Permalink to this headline">#</a></h2>
 <p>Ahora es posible modificar el root locus y ver como las salidas cambian. para ello basta con hacer click en el gráfico de root locus y luego ir a la pestaña de <strong><code class="docutils literal notranslate"><span class="pre">Root</span> <span class="pre">Locus</span> <span class="pre">Editor</span></code></strong></p>
 <center><img src="../_static/root_locus/image_26.png"></center>
 <p>Utilizando los botones se pueden agregar polos y ceros reales, polos y ceros complejos y borrar los ya agregados.</p>
@@ -1002,9 +1205,9 @@ Continuous-time transfer function.
 <center><img src="../_static/root_locus/image_28.png"></center>
 <p>Que emula a una planta de segundo orden con dos polos complejos con un controlador PID.</p>
 <p><strong>La parte más importante de esta herramienta es que todos los polos y ceros agregados (cruces y cículos) así como las ganancias (cuadrados púrpuras) pueden arrastrarse y soltarse en los diferentes puntos del root locus, y es posible ver como la forma del root locus y las salidas en el tiempo cambian al hacerlo. Además, pueden verse las características de las gráficas con forme se modifica el root locus</strong></p>
-</div>
-<div class="section" id="editando-el-root-locus-dinamicamente-con-el-editor-de-compensador">
-<h2><span class="section-number">5.15. </span>Editando el Root Locus Dinámicamente con el editor de compensador<a class="headerlink" href="#editando-el-root-locus-dinamicamente-con-el-editor-de-compensador" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="editando-el-root-locus-dinamicamente-con-el-editor-de-compensador">
+<h2><span class="section-number">5.15. </span>Editando el Root Locus Dinámicamente con el editor de compensador<a class="headerlink" href="#editando-el-root-locus-dinamicamente-con-el-editor-de-compensador" title="Permalink to this headline">#</a></h2>
 <p>Otra manera de editar el root locus es ingresar los valores exactos directamente, para ello, se debe hacer click derecho en el <strong>Root Locus</strong> y luego en “<strong><code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">Compensator...</span></code></strong>”</p>
 <center><img src="../_static/root_locus/image_29.png"></center>
 <p>Esta opción abre una nueva ventana donde uno puede editar los valores de cada polo y cero y también agregar nuevos o borrar los actuales haciendo click derecho. Las opciones para agregar polos y ceros son las mismas que en la gráfica del Root Locus</p>
@@ -1018,14 +1221,14 @@ Continuous-time transfer function.
 <li><p>En el caso de los polos y ceros <strong>complejos</strong> se pueden especificar de manera rectangular (con parte real e imaginaria) o de manera polar (con frecuencia natural y coeficiente de amortiguamiento)</p>
   <center><img src="../_static/root_locus/image_33.png"></center></li>
 </ul>
-</div>
-<div class="section" id="referencias-y-recursos-utiles">
-<h2><span class="section-number">5.16. </span>Referencias y Recursos Útiles<a class="headerlink" href="#referencias-y-recursos-utiles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="referencias-y-recursos-utiles">
+<h2><span class="section-number">5.16. </span>Referencias y Recursos Útiles<a class="headerlink" href="#referencias-y-recursos-utiles" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=CRvVDoQJjYI&amp;list=PLUMWjy5jgHK3-ca6GP6PL0AgcNGHqn33f">Serie de videos sobre Root Locus by Brian Douglas</a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1049,34 +1252,48 @@ Continuous-time transfer function.
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="ELC04_Sistemas_Segundo_Orden.html" title="previous page"><span class="section-number">4. </span>Sistemas de Segundo Orden</a>
-    <a class='right-next' id="next-link" href="ELC06_Controladores.html" title="next page"><span class="section-number">6. </span>Controladores</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ELC04_Sistemas_Segundo_Orden.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Sistemas de Segundo Orden</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="ELC06_Controladores.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Controladores</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Ezequiel Leonardo Castaño<br/>
-        
-            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ezequiel Leonardo Castaño<br/>
+  
+      &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6. Controladores &#8212; Teoría de Control con Matlab</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,52 +20,68 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/justify.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/analytics.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/analytics_gtag.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/analytics.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC06_Controladores.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7. Sintonización" href="ELC07_Sintonizaci%C3%B3n.html" />
     <link rel="prev" title="5. Root Locus" href="ELC05_Root_Locus.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,10 +90,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
@@ -84,7 +104,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
@@ -135,12 +155,17 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -148,61 +173,117 @@
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapters/ELC06_Controladores.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chapters/ELC06_Controladores.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Chapter Index
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Chapter Index
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#control-proporcional">
    6.1. Control Proporcional
@@ -267,17 +348,97 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Controladores</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Chapter Index </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-proporcional">
+   6.1. Control Proporcional
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#efectos-del-controlador-proporcional">
+   6.2. Efectos del controlador proporcional
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estabilidad">
+     6.2.1. Estabilidad
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#siempre-estable">
+     6.2.2. Siempre estable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#siempre-inestable">
+     6.2.3. Siempre inestable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estabilidad-dependiende-de-k">
+     6.2.4. Estabilidad dependiende de K
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#error-en-estado-estacionario">
+   6.3. Error en estado estacionario
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#controlador-en-matlab">
+   6.4. Controlador en Matlab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   6.5. Estabilidad
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#salida-en-lazo-abierto">
+   6.6. Salida en lazo abierto
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#salida-en-lazo-cerrado">
+   6.7. Salida en lazo cerrado
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diseno-de-controladores">
+   6.8. Diseño de Controladores
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="controladores">
-<h1><span class="section-number">6. </span>Controladores<a class="headerlink" href="#controladores" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="controladores">
+<h1><span class="section-number">6. </span>Controladores<a class="headerlink" href="#controladores" title="Permalink to this headline">#</a></h1>
 <p>Version 0.1</p>
 <p><code class="docutils literal notranslate"><span class="pre">Contenido</span> <span class="pre">Original</span> <span class="pre">creado</span> <span class="pre">por</span> <span class="pre">Ezequiel</span> <span class="pre">Leonardo</span> <span class="pre">Castaño</span></code></p>
 <p><font color='Firebrick'>Este contenido está <b>INCOMPLETO</b> y nuevas secciones serán añadidas en el futuro</font></p>
@@ -310,8 +471,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="control-proporcional">
-<h2><span class="section-number">6.1. </span>Control Proporcional<a class="headerlink" href="#control-proporcional" title="Permalink to this headline">¶</a></h2>
+<section id="control-proporcional">
+<h2><span class="section-number">6.1. </span>Control Proporcional<a class="headerlink" href="#control-proporcional" title="Permalink to this headline">#</a></h2>
 <p>El controlador proporcional o <strong>controlador P</strong> es aquel que se obtiene al multiplicar al sistema por una ganacia <span class="math notranslate nohighlight">\(K_p\)</span>. Al analizar el diagramas de bloque asociado, es importante destacar las similitudes y las diferencias con este tipo de controlador y el diagrama que utiliza internamente la función <strong>rlocus</strong></p>
 <center><img src="../_static/controllers/image_0.png"></center>
 <p>Si bien el control proporcional y el root locus son similares, no son idénticos. Esto se debe a que <strong>rlocus</strong> asume que la retroalimentación está en la trayectoría de retroalimentación y no en la trayectoría directa. Para evaluar que implica esto, es necesario hacer la reducción de bloques en cada caso.</p>
@@ -324,9 +485,9 @@
 <p>Se puede observar como los <strong>denominadores</strong> son iguales mientras que los numeradores no lo son, surje entonces la pregunta ¿es esta diferencia relevante? La respuesta es que no, ya que el <strong>rlocus</strong> sólo muestra <strong>polos</strong> y <strong>ceros</strong>. Como el denominador es el mismo, ambos sistemas tienen la misma ecuación característica, y por ende, los mismos polos. Por otro lado, como <span class="math notranslate nohighlight">\(K_p\)</span> es una constante, las posiciones de los ceros tampoco se ven alteradas.</p>
 <p>Esto no quiere decir que ambos sistemas sean <em>equivalentes</em> ya que la <strong>respuesta</strong> del sistema en cada caso va a ser diferente, pero los ceros y polos se mantendrán como estaban originalmente.</p>
 <p>Entonces el método de <strong>rlocus</strong> nos permite evaluar exactamente donde se situarán los polos en lazo cerrado al utilizar la función en lazo abierto <em><strong>como si</strong></em> estuvieramos usando un controlador Proporcional.</p>
-</div>
-<div class="section" id="efectos-del-controlador-proporcional">
-<h2><span class="section-number">6.2. </span>Efectos del controlador proporcional<a class="headerlink" href="#efectos-del-controlador-proporcional" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="efectos-del-controlador-proporcional">
+<h2><span class="section-number">6.2. </span>Efectos del controlador proporcional<a class="headerlink" href="#efectos-del-controlador-proporcional" title="Permalink to this headline">#</a></h2>
 <p>Como se mostró en la sección anterior, un controlador P <strong>no</strong> agrega polos ni ceros, sin embargo, <strong>si</strong> modifica la posición de los ya existentes.</p>
 <p>Aumentar el valor de <span class="math notranslate nohighlight">\(K_p\)</span> tiene los siguientes efectos en las métricas de rendimiento:</p>
 <ul class="simple">
@@ -337,17 +498,17 @@
 <li><p><strong>Steady-State Error</strong>: Disminuye</p></li>
 </ul>
 <p>Para llegar a esas conclusiones basta con analizar el efecto del controlador en sí. Al aumentar <span class="math notranslate nohighlight">\(K_p\)</span> lo que se hace es aumentar el <strong>error</strong> con respecto a la entrada de manera artificial, esto hace que el sistema reaccione como si el error fuera más grande de lo que realmente es y de esta manera toma cambios más abruptos, provocando un <strong>pico más pronto</strong> y <strong>aumentando la amplitud del pico.</strong> Como el error luego disminuye drásticamente, también lo hace la señal de salida del controlador y por lo tanto el tiempo de asentamiento apenas se ve modificado.</p>
-<div class="section" id="estabilidad">
-<h3><span class="section-number">6.2.1. </span>Estabilidad<a class="headerlink" href="#estabilidad" title="Permalink to this headline">¶</a></h3>
+<section id="estabilidad">
+<h3><span class="section-number">6.2.1. </span>Estabilidad<a class="headerlink" href="#estabilidad" title="Permalink to this headline">#</a></h3>
 <p>En cuanto a la estabilidad, existen 3 casos</p>
 <ul class="simple">
 <li><p>Siempre Estable</p></li>
 <li><p>Siempre Inestable</p></li>
 <li><p>Estabilidad dependiende de K</p></li>
 </ul>
-</div>
-<div class="section" id="siempre-estable">
-<h3><span class="section-number">6.2.2. </span>Siempre estable<a class="headerlink" href="#siempre-estable" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="siempre-estable">
+<h3><span class="section-number">6.2.2. </span>Siempre estable<a class="headerlink" href="#siempre-estable" title="Permalink to this headline">#</a></h3>
 <p>Esto ocurre cuando todas las ramas del root locus está totalmente a la izquierda del eje imaginario.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -371,9 +532,9 @@
 <img alt="../_images/ELC06_Controladores_7_1.png" src="../_images/ELC06_Controladores_7_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="siempre-inestable">
-<h3><span class="section-number">6.2.3. </span>Siempre inestable<a class="headerlink" href="#siempre-inestable" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="siempre-inestable">
+<h3><span class="section-number">6.2.3. </span>Siempre inestable<a class="headerlink" href="#siempre-inestable" title="Permalink to this headline">#</a></h3>
 <p>Esto ocurre cuando una de las ramas o (loci) del root locus está totalmente a la derecha del eje imaginario.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -418,9 +579,9 @@
 <img alt="../_images/ELC06_Controladores_11_1.png" src="../_images/ELC06_Controladores_11_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="estabilidad-dependiende-de-k">
-<h3><span class="section-number">6.2.4. </span>Estabilidad dependiende de K<a class="headerlink" href="#estabilidad-dependiende-de-k" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="estabilidad-dependiende-de-k">
+<h3><span class="section-number">6.2.4. </span>Estabilidad dependiende de K<a class="headerlink" href="#estabilidad-dependiende-de-k" title="Permalink to this headline">#</a></h3>
 <p>Esto ocurre cuando una o más ramas tienen algunas de sus secciones a la derecha del eje imaginario, esto quiere decir que para un <span class="math notranslate nohighlight">\(K_p\)</span> suficientemente grande, el sistema se vuelve inestable, pero para valores menores a ese <span class="math notranslate nohighlight">\(K_p\)</span> crítico, el sistema es estable. A simple vista, siempre que haya una única rama que cruza al semiplano derecho (o un par de ramas simétricas), va a existir un <span class="math notranslate nohighlight">\(K_p\)</span> para el cual el sistema va a ser estable, si hay varias ramas no simétricas que pasan al semiplano derecho, es necesario evaluar el <span class="math notranslate nohighlight">\(K_p\)</span> crítico para cada una, como se hizo en el caso anterior.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -443,10 +604,10 @@
 <img alt="../_images/ELC06_Controladores_13_1.png" src="../_images/ELC06_Controladores_13_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="error-en-estado-estacionario">
-<h2><span class="section-number">6.3. </span>Error en estado estacionario<a class="headerlink" href="#error-en-estado-estacionario" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="error-en-estado-estacionario">
+<h2><span class="section-number">6.3. </span>Error en estado estacionario<a class="headerlink" href="#error-en-estado-estacionario" title="Permalink to this headline">#</a></h2>
 <p>Una vez verificado que el sistema es estable (para un <span class="math notranslate nohighlight">\(K_p\)</span> determinado), el error en estado estable se puede calcular, pero, éste no depende sólo del valor de <span class="math notranslate nohighlight">\(K_p\)</span> sino del tipo de sistema y de la entrada, si el sistema tenía error infinito o cero antes de aplicar el controlador, ese error se va a mantener (ya que el controlador P no agrega polos ni ceros). Si el error era distinto de 0 y finito, entonces se puede calcular con la fórmula del error en estado estable (luego de haber verificado que el sistema es estable), haciendo uso del teorema del valor final. Como todos los términos de <span class="math notranslate nohighlight">\(s\)</span> tienden a <span class="math notranslate nohighlight">\(0\)</span>, el error queda definido únicamente por los términos independientes del numerados (<span class="math notranslate nohighlight">\(a_0\)</span>) y del denominador (<span class="math notranslate nohighlight">\(b_0\)</span>).</p>
 <p>Escalón <span class="math notranslate nohighlight">\(\frac{1}{s}\)</span>: <span class="math notranslate nohighlight">\(E_{ss} =\frac{1}{1+\frac{K_p \cdot a_0 }{b_0 }}~\Rightarrow ~\frac{1}{1+K_p }\)</span></p>
 <p>Rampa <span class="math notranslate nohighlight">\(\frac{1}{s^2 }\)</span>: <span class="math notranslate nohighlight">\(E_{ss} =\frac{1}{K_p \cdot \frac{a_0 }{b_0 }}~\Rightarrow ~\frac{1}{K_v }\)</span></p>
@@ -465,9 +626,9 @@
 <p>La tabla que relaciona los tipos de sistema con sus respectivos errores en estado estacionarios se muestra a continuación</p>
 <center><img src="../_static/controllers/image_1.png"></center>
 <p>Fuente: https://ctms.engin.umich.edu/CTMS/index.php?aux=Extras_Ess</p>
-</div>
-<div class="section" id="controlador-en-matlab">
-<h2><span class="section-number">6.4. </span>Controlador en Matlab<a class="headerlink" href="#controlador-en-matlab" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="controlador-en-matlab">
+<h2><span class="section-number">6.4. </span>Controlador en Matlab<a class="headerlink" href="#controlador-en-matlab" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ceros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
@@ -491,9 +652,9 @@ Continuous-time transfer function.
 </div>
 </div>
 <p>El sistema es de grado 3 por lo tanto, no se pueden usar ninguna de las fórmulas de la sección anterior</p>
-</div>
-<div class="section" id="id1">
-<h2><span class="section-number">6.5. </span>Estabilidad<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id1">
+<h2><span class="section-number">6.5. </span>Estabilidad<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>Si se ve el root locus, se valida que el sistema es estable para todos los valores de K</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -511,9 +672,9 @@ Continuous-time transfer function.
 <img alt="../_images/ELC06_Controladores_19_1.png" src="../_images/ELC06_Controladores_19_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="salida-en-lazo-abierto">
-<h2><span class="section-number">6.6. </span>Salida en lazo abierto<a class="headerlink" href="#salida-en-lazo-abierto" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="salida-en-lazo-abierto">
+<h2><span class="section-number">6.6. </span>Salida en lazo abierto<a class="headerlink" href="#salida-en-lazo-abierto" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
@@ -551,9 +712,9 @@ Continuous-time transfer function.
 <img alt="../_images/ELC06_Controladores_21_1.png" src="../_images/ELC06_Controladores_21_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="salida-en-lazo-cerrado">
-<h2><span class="section-number">6.7. </span>Salida en lazo cerrado<a class="headerlink" href="#salida-en-lazo-cerrado" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="salida-en-lazo-cerrado">
+<h2><span class="section-number">6.7. </span>Salida en lazo cerrado<a class="headerlink" href="#salida-en-lazo-cerrado" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
@@ -572,9 +733,9 @@ Continuous-time transfer function.
 <img alt="../_images/ELC06_Controladores_23_1.png" src="../_images/ELC06_Controladores_23_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="diseno-de-controladores">
-<h2><span class="section-number">6.8. </span>Diseño de Controladores<a class="headerlink" href="#diseno-de-controladores" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="diseno-de-controladores">
+<h2><span class="section-number">6.8. </span>Diseño de Controladores<a class="headerlink" href="#diseno-de-controladores" title="Permalink to this headline">#</a></h2>
 <p>A la hora de diseñar un controlador es necesario en primera medida determinar que modificaciones hacen falta en el sistema para poder alcanzar los requisitos de diseño.</p>
 <p>Los controladores vistos permiten hacer lo siguiente:</p>
 <ul class="simple">
@@ -598,8 +759,8 @@ Continuous-time transfer function.
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -623,34 +784,48 @@ Continuous-time transfer function.
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="ELC05_Root_Locus.html" title="previous page"><span class="section-number">5. </span>Root Locus</a>
-    <a class='right-next' id="next-link" href="ELC07_Sintonizaci%C3%B3n.html" title="next page"><span class="section-number">7. </span>Sintonización</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ELC05_Root_Locus.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Root Locus</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="ELC07_Sintonizaci%C3%B3n.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Sintonización</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Ezequiel Leonardo Castaño<br/>
-        
-            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ezequiel Leonardo Castaño<br/>
+  
+      &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

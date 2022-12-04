@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>8. Diagramas de Bode &#8212; Teoría de Control con Matlab</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,52 +20,68 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/justify.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/analytics.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/analytics_gtag.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/analytics.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://elc.github.io/control-theory-with-matlab/chapters/ELC08_Bode.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9. Diagrama de Nyquist" href="ELC09_Nyquist.html" />
     <link rel="prev" title="7. Sintonización" href="ELC07_Sintonizaci%C3%B3n.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,10 +90,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">Teoría de Control con Matlab</h1>
@@ -84,7 +104,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
@@ -135,12 +155,17 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -148,61 +173,117 @@
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapters/ELC08_Bode.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chapters/ELC08_Bode.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Chapter Index
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Chapter Index
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fase-minima-y-fase-no-minima">
    8.1. Fase Mínima y Fase no Mínima
@@ -390,17 +471,220 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Diagramas de Bode</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Chapter Index </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fase-minima-y-fase-no-minima">
+   8.1. Fase Mínima y Fase no Mínima
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diagrama-de-bode">
+   8.2. Diagrama de Bode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#desarrollo-matematico">
+   8.3. Desarrollo matemático
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrada">
+   8.4. Entrada
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#magnitud">
+     8.4.1. Magnitud
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fase">
+   8.5. Fase
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construccion-del-diagrama-de-bode">
+   8.6. Construcción del diagrama de Bode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construccion-aditiva">
+   8.7. Construcción aditiva
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistema-constante">
+   8.8. Sistema Constante
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definiendo-el-sistema">
+     8.8.1. Definiendo el sistema
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     8.8.2. Magnitud
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     8.8.3. Fase
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistema-con-un-polo-o-un-cero-en-el-origen">
+   8.9. Sistema con un Polo o un Cero en el origen
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cero-en-el-origen">
+     8.9.1. Cero en el origen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     8.9.2. Definiendo el sistema
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     8.9.3. Magnitud
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     8.9.4. Fase
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretacion-de-la-simetria-entre-cero-y-polo-en-el-origen">
+     8.9.5. Interpretación de la simetría entre Cero y Polo en el origen
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistema-con-un-polo-o-un-cero-real">
+   8.10. Sistema con un Polo o un Cero Real
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     8.10.1. Definiendo el sistema
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     8.10.2. Magnitud
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     8.10.3. Fase
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cero-real">
+     8.10.4. Cero Real
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     8.10.5. Definiendo el sistema
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     8.10.6. Magnitud
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     8.10.7. Fase
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sistema-con-un-polo-o-un-cero-complejo">
+   8.11. Sistema con un Polo o un Cero Complejo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     8.11.1. Magnitud
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     8.11.2. Fase
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluando-estabilidad">
+   8.12. Evaluando Estabilidad
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#criterio-de-estabilidad">
+   8.13. Criterio de Estabilidad
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forma-automatica-de-calcular-margenes">
+   8.14. Forma automática de calcular márgenes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#casos">
+   8.15. Casos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ancho-de-banda">
+   8.16. Ancho de banda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   8.17. Casos
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="diagramas-de-bode">
-<h1><span class="section-number">8. </span>Diagramas de Bode<a class="headerlink" href="#diagramas-de-bode" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="diagramas-de-bode">
+<h1><span class="section-number">8. </span>Diagramas de Bode<a class="headerlink" href="#diagramas-de-bode" title="Permalink to this headline">#</a></h1>
 <p>Version 0.1</p>
 <p><code class="docutils literal notranslate"><span class="pre">Contenido</span> <span class="pre">Original</span> <span class="pre">creado</span> <span class="pre">por</span> <span class="pre">Ezequiel</span> <span class="pre">Leonardo</span> <span class="pre">Castaño</span></code></p>
 <p><font color='Firebrick'>Este contenido está <b>INCOMPLETO</b> y puede estar incompleto y/o sufrir modificaciones</font></p>
@@ -430,8 +714,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="fase-minima-y-fase-no-minima">
-<h2><span class="section-number">8.1. </span>Fase Mínima y Fase no Mínima<a class="headerlink" href="#fase-minima-y-fase-no-minima" title="Permalink to this headline">¶</a></h2>
+<section id="fase-minima-y-fase-no-minima">
+<h2><span class="section-number">8.1. </span>Fase Mínima y Fase no Mínima<a class="headerlink" href="#fase-minima-y-fase-no-minima" title="Permalink to this headline">#</a></h2>
 <p>Un sistema es de face mínima si y sólo si todos sus <strong>polos</strong> y <strong>ceros en lazo abierto</strong> están a la izquierda del eje imaginario. Esto <strong>no debe confundirse</strong> con la <strong>estabilidad del sistema</strong> ya que la estabilidad del sistema está dada únicamente por los <strong>polos</strong> y no por los ceros.</p>
 <p>A continuación se muestran algunos ejemplos para diferenciar entre Fase Mínima (FM) y Fase no Mínima (FnM). Todos los ejemplos son con funciones de transferencia en lazo abierto.</p>
 <div class="cell docutils container">
@@ -477,9 +761,9 @@
 <img alt="../_images/ELC08_Bode_4_1.png" src="../_images/ELC08_Bode_4_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="diagrama-de-bode">
-<h2><span class="section-number">8.2. </span>Diagrama de Bode<a class="headerlink" href="#diagrama-de-bode" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="diagrama-de-bode">
+<h2><span class="section-number">8.2. </span>Diagrama de Bode<a class="headerlink" href="#diagrama-de-bode" title="Permalink to this headline">#</a></h2>
 <p>El diagrama de Bode sólo se puede aplicar en sistemas de fase mínima</p>
 <p>Es importante recordar que en el caso de sistemas SISO LTI, al someter a un sistema a una entrada senoidal, la salida en estado estable será también una señal senoidal con la <strong>misma frecuencia</strong>, sin embargo puede haber un <strong>cambio de amplitud</strong> y/o un <strong>cambio de fase</strong>.</p>
 <p>Para construir un diagrama o traza de Bode se deben seguir los siguientes pasos:</p>
@@ -490,9 +774,9 @@
 <li><p>Generar un gráfico que muestre la relación entre la la fase de entrada <span class="math notranslate nohighlight">\(0º\)</span> y la de salida, este gráfico es el gráfico de <strong>Fase-Frecuencia.</strong></p></li>
 <li><p>Un detalle en la construcción es que tanto la <strong>Magnitud</strong> como la <strong>Frecuencia</strong> se encuentran en <strong>escala logarítmica</strong>, la magnitud por estar expresada en <span class="math notranslate nohighlight">\(dB\)</span> y la frecuencia para poder cubrir un amplio espectro de posibilidades.</p></li>
 </ol>
-</div>
-<div class="section" id="desarrollo-matematico">
-<h2><span class="section-number">8.3. </span>Desarrollo matemático<a class="headerlink" href="#desarrollo-matematico" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="desarrollo-matematico">
+<h2><span class="section-number">8.3. </span>Desarrollo matemático<a class="headerlink" href="#desarrollo-matematico" title="Permalink to this headline">#</a></h2>
 <p>Al utilizar la transformada de Laplace, la variable a utilizar, <span class="math notranslate nohighlight">\(s\)</span>, es una variable compleja, es decir:</p>
 <div class="math notranslate nohighlight">
 \[s=\sigma +\omega i~~\sigma ,\omega \in \mathbb{R}\]</div>
@@ -503,9 +787,9 @@
 <div class="math notranslate nohighlight">
 \[G(s)=G(\sigma +\omega i)\Rightarrow G(s)=G(\omega i)\]</div>
 <p>Utilizando esta forma se procede a calcular tanto la <strong>magnitud</strong> como la <strong>fase</strong></p>
-</div>
-<div class="section" id="entrada">
-<h2><span class="section-number">8.4. </span>Entrada<a class="headerlink" href="#entrada" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="entrada">
+<h2><span class="section-number">8.4. </span>Entrada<a class="headerlink" href="#entrada" title="Permalink to this headline">#</a></h2>
 <p>Dada una entrada senoida</p>
 <div class="math notranslate nohighlight">
 \[u(t)=A\cdot sen(\omega t)\]</div>
@@ -544,8 +828,8 @@
 \[\frac{B}{A}=\frac{A\cdot |G(i\omega )|}{A}=|G(i\omega )|\]</div>
 <p>Por lo tanto la <strong>magnitud</strong> de la función de transferencia refleja cual es la <strong>relación entre la amplitud de entrada</strong> y la de salida</p>
 <p>A continuación se muestra como calcular ambas cantidades.</p>
-<div class="section" id="magnitud">
-<h3><span class="section-number">8.4.1. </span>Magnitud<a class="headerlink" href="#magnitud" title="Permalink to this headline">¶</a></h3>
+<section id="magnitud">
+<h3><span class="section-number">8.4.1. </span>Magnitud<a class="headerlink" href="#magnitud" title="Permalink to this headline">#</a></h3>
 <p>Como la función <span class="math notranslate nohighlight">\(G(i\omega )\)</span>puede expresarse como un cociente de polinomios se tiene:</p>
 <div class="math notranslate nohighlight">
 \[Magnitud(G)=|G(i\omega )|=\Bigl|\;k\cdot \frac{(i\omega +z_1 )(i\omega +z_2 )...(i\omega +z_m )}{(i\omega +p_1 )(i\omega +p_2 )...(i\omega +p_n )}\Bigr|\]</div>
@@ -562,19 +846,19 @@
 <div class="math notranslate nohighlight">
 \[Magnitud_{dB} (G)=20\log_{10} \Big(\frac{B}{A}\Big)=20\log_{10} \Big(\frac{A\cdot |G(i\omega )|}{A}\Big)=20\log_{10} (|G(i\omega )|)\]</div>
 <p>De ahora en más, como siempre se usará la magnitud expresada en decibelios, <strong>se omite el súbindice</strong> <span class="math notranslate nohighlight">\(dB\)</span>**.</p>
-</div>
-</div>
-<div class="section" id="fase">
-<h2><span class="section-number">8.5. </span>Fase<a class="headerlink" href="#fase" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="fase">
+<h2><span class="section-number">8.5. </span>Fase<a class="headerlink" href="#fase" title="Permalink to this headline">#</a></h2>
 <p>En el caso de la fase, no hay una fórmula que pueda expresarse en función del numerador y el denominador sino que se tiene que llevar a expresión a la forma binómica y utilizar la tangente de la representación rectangular para hallar el ángulo <span class="math notranslate nohighlight">\(\phi\)</span>. Es decir</p>
 <div class="math notranslate nohighlight">
 \[Fase(G)=~\phi = \tan^{-1} \Bigl(\frac{imaginario}{real}\Bigr)\]</div>
-</div>
-<div class="section" id="construccion-del-diagrama-de-bode">
-<h2><span class="section-number">8.6. </span>Construcción del diagrama de Bode<a class="headerlink" href="#construccion-del-diagrama-de-bode" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="construccion-aditiva">
-<h2><span class="section-number">8.7. </span>Construcción aditiva<a class="headerlink" href="#construccion-aditiva" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="construccion-del-diagrama-de-bode">
+<h2><span class="section-number">8.6. </span>Construcción del diagrama de Bode<a class="headerlink" href="#construccion-del-diagrama-de-bode" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="construccion-aditiva">
+<h2><span class="section-number">8.7. </span>Construcción aditiva<a class="headerlink" href="#construccion-aditiva" title="Permalink to this headline">#</a></h2>
 <p>Una de las ventajas del diagrama de Bode es que su construcción es aditiva, es decir, el diagrama asociado a una función de transferencia es igual a la suma de los diagramas de sus <strong>ceros y polos</strong>.</p>
 <p>Esto puede demostrarse de la siguiente forma</p>
 <div class="math notranslate nohighlight">
@@ -596,15 +880,15 @@ G(i\omega )= k\cdot (i\omega +z_1 )\cdot (i\omega +z_2 )~...~(i\omega +z_m )\cdo
 <li><p>Un Polo/Cero Complejo</p></li>
 </ul>
 <p>Conociendo como se esboza un diagrama de Bode para todos estos casos, se puede graficar cualquier función de transferencia.</p>
-</div>
-<div class="section" id="sistema-constante">
-<h2><span class="section-number">8.8. </span>Sistema Constante<a class="headerlink" href="#sistema-constante" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sistema-constante">
+<h2><span class="section-number">8.8. </span>Sistema Constante<a class="headerlink" href="#sistema-constante" title="Permalink to this headline">#</a></h2>
 <p>Un sistema constante es aquel definido por</p>
 <div class="math notranslate nohighlight">
 \[G(s)=K~~K\in \mathbb{R}\]</div>
 <p>Esta constante es normalmente llamada ganancia y el diagrama de bloques equivalente es</p>
-<center><img src="../_static/bode/image_00.png"></center><div class="section" id="definiendo-el-sistema">
-<h3><span class="section-number">8.8.1. </span>Definiendo el sistema<a class="headerlink" href="#definiendo-el-sistema" title="Permalink to this headline">¶</a></h3>
+<center><img src="../_static/bode/image_00.png"></center><section id="definiendo-el-sistema">
+<h3><span class="section-number">8.8.1. </span>Definiendo el sistema<a class="headerlink" href="#definiendo-el-sistema" title="Permalink to this headline">#</a></h3>
 <p>Se definen dos sistemas, uno con ganancia positiva <span class="math notranslate nohighlight">\(K=10\)</span> y otro con ganancia negativa <span class="math notranslate nohighlight">\(K=-10\)</span>. También se explicita el rango de frecuencias a utilizar</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -622,9 +906,9 @@ G(i\omega )= k\cdot (i\omega +z_1 )\cdot (i\omega +z_2 )~...~(i\omega +z_m )\cdo
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h3><span class="section-number">8.8.2. </span>Magnitud<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3><span class="section-number">8.8.2. </span>Magnitud<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>Utilizando las fórmulas de la introducción se tiene entonces:</p>
 <div class="math notranslate nohighlight">
 \[Magnitud(G)=20\cdot \log_{10} (|G(i\omega )|)=20\cdot \log_{10} (|K|)\]</div>
@@ -657,9 +941,9 @@ G(i\omega )= k\cdot (i\omega +z_1 )\cdot (i\omega +z_2 )~...~(i\omega +z_m )\cdo
 <img alt="../_images/ELC08_Bode_20_1.png" src="../_images/ELC08_Bode_20_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id2">
-<h3><span class="section-number">8.8.3. </span>Fase<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id2">
+<h3><span class="section-number">8.8.3. </span>Fase<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>Para el cálculo de la fase se tiene</p>
 <div class="math notranslate nohighlight">
 \[Fase(G)=~\phi =\tan^{-1} \Bigl(\frac{imaginario}{real}\Bigr)\]</div>
@@ -689,10 +973,10 @@ G(i\omega )= k\cdot (i\omega +z_1 )\cdot (i\omega +z_2 )~...~(i\omega +z_m )\cdo
 <img alt="../_images/ELC08_Bode_22_1.png" src="../_images/ELC08_Bode_22_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="sistema-con-un-polo-o-un-cero-en-el-origen">
-<h2><span class="section-number">8.9. </span>Sistema con un Polo o un Cero en el origen<a class="headerlink" href="#sistema-con-un-polo-o-un-cero-en-el-origen" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="sistema-con-un-polo-o-un-cero-en-el-origen">
+<h2><span class="section-number">8.9. </span>Sistema con un Polo o un Cero en el origen<a class="headerlink" href="#sistema-con-un-polo-o-un-cero-en-el-origen" title="Permalink to this headline">#</a></h2>
 <p>Un sistema con un polo en el origen puede describirse como</p>
 <div class="math notranslate nohighlight">
 \[G(s)=\frac{1}{s}\]</div>
@@ -700,17 +984,17 @@ G(i\omega )= k\cdot (i\omega +z_1 )\cdot (i\omega +z_2 )~...~(i\omega +z_m )\cdo
 <div class="math notranslate nohighlight">
 \[G(i\omega )=\frac{1}{i\omega }=\frac{1}{i\omega }\cdot \frac{i}{i}=\frac{i}{-\omega }=-\frac{1}{\omega }i\]</div>
 <p>La representación en diagrama de bloques es</p>
-<center><img src="../_static/bode/image_01.png"></center><div class="section" id="cero-en-el-origen">
-<h3><span class="section-number">8.9.1. </span>Cero en el origen<a class="headerlink" href="#cero-en-el-origen" title="Permalink to this headline">¶</a></h3>
+<center><img src="../_static/bode/image_01.png"></center><section id="cero-en-el-origen">
+<h3><span class="section-number">8.9.1. </span>Cero en el origen<a class="headerlink" href="#cero-en-el-origen" title="Permalink to this headline">#</a></h3>
 <p>Una función de transferencia con un cero en el origen está definida como</p>
 <div class="math notranslate nohighlight">
 \[H(s)=s\]</div>
 <p>La representación en diagrama de bloques es</p>
 <center><img src="../_static/bode/image_02.png"></center>
 <p>Sin embargo, herramientas como Simulink <strong>no permiten crear funciones de transferencia impropias</strong>, por lo que se suele utilizar la siguiente representación alternativa con el bloque <strong>derivador o diferenciador</strong></p>
-<center><img src="../_static/bode/image_03.png"></center></div>
-<div class="section" id="id3">
-<h3><span class="section-number">8.9.2. </span>Definiendo el sistema<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<center><img src="../_static/bode/image_03.png"></center></section>
+<section id="id3">
+<h3><span class="section-number">8.9.2. </span>Definiendo el sistema<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>Se definen dos sistemas, uno con un cero en el origen y otro con un polo en el origen. También se explicita el rango de frecuencias a utilizar</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -728,9 +1012,9 @@ G(i\omega )= k\cdot (i\omega +z_1 )\cdot (i\omega +z_2 )~...~(i\omega +z_m )\cdo
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h3><span class="section-number">8.9.3. </span>Magnitud<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3><span class="section-number">8.9.3. </span>Magnitud<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>La magnitud está definida por:</p>
 <div class="math notranslate nohighlight">
 \[Magnitud(G)=20\cdot \log_{10} (|G(i\omega )|)=20\cdot \log_{10} (|-\frac{1}{\omega }i|)=20\cdot \log_{10} (\frac{|-1|}{|\omega |})=20\cdot \log_{10} (\frac{1}{\omega })=20\cdot \log_{10} (\omega^{-1} )=-20\cdot \log_{10} (\omega )\]</div>
@@ -751,9 +1035,9 @@ hold all
 bodemag(sistemas{:}, frecuencia)</p>
 <p>legend(“Polo en el origen”, “Cero en el origen”)
 grid on</p>
-</div>
-<div class="section" id="id5">
-<h3><span class="section-number">8.9.4. </span>Fase<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3><span class="section-number">8.9.4. </span>Fase<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>Para el cálculo de la <strong>fase</strong> se tiene</p>
 <div class="math notranslate nohighlight">
 \[\phi =\tan^{-1} \Bigl(\frac{imaginario}{real}\Bigr)=\tan^{-1} \Bigl(-\frac{1/\omega }{0}\Bigr)=-90\]</div>
@@ -784,9 +1068,9 @@ grid on</p>
 <img alt="../_images/ELC08_Bode_32_1.png" src="../_images/ELC08_Bode_32_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="interpretacion-de-la-simetria-entre-cero-y-polo-en-el-origen">
-<h3><span class="section-number">8.9.5. </span>Interpretación de la simetría entre Cero y Polo en el origen<a class="headerlink" href="#interpretacion-de-la-simetria-entre-cero-y-polo-en-el-origen" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="interpretacion-de-la-simetria-entre-cero-y-polo-en-el-origen">
+<h3><span class="section-number">8.9.5. </span>Interpretación de la simetría entre Cero y Polo en el origen<a class="headerlink" href="#interpretacion-de-la-simetria-entre-cero-y-polo-en-el-origen" title="Permalink to this headline">#</a></h3>
 <p>La sección anterior mostró como un cero tiene una representación simétrica a un polo, esto puede ilustrarse analíticamente ya que un sistema con un polo y un cero en el origen está definida por</p>
 <div class="math notranslate nohighlight">
 \[W(s)=\frac{s}{s}=1\]</div>
@@ -796,10 +1080,10 @@ grid on</p>
 <p>Análogamente la misma demostración puede aplicarse a la fase quedando</p>
 <div class="math notranslate nohighlight">
 \[Fase(s)=-Fase(\frac{1}{s})\]</div>
-</div>
-</div>
-<div class="section" id="sistema-con-un-polo-o-un-cero-real">
-<h2><span class="section-number">8.10. </span>Sistema con un Polo o un Cero Real<a class="headerlink" href="#sistema-con-un-polo-o-un-cero-real" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="sistema-con-un-polo-o-un-cero-real">
+<h2><span class="section-number">8.10. </span>Sistema con un Polo o un Cero Real<a class="headerlink" href="#sistema-con-un-polo-o-un-cero-real" title="Permalink to this headline">#</a></h2>
 <p>Un sistema con un polo real está definido por</p>
 <div class="math notranslate nohighlight">
 \[G(s)=\frac{1}{s+p}~~p\in {\mathbb{R}}^-\]</div>
@@ -815,8 +1099,8 @@ grid on</p>
 <p>Quedando entonces</p>
 <div class="math notranslate nohighlight">
 \[real=\frac{1}{1+\frac{\omega^2 }{\omega_0^2 }}~~~~~imaginario=-\frac{\frac{\omega }{\omega_0 }}{1+\frac{\omega^2 }{\omega_0^2 }}i\]</div>
-<div class="section" id="id6">
-<h3><span class="section-number">8.10.1. </span>Definiendo el sistema<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<section id="id6">
+<h3><span class="section-number">8.10.1. </span>Definiendo el sistema<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>Se definen dos sistemas, uno con una frecuencia de corte de 1 radian y otro con una frecuencia de corte de 10 radianes. También se explicita el rango de frecuencias a utilizar</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -836,9 +1120,9 @@ grid on</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id7">
-<h3><span class="section-number">8.10.2. </span>Magnitud<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id7">
+<h3><span class="section-number">8.10.2. </span>Magnitud<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>Utilizando la expresión</p>
 <div class="math notranslate nohighlight">
 \[|G(i\omega )|=\sqrt{real^2 +imaginario^2 }\]</div>
@@ -875,9 +1159,9 @@ grid on</p>
 <img alt="../_images/ELC08_Bode_40_1.png" src="../_images/ELC08_Bode_40_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id8">
-<h3><span class="section-number">8.10.3. </span>Fase<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id8">
+<h3><span class="section-number">8.10.3. </span>Fase<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>Utilizando la expresión</p>
 <div class="math notranslate nohighlight">
 \[Fase(G)=~\phi =\tan^{-1} \Bigl(\frac{imaginario}{real}\Bigr)\]</div>
@@ -910,9 +1194,9 @@ grid on</p>
 <img alt="../_images/ELC08_Bode_46_1.png" src="../_images/ELC08_Bode_46_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="cero-real">
-<h3><span class="section-number">8.10.4. </span>Cero Real<a class="headerlink" href="#cero-real" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cero-real">
+<h3><span class="section-number">8.10.4. </span>Cero Real<a class="headerlink" href="#cero-real" title="Permalink to this headline">#</a></h3>
 <p>En el caso de un cero real, un análisis similar al de la simetría visto en la sección anterior pueden hacerse en este caso.</p>
 <p>Si <span class="math notranslate nohighlight">\(H(s)\)</span>es una función con un cero real</p>
 <div class="math notranslate nohighlight">
@@ -927,9 +1211,9 @@ grid on</p>
 <div class="math notranslate nohighlight">
 \[Fase\left(s+z\right)=-Fase\left(\frac{1}{s+z}\right)\]</div>
 <p>Se concluye entonces que un sistema con un cero real tiene una representación en el dominio de la frecuencia simétrica a la de un sistema con un polo real.</p>
-</div>
-<div class="section" id="id9">
-<h3><span class="section-number">8.10.5. </span>Definiendo el sistema<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id9">
+<h3><span class="section-number">8.10.5. </span>Definiendo el sistema<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <p>Se definen dos sistemas con la misma frecuencia de corte que los anteriores pero con ceros en vez polos. También se explicita el rango de frecuencias a utilizar</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -944,9 +1228,9 @@ grid on</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id10">
-<h3><span class="section-number">8.10.6. </span>Magnitud<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id10">
+<h3><span class="section-number">8.10.6. </span>Magnitud<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
@@ -968,9 +1252,9 @@ grid on</p>
 <img alt="../_images/ELC08_Bode_51_1.png" src="../_images/ELC08_Bode_51_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id11">
-<h3><span class="section-number">8.10.7. </span>Fase<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id11">
+<h3><span class="section-number">8.10.7. </span>Fase<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">;</span><span class="w"></span>
@@ -992,10 +1276,10 @@ grid on</p>
 <img alt="../_images/ELC08_Bode_53_1.png" src="../_images/ELC08_Bode_53_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="sistema-con-un-polo-o-un-cero-complejo">
-<h2><span class="section-number">8.11. </span>Sistema con un Polo o un Cero Complejo<a class="headerlink" href="#sistema-con-un-polo-o-un-cero-complejo" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="sistema-con-un-polo-o-un-cero-complejo">
+<h2><span class="section-number">8.11. </span>Sistema con un Polo o un Cero Complejo<a class="headerlink" href="#sistema-con-un-polo-o-un-cero-complejo" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sistemas</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
@@ -1011,8 +1295,8 @@ grid on</p>
 </div>
 </div>
 </div>
-<div class="section" id="id12">
-<h3><span class="section-number">8.11.1. </span>Magnitud<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<section id="id12">
+<h3><span class="section-number">8.11.1. </span>Magnitud<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%TODO</span><span class="w"></span>
@@ -1025,9 +1309,9 @@ grid on</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id13">
-<h3><span class="section-number">8.11.2. </span>Fase<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id13">
+<h3><span class="section-number">8.11.2. </span>Fase<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%TODO</span><span class="w"></span>
@@ -1040,10 +1324,10 @@ grid on</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="evaluando-estabilidad">
-<h2><span class="section-number">8.12. </span>Evaluando Estabilidad<a class="headerlink" href="#evaluando-estabilidad" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="evaluando-estabilidad">
+<h2><span class="section-number">8.12. </span>Evaluando Estabilidad<a class="headerlink" href="#evaluando-estabilidad" title="Permalink to this headline">#</a></h2>
 <p>Se puede evaluar estabilidad si para un desfase de 180 la amplitud de la salida es menor que 1. Como se utiliza la escala logarítmica esto equivale a decir que es menor a 0 dB</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1105,9 +1389,9 @@ grid on</p>
 <img alt="../_images/ELC08_Bode_62_1.png" src="../_images/ELC08_Bode_62_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="criterio-de-estabilidad">
-<h2><span class="section-number">8.13. </span>Criterio de Estabilidad<a class="headerlink" href="#criterio-de-estabilidad" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="criterio-de-estabilidad">
+<h2><span class="section-number">8.13. </span>Criterio de Estabilidad<a class="headerlink" href="#criterio-de-estabilidad" title="Permalink to this headline">#</a></h2>
 <p>Un sistema es estable si cualquiera de las siguientes condiciones equivalentes se cumplen</p>
 <ol class="simple">
 <li><p>El margen de ganancia y el margen de fase son ambos mayores a cero</p></li>
@@ -1174,9 +1458,9 @@ frecuencia_cruce_fase =
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="forma-automatica-de-calcular-margenes">
-<h2><span class="section-number">8.14. </span>Forma automática de calcular márgenes<a class="headerlink" href="#forma-automatica-de-calcular-margenes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="forma-automatica-de-calcular-margenes">
+<h2><span class="section-number">8.14. </span>Forma automática de calcular márgenes<a class="headerlink" href="#forma-automatica-de-calcular-margenes" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">allmargin</span><span class="p">(</span><span class="n">sistema</span><span class="p">)</span><span class="w"></span>
@@ -1213,9 +1497,9 @@ frecuencia_cruce_fase =
 <img alt="../_images/ELC08_Bode_73_1.png" src="../_images/ELC08_Bode_73_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="casos">
-<h2><span class="section-number">8.15. </span>Casos<a class="headerlink" href="#casos" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="casos">
+<h2><span class="section-number">8.15. </span>Casos<a class="headerlink" href="#casos" title="Permalink to this headline">#</a></h2>
 <p>Existen 4 casos al evaluar sistemas de fase mínima con los diagramas de Bode</p>
 <ol class="simple">
 <li><p><strong>El sistema tiene un margen de ganancia infinito</strong>: la magnitud se encuentra por debajo de la línea de los 0dB y se corresponde con sistemas que son estables para cualquier valor de <span class="math notranslate nohighlight">\(K\)</span></p></li>
@@ -1265,9 +1549,9 @@ frecuencia_cruce_fase =
 <img alt="../_images/ELC08_Bode_76_1.png" src="../_images/ELC08_Bode_76_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="ancho-de-banda">
-<h2><span class="section-number">8.16. </span>Ancho de banda<a class="headerlink" href="#ancho-de-banda" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="ancho-de-banda">
+<h2><span class="section-number">8.16. </span>Ancho de banda<a class="headerlink" href="#ancho-de-banda" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%plot inline --format=png -w 1600 -h 500</span><span class="w"></span>
@@ -1344,9 +1628,9 @@ frecuencia_cruce_fase =
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id14">
-<h2><span class="section-number">8.17. </span>Casos<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id14">
+<h2><span class="section-number">8.17. </span>Casos<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
 <p>Existen 3 posibles casos para los sistemas</p>
 <ol class="simple">
 <li><p>Subamortiguado</p></li>
@@ -1438,8 +1722,8 @@ frecuencia_cruce_fase =
 <img alt="../_images/ELC08_Bode_88_1.png" src="../_images/ELC08_Bode_88_1.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1463,34 +1747,48 @@ frecuencia_cruce_fase =
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="ELC07_Sintonizaci%C3%B3n.html" title="previous page"><span class="section-number">7. </span>Sintonización</a>
-    <a class='right-next' id="next-link" href="ELC09_Nyquist.html" title="next page"><span class="section-number">9. </span>Diagrama de Nyquist</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ELC07_Sintonizaci%C3%B3n.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Sintonización</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="ELC09_Nyquist.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Diagrama de Nyquist</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Ezequiel Leonardo Castaño<br/>
-        
-            &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ezequiel Leonardo Castaño<br/>
+  
+      &copy; Copyright 2021, Ezequiel Leonardo Castaño.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>
